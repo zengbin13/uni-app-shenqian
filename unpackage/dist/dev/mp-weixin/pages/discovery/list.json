@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "discovery",
+  "usingComponents": {
+    "orange-handpick": "/components/uni-pro/orange-handpick"
+  }
+}

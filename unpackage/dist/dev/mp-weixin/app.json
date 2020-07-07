@@ -1,0 +1,50 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/category/category",
+    "pages/discovery/list",
+    "pages/member/user"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "省钱兄",
+    "navigationBarBackgroundColor": "#FC3F78",
+    "backgroundColor": "#FC3F78"
+  },
+  "tabBar": {
+    "color": "#666666",
+    "selectedColor": "#FC3F78",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "static/img/footer/home.png",
+        "selectedIconPath": "static/img/footer/home-act.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/category/category",
+        "iconPath": "static/img/footer/type.png",
+        "selectedIconPath": "static/img/footer/type-act.png",
+        "text": "分类"
+      },
+      {
+        "pagePath": "pages/discovery/list",
+        "iconPath": "static/img/footer/hot.png",
+        "selectedIconPath": "static/img/footer/hot-act.png",
+        "text": "人工精选"
+      },
+      {
+        "pagePath": "pages/member/user",
+        "iconPath": "static/img/footer/my.png",
+        "selectedIconPath": "static/img/footer/my-act.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "usingComponents": {
+    "cu-custom": "/colorui/components/cu-custom"
+  }
+}
