@@ -1,28 +1,30 @@
 <template>
-	<view class="handpick">
-		<view class="handpick-title">
+	<view class="goods">
+		<view class="goods-title">
 			<view class="title-left">
-				<image src="../../static/img/common/logo.jpg" mode="aspectFill" ></image>
+				<image src="../../static/img/common/logo.jpg"></image>
 				<text>省钱君</text>
 			</view>
-			<view class="title-right">
-				立即领券
-			</view>
 		</view>
-		<view class="handpick-desc">
-			<view v-html="handpickData.show_content"></view>
+		<view class="goods-desc">
+			<view v-html="goods.copy_text"></view>
 		</view>
-		<view class="handpick-imgs">
-			<block v-for="item in handpickData.itempic" :key="item">
-				<image :src="item" mode="aspectFill"></image>
+		<view class="goods-imgs">
+			<block v-for="item in goods.item_data" :key="item.product_id">
+				<view class="img-wrap">
+					<image :src="item.itempic" mode="aspectFill"></image>
+					<block v-if="item.itemendprice">
+						<text>券后价:{{item.itemendprice}}</text>
+					</block>
+				</view>
 			</block>
 		</view>
-		<view class="handpick-info">
+		<view class="goods-info">
 			<view class="time">
-				{{handpickData.show_time | formatDate}}
+				{{goods.addtime | formatDate}}
 			</view>
 			<view class="total">
-				已被领取{{handpickData.dummy_click_statistics}}次
+				已分享{{goods.share_times}}次
 			</view>
 		</view>
 	</view>
@@ -35,7 +37,7 @@
 			}
 		},
 		props: {
-			handpickData: {
+			goods: {
 				type:Object,
 				default: {}
 			}
@@ -54,16 +56,19 @@
 				ss = date.getSeconds()
 				return `${YY}-${MM}-${DD} ${hh}:${mm}:${ss}`
 			}
-		}
+		},
+		// created() {
+		// 	console.log(this.goods);
+		// }
 	}
 </script>
 
 <style lang="scss" scoped>
-	.handpick {
+	.goods {
 		padding: 30rpx 30rpx;
 		border-bottom: 1px solid rgb(246, 246, 246);
 	}
-	.handpick-title {
+	.goods-title {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
@@ -73,8 +78,8 @@
 			align-items: center;
 			image {
 				display: inline-block;
-				width: 70rpx;
 				height: 70rpx;
+				width: 70rpx;
 				position: relative;
 				bottom: 10rpx;
 			}
@@ -89,21 +94,32 @@
 			border-radius: 32rpx;
 		}
 	}
-	.handpick-desc {
+	.goods-desc {
 		text-align: left;
 		font-size: 30rpx;
 	}
-	.handpick-imgs {
+	.goods-imgs {
 		display: flex;
 		flex-wrap: wrap;
 		padding: 30rpx 0;
+		.img-wrap {
+			position: relative;
+			text {
+				position: absolute;
+				padding: 0 4rpx;
+				left: 0rpx;
+				bottom: 6rpx;
+				background-color: rgb(252, 63, 120);
+				color: #fff;
+			}
+		}
 		image {
 			width: 200rpx;
 			height: 200rpx;
 			padding: 0 6rpx 6rpx 0;
 		}
 	}
-	.handpick-info {
+	.goods-info {
 		display: flex;
 		justify-content: flex-end;
 		align-items: center;

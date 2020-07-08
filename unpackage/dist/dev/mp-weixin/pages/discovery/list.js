@@ -92,7 +92,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "recyclableRender", function() { return recyclableRender; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
-var components
+var components = {
+  backTop: function() {
+    return __webpack_require__.e(/*! import() | components/back-top/back-top */ "components/back-top/back-top").then(__webpack_require__.bind(null, /*! @/components/back-top/back-top.vue */ 51))
+  }
+}
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
@@ -130,7 +134,16 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var orangeHandpick = function orangeHandpick() {__webpack_require__.e(/*! require.ensure | components/uni-pro/orange-handpick */ "components/uni-pro/orange-handpick").then((function () {return resolve(__webpack_require__(/*! @/components/uni-pro/orange-handpick */ 56));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;function _toConsumableArray(arr) {return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();}function _nonIterableSpread() {throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");}function _unsupportedIterableToArray(o, minLen) {if (!o) return;if (typeof o === "string") return _arrayLikeToArray(o, minLen);var n = Object.prototype.toString.call(o).slice(8, -1);if (n === "Object" && o.constructor) n = o.constructor.name;if (n === "Map" || n === "Set") return Array.from(n);if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);}function _iterableToArray(iter) {if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter);}function _arrayWithoutHoles(arr) {if (Array.isArray(arr)) return _arrayLikeToArray(arr);}function _arrayLikeToArray(arr, len) {if (len == null || len > arr.length) len = arr.length;for (var i = 0, arr2 = new Array(len); i < len; i++) {arr2[i] = arr[i];}return arr2;}var orangeHandpick = function orangeHandpick() {__webpack_require__.e(/*! require.ensure | components/uni-pro/orange-handpick */ "components/uni-pro/orange-handpick").then((function () {return resolve(__webpack_require__(/*! @/components/uni-pro/orange-handpick */ 58));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var orangeGoods = function orangeGoods() {__webpack_require__.e(/*! require.ensure | components/uni-pro/orange-goods */ "components/uni-pro/orange-goods").then((function () {return resolve(__webpack_require__(/*! @/components/uni-pro/orange-goods.vue */ 72));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var backTop = function backTop() {__webpack_require__.e(/*! require.ensure | components/back-top/back-top */ "components/back-top/back-top").then((function () {return resolve(__webpack_require__(/*! @/components/back-top/back-top.vue */ 51));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+
+
+
+
+
+
+
+
+
 
 
 
@@ -167,29 +180,92 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 
       min_id: 1,
-      handpick: [] };
+      handpick: [],
+      isBackTop: false,
+      min_id_goods: 1,
+      goodsList: [] };
 
   },
   onLoad: function onLoad() {
     this.getHandpickData(1);
+    this.getGoodsData(1);
+  },
+  onPageScroll: function onPageScroll(e) {
+    this.isBackTop = e.scrollTop > 500;
+  },
+  onReachBottom: function onReachBottom() {
+    if (this.currentIndex === 0) {
+      this.min_id += 1;
+      this.getHandpickData(this.min_id);
+    }
+    if (this.currentIndex === 1) {
+      this.getGoodsData(this.min_id_goods);
+    }
   },
   methods: {
+    // tab点击切换
     handleItemClick: function handleItemClick(index) {
       this.currentIndex = index;
-      console.log(this.currentIndex, index);
+      console.log(this.currentIndex);
     },
+    // 请求精选数据
     getHandpickData: function getHandpickData(page) {var _this = this;
       var url = "/api/selected_item/apikey/maxd/min_id/".concat(this.min_id);
       this.$request(url).then(function (res) {
-        console.log(res.data);
         if (res.data.code === 1) {
-          _this.handpick = res.data.data;
+          var handpickList = res.data.data.map(function (item) {
+            item.show_content = item.show_content.
+            replace(/&lt;/g, '<').
+            replace(/&gt;/g, '>').
+            replace(/&amp;/g, '&').
+            replace(/&quot;/g, '"').
+            replace(/&apos;/g, "'");
+            item.copy_content = item.copy_content.
+            replace(/&lt;/g, '<').
+            replace(/&gt;/g, '>').
+            replace(/&amp;/g, '&').
+            replace(/&quot;/g, '"').
+            replace(/&apos;/g, "'");
+            item.copy_content = item.copy_content.replace(/<br>/g, '/n');
+            return item;
+          });
+          _this.handpick = [].concat(_toConsumableArray(_this.handpick), _toConsumableArray(handpickList));
         }
       });
+    },
+    // 请求好货数据
+    getGoodsData: function getGoodsData(page) {var _this2 = this;
+      var url = "/api/subject_hot/apikey/maxd/min_id/".concat(this.min_id_goods);
+      this.$request(url).then(function (res) {
+        _this2.min_id_goods = res.data.min_id;
+        if (res.data.code === 1) {
+          console.log(res);
+          var goodsData = res.data.data.map(function (item) {
+            item.copy_text = item.copy_text.
+            replace(/&lt;/g, '<').
+            replace(/&gt;/g, '>').
+            replace(/&amp;/g, '&').
+            replace(/&quot;/g, '"').
+            replace(/&apos;/g, "'");
+            return item;
+          });
+          _this2.goodsList = [].concat(_toConsumableArray(_this2.goodsList), _toConsumableArray(goodsData));
+        }
+      });
+    },
+    //回到顶部
+    handleBackTop: function handleBackTop() {
+      uni.pageScrollTo({
+        scrollTop: 0,
+        duration: 1200 });
+
     } },
 
   components: {
-    orangeHandpick: orangeHandpick } };exports.default = _default;
+    orangeHandpick: orangeHandpick,
+    orangeGoods: orangeGoods,
+    backTop: backTop } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 

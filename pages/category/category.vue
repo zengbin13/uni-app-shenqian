@@ -9,16 +9,16 @@
 		</scroll-view>
 		<!-- 右侧导航 -->
 		<scroll-view class="right" scroll-y>
-			<view class="row" v-for="(category, index) in categoryList" :key="index" v-show="index == showCategoryIndex">
-				<view class="category-wrap" v-for="(categoryData, indey) in category.data" :key="indey">
+			<view class="row" v-for="(category, index) in categoryList" :key="category.cid" v-show="index == showCategoryIndex">
+				<view class="category-wrap" v-for="(categoryData, indey) in category.data" :key="categoryData.next_name">
 					<view class="next-name">
 						<text style="color: gainsboro">—</text>
 						<text style="color: #000000;margin-right: 8px;margin-left: 8px">{{ categoryData.next_name }}</text>
 						<text style="color: gainsboro">—</text>
 					</view>
 					<view class="category-wrap-items">
-						<view class="category-wrap-item" v-for="(item, indez) in categoryData.info" :key="indey">
-							<image :src="item.imgurl"x mode="widthFix" lazy-load="https://www.gomyorder.cn/logo.png"></image>
+						<view class="category-wrap-item" v-for="(item, indez) in categoryData.info" :key="indez">
+							<image :src="item.imgurl"x mode="aspectFill" lazy-load></image>
 							<view class="son-name">{{ item.son_name }}</view>
 						</view>
 					</view>
@@ -1852,12 +1852,22 @@ export default {
 .category-list {
 	display: flex;
 	.left {
-		width: 180rpx;
+		// position: fixed;
+		// z-index: 99;
+		// width: 24%;
+		// top: 0;
+		// bottom: 0;
 		height: 100vh;
+		width: 180rpx;
 	}
 	.right {
-		background-color: #fff;
+		// position: fixed;
+		// width: 76%;
+		// margin-left: 24%;
+		// top: 0;
+		// bottom: 0;
 		height: 100vh;
+		background-color: #fff;
 	}
 }
 .left {
@@ -1903,6 +1913,7 @@ export default {
 					image {
 						margin: 0 auto;
 						width: 100rpx;
+						height: 100rpx;
 					}
 					.son-name {
 						padding: 10rpx 0;

@@ -2,23 +2,32 @@
 	<view class="discovery" style="background: white">
 		<scroll-view scroll-x scroll-with-animation class="nav" :scroll-left="scrollLeft">
 			<view v-for="(item, index) in category" :key="index" @click="handleItemClick(index)" class="navItem">
-				<text :class="{isActive: currentIndex === index}">{{item.name}}</text>
+				<text :class="{ isActive: currentIndex === index }">{{ item.name }}</text>
 			</view>
 		</scroll-view>
-		<scroll-view scroll-y scroll-with-animation class="content">
-			<block v-for="{item, index} in handpick" :key="index">
-				<orange-handpick :handpickData="item"></orange-handpick>
-			</block>
-		</scroll-view>
+		<view class="content">
+			<view v-show="currentIndex === 0">
+				<view v-for="(item, index) in handpick" :key="index"><orange-handpick :handpickData="item"></orange-handpick>
+				</view>
+			</view>
+			<view v-show="currentIndex === 1">
+				<view v-for="(item, index) in goodsList" :key="index"><orange-goods :goods="item"></orange-goods>
+				</view>
+			</view>
+		</view>
+		<!-- backTop -->
+		<back-top @backtop="handleBackTop" :active="isBackTop"></back-top>
 	</view>
 </template>
 
 <script>
-import orangeHandpick from '@/components/uni-pro/orange-handpick'
+import orangeHandpick from '@/components/uni-pro/orange-handpick';
+import orangeGoods from '@/components/uni-pro/orange-goods.vue';
+import backTop from '@/components/back-top/back-top.vue';
 export default {
 	data() {
 		return {
-			currentIndex:0,
+			currentIndex: 0,
 			scrollLeft: 0,
 			category: [
 				{
@@ -35,50 +44,118 @@ export default {
 				}
 			],
 			min_id: 1,
-			handpick:[]
+			handpick: [],
+			isBackTop:false,
+			min_id_goods: 1,
+			goodsList: []
 		};
 	},
 	onLoad() {
-		this.getHandpickData(1)
+		this.getHandpickData(1);
+		this.getGoodsData(1)
 	},
-	methods: {
-		handleItemClick(index) {
-			this.currentIndex = index
-			console.log(this.currentIndex, index);
-		},
-		getHandpickData(page) {
-			let url = `/api/selected_item/apikey/maxd/min_id/${this.min_id}`
-			this.$request(url).then(res => {
-				console.log(res.data);
-				if(res.data.code === 1) {
-					this.handpick = res.data.data
-				}
-			});
+	onPageScroll(e) {
+		this.isBackTop = e.scrollTop > 500 
+	},
+	onReachBottom() {
+		if(this.currentIndex === 0) {
+			this.min_id += 1;
+			this.getHandpickData(this.min_id);
+		}
+		if(this.currentIndex === 1) {
+			this.getGoodsData(this.min_id_goods);
 		}
 	},
+	methods: {
+		// tab点击切换
+		handleItemClick(index) {
+			this.currentIndex = index;
+			console.log(this.currentIndex);
+		},
+		// 请求精选数据
+		getHandpickData(page) {
+			let url = `/api/selected_item/apikey/maxd/min_id/${this.min_id}`;
+			this.$request(url).then(res => {
+				if (res.data.code === 1) {
+					let handpickList = res.data.data.map(item => {
+						item.show_content = item.show_content
+							.replace(/&lt;/g, '<')
+							.replace(/&gt;/g, '>')
+							.replace(/&amp;/g, '&')
+							.replace(/&quot;/g, '"')
+							.replace(/&apos;/g, "'");
+						item.copy_content = item.copy_content
+							.replace(/&lt;/g, '<')
+							.replace(/&gt;/g, '>')
+							.replace(/&amp;/g, '&')
+							.replace(/&quot;/g, '"')
+							.replace(/&apos;/g, "'");
+						item.copy_content = item.copy_content.replace(/<br>/g, '/n');
+						return item;
+					});
+					this.handpick = [...this.handpick, ...handpickList]
+				}
+			});
+		},
+		// 请求好货数据
+		getGoodsData(page) {
+			let url = `/api/subject_hot/apikey/maxd/min_id/${this.min_id_goods}`;
+			this.$request(url).then(res => {
+				this.min_id_goods = res.data.min_id;
+				if (res.data.code === 1) {
+					console.log(res);
+					let goodsData = res.data.data.map(item => {
+						item.copy_text = item.copy_text
+							.replace(/&lt;/g, '<')
+							.replace(/&gt;/g, '>')
+							.replace(/&amp;/g, '&')
+							.replace(/&quot;/g, '"')
+							.replace(/&apos;/g, "'");
+						return item;
+					});
+					this.goodsList = [...this.goodsList, ...goodsData]
+				}
+			});
+		},
+		//回到顶部
+		handleBackTop() {
+			uni.pageScrollTo({
+				scrollTop:0,
+				duration:1200
+			})
+		},
+	},
 	components: {
-		orangeHandpick
+		orangeHandpick,
+		orangeGoods,
+		backTop
 	}
 };
 </script>
 
 <style lang="scss" scoped>
-	.discovery {
-		height: 100vh;
+.discovery {
+	height: 100vh;
+	background-color: #fff;
+	position: relative;
+	.nav {
+		height: 90rpx;
 		background-color: #fff;
-		.nav {
-			height: 90rpx;
-		}
-		.content {
-			height: calc(100vh - 90rpx);
-		}
+		position: fixed;
+		top: 0;
+		z-index: 99;
 	}
+	.content {
+		margin-top:90rpx;
+		background-color: #fff;
+	}
+}
 .nav {
-	 box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+	box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
 	.navItem {
 		height: 90rpx;
 		display: inline-block;
-		line-height:  90rpx;
+		line-height: 90rpx;
 		margin: 0 10rpx;
 		padding: 0 20rpx;
 		margin-right: -24rpx;
@@ -93,7 +170,8 @@ export default {
 			color: #fff;
 		}
 	}
+}
+.content {
 	
 }
-
 </style>

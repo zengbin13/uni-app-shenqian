@@ -24,11 +24,11 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.handpick.data-v-014c00a5 {
+.goods.data-v-060d3311 {
   padding: 30rpx 30rpx;
   border-bottom: 1px solid #f6f6f6;
 }
-.handpick-title.data-v-014c00a5 {
+.goods-title.data-v-060d3311 {
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
@@ -40,7 +40,7 @@
           justify-content: space-between;
   height: 80rpx;
 }
-.handpick-title .title-left.data-v-014c00a5 {
+.goods-title .title-left.data-v-060d3311 {
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
@@ -48,27 +48,27 @@
   -webkit-align-items: center;
           align-items: center;
 }
-.handpick-title .title-left image.data-v-014c00a5 {
+.goods-title .title-left image.data-v-060d3311 {
   display: inline-block;
-  width: 70rpx;
   height: 70rpx;
+  width: 70rpx;
   position: relative;
   bottom: 10rpx;
 }
-.handpick-title .title-left text.data-v-014c00a5 {
+.goods-title .title-left text.data-v-060d3311 {
   padding: 0 20rpx;
 }
-.handpick-title .title-right.data-v-014c00a5 {
+.goods-title .title-right.data-v-060d3311 {
   border: 1px solid #fc3f78;
   color: #fc3f78;
   padding: 4rpx 16rpx;
   border-radius: 32rpx;
 }
-.handpick-desc.data-v-014c00a5 {
+.goods-desc.data-v-060d3311 {
   text-align: left;
   font-size: 30rpx;
 }
-.handpick-imgs.data-v-014c00a5 {
+.goods-imgs.data-v-060d3311 {
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
@@ -76,12 +76,23 @@
           flex-wrap: wrap;
   padding: 30rpx 0;
 }
-.handpick-imgs image.data-v-014c00a5 {
+.goods-imgs .img-wrap.data-v-060d3311 {
+  position: relative;
+}
+.goods-imgs .img-wrap text.data-v-060d3311 {
+  position: absolute;
+  padding: 0 4rpx;
+  left: 0rpx;
+  bottom: 6rpx;
+  background-color: #fc3f78;
+  color: #fff;
+}
+.goods-imgs image.data-v-060d3311 {
   width: 200rpx;
   height: 200rpx;
   padding: 0 6rpx 6rpx 0;
 }
-.handpick-info.data-v-014c00a5 {
+.goods-info.data-v-060d3311 {
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
@@ -94,7 +105,7 @@
   width: 100%;
   color: #999999;
 }
-.handpick-info .total.data-v-014c00a5 {
+.goods-info .total.data-v-060d3311 {
   padding-left: 30rpx;
 }
 

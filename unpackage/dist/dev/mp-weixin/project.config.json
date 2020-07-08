@@ -36,13 +36,6 @@
 			"list": [
 				{
 					"id": -1,
-					"name": "pages/category/category",
-					"pathName": "pages/category/category",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
 					"name": "pages/discovery/list",
 					"pathName": "pages/discovery/list",
 					"scene": null

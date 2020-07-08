@@ -30,12 +30,12 @@
   display: flex;
 }
 .category-list .left.data-v-682a9774 {
-  width: 180rpx;
   height: 100vh;
+  width: 180rpx;
 }
 .category-list .right.data-v-682a9774 {
-  background-color: #fff;
   height: 100vh;
+  background-color: #fff;
 }
 .left.data-v-682a9774 {
   text-align: center;
@@ -87,6 +87,7 @@
 .right .row .category-wrap .category-wrap-items .category-wrap-item image.data-v-682a9774 {
   margin: 0 auto;
   width: 100rpx;
+  height: 100rpx;
 }
 .right .row .category-wrap .category-wrap-items .category-wrap-item .son-name.data-v-682a9774 {
   padding: 10rpx 0;

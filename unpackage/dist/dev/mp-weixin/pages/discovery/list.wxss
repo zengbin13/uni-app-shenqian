@@ -27,12 +27,18 @@
 .discovery.data-v-586c73d6 {
   height: 100vh;
   background-color: #fff;
+  position: relative;
 }
 .discovery .nav.data-v-586c73d6 {
   height: 90rpx;
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  z-index: 99;
 }
 .discovery .content.data-v-586c73d6 {
-  height: calc(100vh - 90rpx);
+  margin-top: 90rpx;
+  background-color: #fff;
 }
 .nav.data-v-586c73d6 {
   box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);

@@ -10,4 +10,5 @@
 	  @import "colorui/main.css";
 		@import "colorui/icon.css";
 		@import "@/static/css/app.css";
+		@import "@/static/css/index.css";
 </style>

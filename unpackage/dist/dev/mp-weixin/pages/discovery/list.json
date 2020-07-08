@@ -1,6 +1,8 @@
 {
   "navigationBarTitleText": "discovery",
   "usingComponents": {
-    "orange-handpick": "/components/uni-pro/orange-handpick"
+    "back-top": "/components/back-top/back-top",
+    "orange-handpick": "/components/uni-pro/orange-handpick",
+    "orange-goods": "/components/uni-pro/orange-goods"
   }
 }

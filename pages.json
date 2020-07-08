@@ -9,13 +9,21 @@
 		{
 			"path": "pages/category/category",
 			"style": {
-				"navigationBarTitleText": "category"
+				"navigationBarTitleText": "category",
+				"h5": {
+					"titleNView": false,
+					"scrollIndicator": "none"
+				}
 			}
 		},
 		{
 			"path": "pages/discovery/list",
 			"style": {
-				"navigationBarTitleText": "discovery"
+				"navigationBarTitleText": "discovery",
+				"h5": {
+					"titleNView": false,
+					"scrollIndicator": "none"
+				}
 			}
 		},
 		{

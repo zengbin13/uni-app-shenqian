@@ -1,0 +1,1 @@
+<view data-event-opts="{{[['tap',[['handleClickBack',['$event']]]]]}}" class="{{['back-top',active?'show':'hide']}}" bindtap="__e"><text class="iconfont icon-icon"></text></view>
