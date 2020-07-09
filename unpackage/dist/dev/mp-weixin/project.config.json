@@ -32,12 +32,13 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 0,
 			"list": [
 				{
-					"id": -1,
-					"name": "pages/discovery/list",
-					"pathName": "pages/discovery/list",
+					"id": 0,
+					"name": "detail",
+					"pathName": "pages/detail/detail",
+					"query": "id= 590216162856",
 					"scene": null
 				}
 			]

@@ -124,7 +124,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
 //
 //
 //
@@ -160,11 +160,29 @@ var _default =
     return {};
 
   },
+  // created() {
+  // 	console.log(this.handpickData);
+  // },
   props: {
     handpickData: {
       type: Object,
       default: {} } },
 
+
+  methods: {
+    openGoods: function openGoods() {
+      //导航加入详情页面
+      var relation_id = this.$queue.getStorageData("relation_id");
+      if (relation_id) {
+        uni.navigateTo({
+          url: "/pages/detail/detail?id=".concat(this.handpickData.itemid, "&relation_id=").concat(relation_id) });
+
+      } else {
+        uni.navigateTo({
+          url: "/pages/detail/detail?id=".concat(this.handpickData.itemid) });
+
+      }
+    } },
 
   filters: {
     formatDate: function formatDate(value) {
@@ -180,6 +198,7 @@ var _default =
       ss = date.getSeconds();
       return "".concat(YY, "-").concat(MM, "-").concat(DD, " ").concat(hh, ":").concat(mm, ":").concat(ss);
     } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 

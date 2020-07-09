@@ -5,7 +5,7 @@
 				<image src="../../static/img/common/logo.jpg" mode="aspectFill" ></image>
 				<text>省钱君</text>
 			</view>
-			<view class="title-right">
+			<view class="title-right" @click="openGoods">
 				立即领券
 			</view>
 		</view>
@@ -14,7 +14,7 @@
 		</view>
 		<view class="handpick-imgs">
 			<block v-for="item in handpickData.itempic" :key="item">
-				<image :src="item" mode="aspectFill"></image>
+				<image :src="item" mode="aspectFill" @click="openGoods"></image>
 			</block>
 		</view>
 		<view class="handpick-info">
@@ -34,10 +34,28 @@
 			return {
 			}
 		},
+		// created() {
+		// 	console.log(this.handpickData);
+		// },
 		props: {
 			handpickData: {
 				type:Object,
 				default: {}
+			}
+		},
+		methods:{
+			openGoods() {
+				//导航加入详情页面
+				let relation_id = this.$queue.getStorageData("relation_id")
+				if(relation_id) {
+					uni.navigateTo({
+						 url:`/pages/detail/detail?id=${this.handpickData.itemid}&relation_id=${relation_id}`
+					})
+				} else {
+					uni.navigateTo({
+						 url:`/pages/detail/detail?id=${this.handpickData.itemid}`
+					})
+				}
 			}
 		},
 		filters:{
@@ -100,7 +118,9 @@
 		image {
 			width: 200rpx;
 			height: 200rpx;
-			padding: 0 6rpx 6rpx 0;
+			border-right: 6rpx solid #fff;
+			border-bottom: 6rpx solid #fff;
+			background-color: rgb(246, 246, 246);
 		}
 	}
 	.handpick-info {

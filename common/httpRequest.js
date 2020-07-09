@@ -16,10 +16,21 @@ export function request(url, data= {}, method="GET") {
 				'token': uni.getStorageSync('AuthTokens')
 			},
 			fail(err) {
+				uni.showToast({
+					title:"网络请求失败",
+					icon: "none"
+				}) 
 				reject(err)
 			},
-			success(res) {
-				resolve(res)
+			success(res) {	
+				if(res.data.code !== 1) {
+					uni.showToast({
+						title:`返回数据有误 错误码：${res.data.code}`,
+						icon: "none"
+					}) 
+				} else {
+					resolve(res)
+				}
 			},
 			complete() {
 				uni.hideLoading()

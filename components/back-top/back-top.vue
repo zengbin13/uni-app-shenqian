@@ -1,6 +1,6 @@
 <template>
 	<view class="back-top" @click="handleClickBack" :class="[active ? 'show' : 'hide']">
-		<text class="iconfont icon-icon"></text>
+		<text class="iconfont icon-up"></text>
 	</view>
 </template>
 
@@ -22,11 +22,6 @@
 				this.$emit("backtop")
 			}
 		},
-		watch: {
-			active(value) {
-				console.log(value);
-			}
-		}
 	}
 </script>
 

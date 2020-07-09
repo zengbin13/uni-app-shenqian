@@ -124,7 +124,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
 //
 //
 //
@@ -168,6 +168,13 @@ var _default =
       default: {} } },
 
 
+  methods: {
+    handleImgClick: function handleImgClick() {
+      uni.navigateTo({
+        url: "/pages/detail/detail?id=".concat(this.goods.itemid) })();
+
+    } },
+
   filters: {
     formatDate: function formatDate(value) {
       value = parseInt(value) * 1000;
@@ -181,12 +188,12 @@ var _default =
       mm = date.getMinutes();
       ss = date.getSeconds();
       return "".concat(YY, "-").concat(MM, "-").concat(DD, " ").concat(hh, ":").concat(mm, ":").concat(ss);
-    } }
+    } },
 
-  // created() {
-  // 	console.log(this.goods);
-  // }
-};exports.default = _default;
+  created: function created() {
+    console.log(this.goods);
+  } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 

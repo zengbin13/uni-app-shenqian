@@ -136,11 +136,6 @@ var _default =
   methods: {
     handleClickBack: function handleClickBack() {
       this.$emit("backtop");
-    } },
-
-  watch: {
-    active: function active(value) {
-      console.log(value);
     } } };exports.default = _default;
 
 /***/ }),

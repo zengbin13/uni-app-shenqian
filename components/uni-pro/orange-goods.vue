@@ -12,7 +12,7 @@
 		<view class="goods-imgs">
 			<block v-for="item in goods.item_data" :key="item.product_id">
 				<view class="img-wrap">
-					<image :src="item.itempic" mode="aspectFill"></image>
+					<image :src="item.itempic" mode="aspectFill" @click="handleImgClick"></image>
 					<block v-if="item.itemendprice">
 						<text>券后价:{{item.itemendprice}}</text>
 					</block>
@@ -42,6 +42,13 @@
 				default: {}
 			}
 		},
+		methods:{
+			handleImgClick() {
+				uni.navigateTo({
+					url:`/pages/detail/detail?id=${this.goods.itemid}`
+				})()
+			}
+		},
 		filters:{
 			formatDate(value) {
 				value = parseInt(value) * 1000
@@ -57,9 +64,9 @@
 				return `${YY}-${MM}-${DD} ${hh}:${mm}:${ss}`
 			}
 		},
-		// created() {
-		// 	console.log(this.goods);
-		// }
+		created() {
+			console.log(this.goods);
+		}
 	}
 </script>
 

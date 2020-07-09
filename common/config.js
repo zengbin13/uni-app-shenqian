@@ -1,5 +1,6 @@
 // 请求根地址
 const ROOTPATH= "https://www.gomyorder.cn";
+// const ROOTPATH= "/api";
 const ROOTPATH1= "https://www.gomyorder.cn/tao";
 
 export default  {

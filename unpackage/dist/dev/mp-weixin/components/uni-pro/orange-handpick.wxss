@@ -79,7 +79,9 @@
 .handpick-imgs image.data-v-014c00a5 {
   width: 200rpx;
   height: 200rpx;
-  padding: 0 6rpx 6rpx 0;
+  border-right: 6rpx solid #fff;
+  border-bottom: 6rpx solid #fff;
+  background-color: #f6f6f6;
 }
 .handpick-info.data-v-014c00a5 {
   display: -webkit-box;

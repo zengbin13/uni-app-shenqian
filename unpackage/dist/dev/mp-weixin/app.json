@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/category/category",
     "pages/discovery/list",
-    "pages/member/user"
+    "pages/member/user",
+    "pages/detail/detail"
   ],
   "subPackages": [],
   "window": {
@@ -45,6 +46,7 @@
     ]
   },
   "usingComponents": {
-    "cu-custom": "/colorui/components/cu-custom"
+    "cu-custom": "/colorui/components/cu-custom",
+    "goods-item": "/components/goods-item/goods-item"
   }
 }
