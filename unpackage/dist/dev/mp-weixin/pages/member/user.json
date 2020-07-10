@@ -1,4 +1,7 @@
 {
   "navigationBarTitleText": "user",
-  "usingComponents": {}
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "cell": "/components/cell/cell"
+  }
 }

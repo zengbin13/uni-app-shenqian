@@ -12,7 +12,7 @@
 		<view class="goods-imgs">
 			<block v-for="item in goods.item_data" :key="item.product_id">
 				<view class="img-wrap">
-					<image :src="item.itempic" mode="aspectFill" @click="handleImgClick"></image>
+					<image :src="item.itempic" mode="aspectFill" @click="openGoods(item.itemid)"></image>
 					<block v-if="item.itemendprice">
 						<text>券后价:{{item.itemendprice}}</text>
 					</block>
@@ -43,10 +43,19 @@
 			}
 		},
 		methods:{
-			handleImgClick() {
-				uni.navigateTo({
-					url:`/pages/detail/detail?id=${this.goods.itemid}`
-				})()
+			openGoods(id) {
+				//导航加入详情页面
+				if(!id) return
+				let relation_id = this.$queue.getStorageData("relation_id")
+				if(relation_id) {
+					uni.navigateTo({
+						 url:`/pages/detail/detail?id=${id}&relation_id=${relation_id}`
+					})
+				} else {
+					uni.navigateTo({
+						 url:`/pages/detail/detail?id=${id}`
+					})
+				}
 			}
 		},
 		filters:{

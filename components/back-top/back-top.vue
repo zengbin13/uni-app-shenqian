@@ -1,5 +1,5 @@
 <template>
-	<view class="back-top" @click="handleClickBack" :class="[active ? 'show' : 'hide']">
+	<view class="back-top" @tap="handleClickBack" :class="[active ? 'show' : 'hide']">
 		<text class="iconfont icon-up"></text>
 	</view>
 </template>

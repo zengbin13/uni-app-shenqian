@@ -1,6 +1,7 @@
 {
   "navigationBarTitleText": "商品详情",
   "usingComponents": {
-    "goods-item": "/components/goods-item/goods-item"
+    "goods-item": "/components/goods-item/goods-item",
+    "back-top": "/components/back-top/back-top"
   }
 }

@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "意见反馈",
+  "usingComponents": {
+    "uni-rate": "/components/uni-ui/uni-rate/uni-rate"
+  }
+}

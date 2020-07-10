@@ -4,7 +4,13 @@
     "pages/category/category",
     "pages/discovery/list",
     "pages/member/user",
-    "pages/detail/detail"
+    "pages/detail/detail",
+    "pages/member/setting",
+    "pages/member/user-agreement",
+    "pages/member/privacy-agreement",
+    "pages/member/feedback",
+    "pages/member/register",
+    "pages/public/login"
   ],
   "subPackages": [],
   "window": {
@@ -47,6 +53,8 @@
   },
   "usingComponents": {
     "cu-custom": "/colorui/components/cu-custom",
-    "goods-item": "/components/goods-item/goods-item"
+    "goods-item": "/components/goods-item/goods-item",
+    "back-top": "/components/back-top/back-top",
+    "cell": "/components/cell/cell"
   }
 }

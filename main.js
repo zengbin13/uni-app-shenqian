@@ -16,7 +16,10 @@ Vue.prototype.$queue = queue
 // 注册全局组件
 import goodsItem from "./components/goods-item/goods-item.vue"
 Vue.component('goods-item', goodsItem)
-
+import backTop from '@/components/back-top/back-top.vue';
+Vue.component('back-top', backTop)
+import cell from '@/components/cell/cell.vue';
+Vue.component('cell', cell)
 
 App.mpType = 'app'
 

@@ -70,7 +70,6 @@ export default {
 		// tab点击切换
 		handleItemClick(index) {
 			this.currentIndex = index;
-			console.log(this.currentIndex);
 		},
 		// 请求精选数据
 		getHandpickData(page) {
@@ -121,7 +120,7 @@ export default {
 		handleBackTop() {
 			uni.pageScrollTo({
 				scrollTop:0,
-				duration:1200
+				duration:500
 			})
 		},
 	},

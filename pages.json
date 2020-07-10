@@ -29,7 +29,12 @@
 		{
 			"path": "pages/member/user",
 			"style": {
-				"navigationBarTitleText": "user"
+				"navigationBarTitleText": "user",
+				"navigationStyle": "custom",
+				"h5": {
+					"titleNView": false,
+					"scrollIndicator": "none"
+				}
 			}
 		},
 		{
@@ -47,6 +52,36 @@
 					}
 				}
 			}
+		},
+		{
+				"path" : "pages/member/setting",
+				"style" : {}
+		},
+		{
+				"path" : "pages/member/user-agreement",
+				"style" : {}
+		},
+		{
+				"path" : "pages/member/privacy-agreement",
+				"style" : {}
+		},
+		{
+				"path" : "pages/member/feedback",
+				"style" : {
+					"navigationBarTitleText": "意见反馈"
+				}
+		},
+		{
+				"path" : "pages/member/register",
+				"style" : {
+					"navigationBarTitleText": "用户注册"
+				}
+		},
+		{
+				"path" : "pages/public/login",
+				"style" : {
+					"navigationBarTitleText": "登录"
+				}
 		}
     ],
 	"globalStyle": {

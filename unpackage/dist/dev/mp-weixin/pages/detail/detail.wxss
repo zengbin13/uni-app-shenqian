@@ -26,13 +26,14 @@
 /* 文章场景相关 */
 page.data-v-3e159eb4 {
   background-color: #fff;
+  position: relative;
 }
 .bar.data-v-3e159eb4 {
   position: relative;
   margin-bottom: 25rpx;
 }
 .bar.data-v-3e159eb4::after {
-  content: "";
+  content: '';
   height: 25rpx;
   width: 100%;
   background-color: #f8f8f8;
@@ -136,7 +137,7 @@ page.data-v-3e159eb4 {
   position: relative;
 }
 .coupon.data-v-3e159eb4::before, .coupon.data-v-3e159eb4::after {
-  content: "";
+  content: '';
   width: 40rpx;
   height: 40rpx;
   border-radius: 50%;
@@ -206,6 +207,7 @@ page.data-v-3e159eb4 {
 }
 .recommend-wrap.data-v-3e159eb4 {
   background-color: #f0f0f0;
+  margin-bottom: 90rpx;
 }
 .recommend-wrap .recommend-title.data-v-3e159eb4 {
   line-height: 90rpx;
@@ -222,5 +224,68 @@ page.data-v-3e159eb4 {
 }
 .recommend-wrap .recommend .goods-item.data-v-3e159eb4 {
   width: 50%;
+}
+.goods-pay.data-v-3e159eb4 {
+  height: 90rpx;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  zoom: 1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  background-color: #fff;
+  box-shadow: 4rpx 0 12rpx 0 rgba(0, 0, 0, 0.1);
+}
+.goods-pay .pay-left.data-v-3e159eb4 {
+  -webkit-box-flex: 2;
+  -webkit-flex: 2;
+          flex: 2;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+  -webkit-justify-content: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  text-align: center;
+  font-size: 24rpx;
+}
+.goods-pay .pay-left .iconfont.data-v-3e159eb4 {
+  font-size: 36rpx;
+}
+.goods-pay .pay-right.data-v-3e159eb4 {
+  -webkit-box-flex: 5;
+  -webkit-flex: 5;
+          flex: 5;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+  -webkit-justify-content: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  color: #fff;
+}
+.goods-pay .pay-right .pay-cashback.data-v-3e159eb4, .goods-pay .pay-right .pay-coupon.data-v-3e159eb4 {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+  text-align: center;
+  padding: 15rpx 0;
+}
+.goods-pay .pay-right .pay-cashback.data-v-3e159eb4 {
+  background-color: #ff6db2;
+  margin: 0 10rpx 0 20rpx;
+}
+.goods-pay .pay-right .pay-coupon.data-v-3e159eb4 {
+  background-color: #f15b6c;
+  margin: 0 20rpx 0 10rpx;
 }
 
