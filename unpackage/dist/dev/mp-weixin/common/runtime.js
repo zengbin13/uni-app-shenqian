@@ -104,11 +104,11 @@
 /******/
 /******/
 /******/ 		// mini-css-extract-plugin CSS loading
-/******/ 		var cssChunks = {"components/back-top/back-top":1,"components/cell/cell":1,"components/goods-item/goods-item":1,"components/uni-pro/orange-goods":1,"components/uni-pro/orange-handpick":1,"components/uni-ui/uni-rate/uni-rate":1,"components/uni-ui/uni-icons/uni-icons":1};
+/******/ 		var cssChunks = {"components/back-top/back-top":1,"components/cell/cell":1,"components/goods-item/goods-item":1,"components/uni-pro/orange-goods":1,"components/uni-pro/orange-handpick":1,"components/uni-ui/uni-rate/uni-rate":1,"components/watch-login/watch-button":1,"components/watch-login/watch-input":1,"pages/login/back":1,"components/uni-ui/uni-icons/uni-icons":1};
 /******/ 		if(installedCssChunks[chunkId]) promises.push(installedCssChunks[chunkId]);
 /******/ 		else if(installedCssChunks[chunkId] !== 0 && cssChunks[chunkId]) {
 /******/ 			promises.push(installedCssChunks[chunkId] = new Promise(function(resolve, reject) {
-/******/ 				var href = "" + ({"colorui/components/cu-custom":"colorui/components/cu-custom","components/back-top/back-top":"components/back-top/back-top","components/cell/cell":"components/cell/cell","components/goods-item/goods-item":"components/goods-item/goods-item","components/uni-pro/orange-goods":"components/uni-pro/orange-goods","components/uni-pro/orange-handpick":"components/uni-pro/orange-handpick","components/uni-ui/uni-rate/uni-rate":"components/uni-ui/uni-rate/uni-rate","components/uni-ui/uni-icons/uni-icons":"components/uni-ui/uni-icons/uni-icons"}[chunkId]||chunkId) + ".wxss";
+/******/ 				var href = "" + ({"colorui/components/cu-custom":"colorui/components/cu-custom","components/back-top/back-top":"components/back-top/back-top","components/cell/cell":"components/cell/cell","components/goods-item/goods-item":"components/goods-item/goods-item","components/uni-pro/orange-goods":"components/uni-pro/orange-goods","components/uni-pro/orange-handpick":"components/uni-pro/orange-handpick","components/uni-ui/uni-rate/uni-rate":"components/uni-ui/uni-rate/uni-rate","components/watch-login/watch-button":"components/watch-login/watch-button","components/watch-login/watch-input":"components/watch-login/watch-input","pages/login/back":"pages/login/back","components/uni-ui/uni-icons/uni-icons":"components/uni-ui/uni-icons/uni-icons"}[chunkId]||chunkId) + ".wxss";
 /******/ 				var fullhref = __webpack_require__.p + href;
 /******/ 				var existingLinkTags = document.getElementsByTagName("link");
 /******/ 				for(var i = 0; i < existingLinkTags.length; i++) {

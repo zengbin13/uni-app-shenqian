@@ -1719,7 +1719,7 @@ function request(url) {var data = arguments.length > 1 && arguments[1] !== undef
       timeout: 5000,
       header: {
         'content-type': 'application/json',
-        'token': uni.getStorageSync('AuthTokens') },
+        'token': uni.getStorageSync('token') },
 
       fail: function fail(err) {
         uni.showToast({
@@ -1729,9 +1729,11 @@ function request(url) {var data = arguments.length > 1 && arguments[1] !== undef
         reject(err);
       },
       success: function success(res) {
-        if (res.data.code !== 1) {
+        var code = res.data.code;
+        var msg = res.data.msg.toUpperCase();
+        if (msg !== "SUCCESS" && code !== 1) {
           uni.showToast({
-            title: "\u8FD4\u56DE\u6570\u636E\u6709\u8BEF \u9519\u8BEF\u7801\uFF1A".concat(res.data.code),
+            title: "\u9519\u8BEF\u7801\uFF1A".concat(code, "  \u9519\u8BEF\u4FE1\u606F\uFF1A").concat(msg),
             icon: "none" });
 
         } else {
@@ -1830,7 +1832,62 @@ function clear() {
 
 /***/ }),
 
-/***/ 137:
+/***/ 14:
+/*!*****************************************************************************!*\
+  !*** C:/Users/yu13/Documents/HBuilderProjects/uni-shenqian/common/queue.js ***!
+  \*****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = {
+  // 获取某条缓存数据——json
+  getStorageData: function getStorageData(key) {
+    try {
+      var value = uni.getStorageSync(key);
+      if (value) {
+        return JSON.parse(value);
+      }
+    } catch (e) {
+      //TODO handle the exception
+    }
+  },
+  // 添加某条缓存数据
+  setStorageData: function setStorageData(key, value) {
+    try {
+      uni.setStorageSync(key, value);
+    } catch (e) {
+      //TODO handle the exception
+    }
+  },
+  // 清除某条缓存数据
+  removeStorageData: function removeStorageData(key) {
+    try {
+      uni.removeStorageSync(key);
+    } catch (e) {
+      //TODO handle the exception
+    }
+  },
+  //检测某条子数据在缓存数组中是否存在
+  isExist: function isExist(key, id) {
+    var list = this.getStorageData(key);
+    if (!Array.isArray(list)) return;
+    return list.find(function (item) {return item.itemid === id;});
+  },
+  // 清除缓存中的登录数据
+  clearLogin: function clearLogin() {
+    this.removeStorageData("token");
+    this.removeStorageData("userId");
+    this.removeStorageData("nickName");
+    this.removeStorageData("image_url");
+    this.removeStorageData("relation_id");
+    this.removeStorageData("mobile");
+  } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+
+/***/ }),
+
+/***/ 182:
 /*!**************************************************************************************************!*\
   !*** C:/Users/yu13/Documents/HBuilderProjects/uni-shenqian/components/uni-ui/uni-icons/icons.js ***!
   \**************************************************************************************************/
@@ -1969,42 +2026,6 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
   "cloud-download-filled": "\uE8E9",
   "headphones": "\uE8BF",
   "shop": "\uE609" };exports.default = _default;
-
-/***/ }),
-
-/***/ 14:
-/*!*****************************************************************************!*\
-  !*** C:/Users/yu13/Documents/HBuilderProjects/uni-shenqian/common/queue.js ***!
-  \*****************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = {
-  getStorageData: function getStorageData(key) {
-    try {
-      var value = uni.getStorageSync(key);
-      if (value) {
-        return JSON.parse(value);
-      }
-    } catch (e) {
-      //TODO handle the exception
-    }
-  },
-  setStorageData: function setStorageData(key, value) {
-    try {
-      uni.setStorageSync(key, value);
-    } catch (e) {
-      //TODO handle the exception
-    }
-  },
-  //检测某条数据在队列中是否存在
-  isExist: function isExist(key, id) {
-    var list = this.getStorageData(key);
-    if (!Array.isArray(list)) return;
-    return list.find(function (item) {return item.itemid === id;});
-  } };exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 

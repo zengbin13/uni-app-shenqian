@@ -1,1 +1,0 @@
-<view class="login"><button type="default" data-event-opts="{{[['tap',[['login',['$event']]]]]}}" bindtap="__e">登录</button></view>

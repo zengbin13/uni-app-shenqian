@@ -72,16 +72,16 @@
 				// 不具有token
 				if(!token) {
 					this.$queue.setStorageData("href", "/pages/member/user")
-				//#ifdef H5
+	
 				uni.navigateTo({
-					url: '/pages/member/register'
+					url: '/pages/login/login'
 				});
-				//#endif
-				//#ifndef H5
-				uni.navigateTo({
-					url: '/pages/public/login'
-				});
-				//#endif
+
+
+				// uni.navigateTo({
+				// 	url: '/pages/public/login'
+				// });
+
 				}
 			}
 		},

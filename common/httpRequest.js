@@ -13,7 +13,7 @@ export function request(url, data= {}, method="GET") {
 			timeout: 5000,
 			header: {
 				'content-type': 'application/json',
-				'token': uni.getStorageSync('AuthTokens')
+				'token': uni.getStorageSync('token')
 			},
 			fail(err) {
 				uni.showToast({
@@ -23,9 +23,11 @@ export function request(url, data= {}, method="GET") {
 				reject(err)
 			},
 			success(res) {	
-				if(res.data.code !== 1) {
+				let code = res.data.code
+				let msg = res.data.msg.toUpperCase()
+				if(msg !=="SUCCESS" && code !== 1 ) {
 					uni.showToast({
-						title:`返回数据有误 错误码：${res.data.code}`,
+						title:`错误码：${code}  错误信息：${msg}`,
 						icon: "none"
 					}) 
 				} else {

@@ -59,11 +59,15 @@
 		},
 		{
 				"path" : "pages/member/user-agreement",
-				"style" : {}
+				"style" : {
+					"navigationBarTitleText": "用户服务协议"
+				}
 		},
 		{
 				"path" : "pages/member/privacy-agreement",
-				"style" : {}
+				"style" : {
+					"navigationBarTitleText": "隐私协议"
+				}
 		},
 		{
 				"path" : "pages/member/feedback",
@@ -72,27 +76,45 @@
 				}
 		},
 		{
-				"path" : "pages/member/register",
+				"path" : "pages/login/login",
 				"style" : {
-					"navigationBarTitleText": "用户注册"
+					"navigationBarTitleText": "登录",
+					"h5": {
+						"titleNView": false,
+						"scrollIndicator": "none"
+					}
 				}
 		},
 		{
-				"path" : "pages/public/login",
+				"path" : "pages/login/register",
 				"style" : {
-					"navigationBarTitleText": "登录"
+					"navigationBarTitleText": "注册",
+					"h5": {
+						"titleNView": false,
+						"scrollIndicator": "none"
+					}
+				}
+		},
+		{
+				"path" : "pages/login/forget",
+				"style" : {
+					"navigationBarTitleText": "重置密码",
+					"h5": {
+						"titleNView": false,
+						"scrollIndicator": "none"
+					}
 				}
 		}
     ],
 	"globalStyle": {
 			"navigationBarTextStyle": "white",
 			"navigationBarTitleText": "省钱兄",
-			"navigationBarBackgroundColor": "#FC3F78",
-			"backgroundColor": "#FC3F78"
+			"navigationBarBackgroundColor": "#c7000a",
+			"backgroundColor": "#c7000a"
 	},
 	"tabBar": {
 		"color": "#666666",
-		"selectedColor": "#FC3F78",
+		"selectedColor": "#c7000a",
 		"borderStyle": "black",
 		"backgroundColor": "#ffffff",
 		"list": [

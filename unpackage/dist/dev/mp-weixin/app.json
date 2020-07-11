@@ -9,19 +9,20 @@
     "pages/member/user-agreement",
     "pages/member/privacy-agreement",
     "pages/member/feedback",
-    "pages/member/register",
-    "pages/public/login"
+    "pages/login/login",
+    "pages/login/register",
+    "pages/login/forget"
   ],
   "subPackages": [],
   "window": {
     "navigationBarTextStyle": "white",
     "navigationBarTitleText": "省钱兄",
-    "navigationBarBackgroundColor": "#FC3F78",
-    "backgroundColor": "#FC3F78"
+    "navigationBarBackgroundColor": "#c7000a",
+    "backgroundColor": "#c7000a"
   },
   "tabBar": {
     "color": "#666666",
-    "selectedColor": "#FC3F78",
+    "selectedColor": "#c7000a",
     "borderStyle": "black",
     "backgroundColor": "#ffffff",
     "list": [

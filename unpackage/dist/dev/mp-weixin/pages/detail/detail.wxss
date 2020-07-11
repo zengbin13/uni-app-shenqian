@@ -91,7 +91,7 @@ page.data-v-3e159eb4 {
   top: 6rpx;
 }
 .goods-info .goods-title .shopname.data-v-3e159eb4 {
-  color: #fc3f78;
+  color: #c7000a;
   padding: 0 4rpx;
 }
 .goods-info .goods-price.data-v-3e159eb4 {
@@ -104,7 +104,7 @@ page.data-v-3e159eb4 {
   padding: 25rpx 0;
 }
 .goods-info .goods-price .goods-price-left.data-v-3e159eb4 {
-  color: #fc3f78;
+  color: #c7000a;
 }
 .goods-info .goods-price .goods-price-left .itemendprice.data-v-3e159eb4 {
   font-size: 46rpx;
@@ -190,7 +190,7 @@ page.data-v-3e159eb4 {
   -webkit-box-flex: 1;
   -webkit-flex: 1;
           flex: 1;
-  color: #fc3f78;
+  color: #c7000a;
 }
 .goods-desc .right.data-v-3e159eb4 {
   -webkit-box-flex: 4;
@@ -212,7 +212,7 @@ page.data-v-3e159eb4 {
 .recommend-wrap .recommend-title.data-v-3e159eb4 {
   line-height: 90rpx;
   text-align: center;
-  color: #fc3f78;
+  color: #c7000a;
   font-size: 42rpx;
 }
 .recommend-wrap .recommend.data-v-3e159eb4 {
