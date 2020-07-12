@@ -3,8 +3,10 @@ export default {
 	getStorageData(key) {
 		try{
 			let value = uni.getStorageSync(key)
-			if(value) {
+			if(typeof value === "object") {
 				return JSON.parse(value)
+			} else {
+				return value
 			}
 		}catch(e){
 			//TODO handle the exception

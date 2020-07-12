@@ -26,6 +26,7 @@ export function request(url, data= {}, method="GET") {
 				let code = res.data.code
 				let msg = res.data.msg.toUpperCase()
 				if(msg !=="SUCCESS" && code !== 1 ) {
+					console.log(res);
 					uni.showToast({
 						title:`错误码：${code}  错误信息：${msg}`,
 						icon: "none"

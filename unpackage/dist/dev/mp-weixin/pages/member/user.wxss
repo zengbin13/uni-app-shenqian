@@ -30,8 +30,8 @@ page.data-v-5cb99b92 {
 .color-bg.data-v-5cb99b92 {
   width: 100%;
   height: 440rpx;
-  background-image: -webkit-linear-gradient(left, #ff6db2, #c7000a);
-  background-image: linear-gradient(90deg, #ff6db2, #c7000a);
+  background-image: -webkit-linear-gradient(left, #f15b6c, #c7000a);
+  background-image: linear-gradient(90deg, #f15b6c, #c7000a);
   position: relative;
 }
 .color-bg .vip-application.data-v-5cb99b92 {

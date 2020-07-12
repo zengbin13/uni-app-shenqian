@@ -20,6 +20,8 @@ import backTop from '@/components/back-top/back-top.vue';
 Vue.component('back-top', backTop)
 import cell from '@/components/cell/cell.vue';
 Vue.component('cell', cell)
+import searchBar from '@/components/search-bar/search-bar.vue';
+Vue.component('search-bar', searchBar)
 
 App.mpType = 'app'
 

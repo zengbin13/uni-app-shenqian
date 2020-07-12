@@ -193,18 +193,31 @@ __webpack_require__.r(__webpack_exports__);
       { id: 1, number: 0, title: "本月结算", unit: "元" },
       { id: 0, number: 0, title: "上月预估", unit: "元" },
       { id: 2, number: 0, title: "本月付款", unit: "元" },
-      { id: 3, number: 0, title: "今日订单", unit: "笔" }] };
+      { id: 3, number: 0, title: "今日订单", unit: "笔" }],
 
+      userId: '',
+      nickName: "游客" };
 
   },
   onLoad: function onLoad() {
-
+    this.getUserInfo();
   },
   methods: {
+    getUserInfo: function getUserInfo() {var _this = this;
+      this.userId = this.$queue.getStorageData("userId");
+      if (!this.userId) return;
+      this.$request("/tao/user/".concat(this.userId)).then(function (res) {
+        _this.nickName = res.data.data.nickName;
+      });
+    },
     login: function login() {
       var token = this.$queue.getStorageData("token");
       // 具有token
-      if (token) {}
+      if (token) {
+        uni.showToast({
+          title: "您已经登录，切换账户请先退出" });
+
+      }
       // 不具有token
       if (!token) {
         this.$queue.setStorageData("href", "/pages/member/user");
@@ -219,6 +232,24 @@ __webpack_require__.r(__webpack_exports__);
         // });
 
       }
+    },
+    signOut: function signOut() {var _this2 = this;
+      var token = this.$queue.getStorageData("token");
+      if (!token) return;
+      uni.showModal({
+        title: '提示',
+        content: '确认退出当前账户',
+        success: function success(res) {
+          if (res.confirm) {
+            _this2.$queue.clearLogin();
+            uni.reLaunch({
+              url: "../member/user" });
+
+          } else if (res.cancel) {
+            // console.log('用户点击取消');
+          }
+        } });
+
     } },
 
   components: {

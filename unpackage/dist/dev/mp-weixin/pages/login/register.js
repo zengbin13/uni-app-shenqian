@@ -313,7 +313,7 @@ var _this;var wInput = function wInput() {__webpack_require__.e(/*! require.ensu
         _this3.$queue.setStorageData("userId", userId);
         _this3.$queue.setStorageData("mobile", mobile);
         //getUserInfo
-        _this3.getUserInfo(userId, token);
+        // this.getUserInfo(userId, token);
       });
       _this.isRotate = true;
       setTimeout(function () {

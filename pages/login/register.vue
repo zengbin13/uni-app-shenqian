@@ -168,7 +168,7 @@
 					this.$queue.setStorageData("userId", userId)
 					this.$queue.setStorageData("mobile", mobile)
 					//getUserInfo
-					this.getUserInfo(userId, token);
+					// this.getUserInfo(userId, token);
 				})
 				_this.isRotate=true
 				setTimeout(function(){

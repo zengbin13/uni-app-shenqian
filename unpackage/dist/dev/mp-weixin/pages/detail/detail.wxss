@@ -109,7 +109,7 @@ page.data-v-3e159eb4 {
 .goods-info .goods-price .goods-price-left .itemendprice.data-v-3e159eb4 {
   font-size: 46rpx;
   font-weight: 600;
-  color: #ff6db2;
+  color: #f15b6c;
   padding: 0 16rpx 0 4rpx;
 }
 .goods-info .goods-price .goods-price-left .itemprice.data-v-3e159eb4 {
@@ -131,8 +131,8 @@ page.data-v-3e159eb4 {
   color: #fff;
   height: 150rpx;
   margin: 0 20rpx;
-  background-image: -webkit-linear-gradient(left, #ff6db2, #f15b6c);
-  background-image: linear-gradient(90deg, #ff6db2, #f15b6c);
+  background-image: -webkit-linear-gradient(left, #f15b6c, #f15b6c);
+  background-image: linear-gradient(90deg, #f15b6c, #f15b6c);
   border-radius: 15rpx;
   position: relative;
 }
@@ -281,7 +281,7 @@ page.data-v-3e159eb4 {
   padding: 15rpx 0;
 }
 .goods-pay .pay-right .pay-cashback.data-v-3e159eb4 {
-  background-color: #ff6db2;
+  background-color: #f15b6c;
   margin: 0 10rpx 0 20rpx;
 }
 .goods-pay .pay-right .pay-coupon.data-v-3e159eb4 {

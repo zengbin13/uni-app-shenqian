@@ -3,7 +3,7 @@
 		<view class="color-bg">
 			<view class="login" @tap="login">
 				<image src="../../static/img/logo.png" mode="aspectFill"></image>
-				<view class="username">{{username || "游客"}}</view>
+				<view class="username">{{nickName}}</view>
 			</view>
 			<view class="vip-application">
 				<view class="vip-left">
@@ -41,7 +41,7 @@
 				<cell :iconName="'icon-awesome'" :iconColor="'#2e49e0'">APP下载</cell>
 				<cell :iconName="'icon-fankui1'" :iconColor="'#00ff7f'" :url="'/pages/member/feedback'">意见反馈</cell>
 					<cell :iconName="'icon-shezhi'" :iconColor="'#e07472'" :url="'/pages/member/setting'">设置中心</cell>	
-				<cell :iconName="'icon-shezhi'" :iconColor="'#e07472'">退出登录</cell>
+				<cell :iconName="'icon-shezhi'" :iconColor="'#e07472'" @tap="signOut" v-if="userId">退出登录</cell>
 			</view>
 			</view>
 		</view>
@@ -58,17 +58,30 @@
 					{id:0, number: 0, title: "上月预估", unit: "元"},
 					{id:2, number: 0, title: "本月付款", unit: "元"},
 					{id:3, number: 0, title: "今日订单", unit: "笔"},
-				]
+				],
+				userId: '',
+				nickName: "游客"
 			}
 		},
 		onLoad() {
-
+			this.getUserInfo()
 		},
 		methods: {
+			getUserInfo() {
+				this.userId = this.$queue.getStorageData("userId")
+				if(!this.userId) return
+				this.$request(`/tao/user/${this.userId}`).then(res => {
+					this.nickName = res.data.data.nickName
+				})
+			},
 			login() {
 				let token = this.$queue.getStorageData("token")
 				// 具有token
-				if(token) {}
+				if(token) {
+					uni.showToast({
+						title:"您已经登录，切换账户请先退出"
+					})
+				}
 				// 不具有token
 				if(!token) {
 					this.$queue.setStorageData("href", "/pages/member/user")
@@ -83,6 +96,24 @@
 				// });
 
 				}
+			},
+			signOut() {
+				let token = this.$queue.getStorageData("token")
+				if(!token) return 
+				uni.showModal({
+				    title: '提示',
+				    content: '确认退出当前账户',
+				    success: res => {
+				        if (res.confirm) {
+				            this.$queue.clearLogin()
+				            uni.reLaunch({
+				            	url:"../member/user"
+				            })
+				        } else if (res.cancel) {
+				            // console.log('用户点击取消');
+				        }
+				    }
+				});
 			}
 		},
 		components:{ 

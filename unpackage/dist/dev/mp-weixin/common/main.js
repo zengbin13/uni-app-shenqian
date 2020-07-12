@@ -28,7 +28,9 @@ _vue.default.component('goods-item', goodsItem);var backTop = function backTop()
 
 _vue.default.component('back-top', backTop);var cell = function cell() {__webpack_require__.e(/*! require.ensure | components/cell/cell */ "components/cell/cell").then((function () {return resolve(__webpack_require__(/*! @/components/cell/cell.vue */ 128));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};
 
-_vue.default.component('cell', cell);
+_vue.default.component('cell', cell);var searchBar = function searchBar() {__webpack_require__.e(/*! require.ensure | components/search-bar/search-bar */ "components/search-bar/search-bar").then((function () {return resolve(__webpack_require__(/*! @/components/search-bar/search-bar.vue */ 207));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};
+
+_vue.default.component('search-bar', searchBar);
 
 _App.default.mpType = 'app';
 

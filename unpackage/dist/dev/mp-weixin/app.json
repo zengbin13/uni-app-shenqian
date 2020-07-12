@@ -11,7 +11,9 @@
     "pages/member/feedback",
     "pages/login/login",
     "pages/login/register",
-    "pages/login/forget"
+    "pages/login/forget",
+    "pages/search/search",
+    "pages/member/footprint"
   ],
   "subPackages": [],
   "window": {
@@ -56,6 +58,8 @@
     "cu-custom": "/colorui/components/cu-custom",
     "goods-item": "/components/goods-item/goods-item",
     "back-top": "/components/back-top/back-top",
-    "cell": "/components/cell/cell"
-  }
+    "cell": "/components/cell/cell",
+    "search-bar": "/components/search-bar/search-bar"
+  },
+  "sitemapLocation": "sitemap15.json"
 }

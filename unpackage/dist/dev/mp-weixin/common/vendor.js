@@ -1732,6 +1732,7 @@ function request(url) {var data = arguments.length > 1 && arguments[1] !== undef
         var code = res.data.code;
         var msg = res.data.msg.toUpperCase();
         if (msg !== "SUCCESS" && code !== 1) {
+          console.log(res);
           uni.showToast({
             title: "\u9519\u8BEF\u7801\uFF1A".concat(code, "  \u9519\u8BEF\u4FE1\u606F\uFF1A").concat(msg),
             icon: "none" });
@@ -1845,8 +1846,10 @@ function clear() {
   getStorageData: function getStorageData(key) {
     try {
       var value = uni.getStorageSync(key);
-      if (value) {
+      if (typeof value === "object") {
         return JSON.parse(value);
+      } else {
+        return value;
       }
     } catch (e) {
       //TODO handle the exception

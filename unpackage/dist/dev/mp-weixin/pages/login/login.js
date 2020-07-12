@@ -176,6 +176,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 var _this;var wInput = function wInput() {__webpack_require__.e(/*! require.ensure | components/watch-login/watch-input */ "components/watch-login/watch-input").then((function () {return resolve(__webpack_require__(/*! ../../components/watch-login/watch-input.vue */ 156));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var wButton = function wButton() {__webpack_require__.e(/*! require.ensure | components/watch-login/watch-button */ "components/watch-login/watch-button").then((function () {return resolve(__webpack_require__(/*! ../../components/watch-login/watch-button.vue */ 163));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var back = function back() {__webpack_require__.e(/*! require.ensure | pages/login/back */ "pages/login/back").then((function () {return resolve(__webpack_require__(/*! ./back.vue */ 170));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
@@ -186,8 +206,10 @@ var _this;var wInput = function wInput() {__webpack_require__.e(/*! require.ensu
     return {
       phoneData: '', //用户/电话
       passData: '', //密码
-      isRotate: false //是否加载旋转
-    };
+      isRotate: false, //是否加载旋转
+      verCode: "", //验证码
+      selectedCode: true };
+
   },
   components: {
     wInput: wInput,
@@ -199,23 +221,53 @@ var _this;var wInput = function wInput() {__webpack_require__.e(/*! require.ensu
     //this.isLogin();
   },
   methods: {
-    isLogin: function isLogin() {
-      //判断缓存中是否登录过，直接登录
-      // try {
-      // 	const value = uni.getStorageSync('setUserData');
-      // 	if (value) {
-      // 		//有登录信息
-      // 		console.log("已登录用户：",value);
-      // 		_this.$store.dispatch("setUserData",value); //存入状态
-      // 		uni.reLaunch({
-      // 			url: '../../../pages/index',
-      // 		});
-      // 	}
-      // } catch (e) {
-      // 	// error
-      // }
+    toggleSelect: function toggleSelect() {
+      this.selectedCode = !this.selectedCode;
     },
-    startLogin: function startLogin() {
+    getVerCode: function getVerCode() {var _this2 = this;
+      //获取验证码
+      if (_this.phoneData.length != 11) {
+        uni.showToast({
+          icon: 'none',
+          position: 'bottom',
+          title: '手机号不正确' });
+
+        return false;
+      }
+      uni.showLoading({
+        title: "获取验证码" });
+
+      this.$request("/tao/user/sendMsg/" + this.phoneData + "/login").then(function (res) {
+        uni.hideLoading();
+        uni.showToast({
+          icon: 'none',
+          title: '验证码已发送,请注意查收' });
+
+        _this2.$refs.runCode.$emit('runCode');
+      }).catch(function (err) {
+        uni.showToast({
+          icon: 'none',
+          title: '获取验证码失败' });
+
+      });
+    },
+    // isLogin(){
+    // 	//判断缓存中是否登录过，直接登录
+    // 	try {
+    // 		const value = this.$queue.getStorageData("token");
+    // 		if (value) {
+    // 			//有登录信息
+    // 			console.log("已登录用户：",value);
+    // 			_this.$store.dispatch("setUserData",value); //存入状态
+    // 			uni.reLaunch({
+    // 				url: '/pages/index/index',
+    // 			});
+    // 		}
+    // 	} catch (e) {
+    // 		// error
+    // 	}
+    // },
+    startLogin: function startLogin() {var _this3 = this;
       //登录
       if (this.isRotate) {
         //判断是否加载中，避免重复点击请求
@@ -229,16 +281,50 @@ var _this;var wInput = function wInput() {__webpack_require__.e(/*! require.ensu
 
         return;
       }
-      if (this.passData.length < 5) {
+      // 使用验证码登录
+      if (this.selectedCode) {
+        if (this.verCode === "") {
+          uni.showToast({
+            icon: 'none',
+            title: '验证码不能为空' });
+
+          return;
+        }
+        if (this.verCode.length !== 6) {
+          uni.showToast({
+            icon: 'none',
+            title: '验证码格式错误' });
+
+          return;
+        }
+      }
+      // 清除登录信息
+      this.$queue.clearLogin();
+      // 发送登录请求
+      this.$request("/tao/user/bindOpenid", {
+        pwd: this.passData,
+        phone: this.phoneData,
+        msg: this.verCode,
+        platform: "",
+        invitation: "" },
+      "POST").then(function (res) {
+        console.log(res);
         uni.showToast({
           icon: 'none',
-          position: 'bottom',
-          title: '密码不正确' });
+          title: '登录成功' });
 
-        return;
-      }
+        var token = res.data.data.uuid;
+        var userId = res.data.data.userId;
+        var mobile = _this3.phoneData;
+        _this3.$queue.setStorageData("token", token);
+        _this3.$queue.setStorageData("userId", userId);
+        _this3.$queue.setStorageData("mobile", mobile);
+        // this.$queue.setStorageData("loginStatus", true)
+        uni.reLaunch({
+          url: "../member/user" });
 
-      console.log("登录成功");
+      });
+
 
       _this.isRotate = true;
       setTimeout(function () {
@@ -283,31 +369,6 @@ var _this;var wInput = function wInput() {__webpack_require__.e(/*! require.ensu
       // }).catch(err => {
       // 	uni.hideLoading();
       // })
-
-    },
-
-    login_weixin: function login_weixin() {
-      //微信登录
-      uni.showToast({
-        icon: 'none',
-        position: 'bottom',
-        title: '...' });
-
-    },
-    login_weibo: function login_weibo() {
-      //微博登录
-      uni.showToast({
-        icon: 'none',
-        position: 'bottom',
-        title: '...' });
-
-    },
-    login_github: function login_github() {
-      //github登录
-      uni.showToast({
-        icon: 'none',
-        position: 'bottom',
-        title: '...' });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
