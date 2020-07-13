@@ -18,6 +18,6 @@
 	.back {
 		position: fixed;
 		top: 50rpx;
-		left: 50rpx;
+		left: 40rpx;
 	}
 </style>

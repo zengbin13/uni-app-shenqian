@@ -13,6 +13,7 @@
     "pages/login/register",
     "pages/login/forget",
     "pages/search/search",
+    "pages/search/search-content",
     "pages/member/footprint"
   ],
   "subPackages": [],
@@ -57,9 +58,10 @@
   "usingComponents": {
     "cu-custom": "/colorui/components/cu-custom",
     "goods-item": "/components/goods-item/goods-item",
+    "goods-item-plus": "/components/goods-item-plus/goods-item-plus",
     "back-top": "/components/back-top/back-top",
     "cell": "/components/cell/cell",
-    "search-bar": "/components/search-bar/search-bar"
-  },
-  "sitemapLocation": "sitemap15.json"
+    "search-bar": "/components/search-bar/search-bar",
+    "back": "/components/back/back"
+  }
 }

@@ -1,6 +1,15 @@
 export default {
-	// 获取某条缓存数据——json
+	// 获取某条缓存数据
 	getStorageData(key) {
+		try{
+			let value = uni.getStorageSync(key)
+			return value
+		}catch(e){
+			//TODO handle the exception
+		}
+	},
+	// 获取某条缓存数据——json
+	getStorageJsonData(key) {
 		try{
 			let value = uni.getStorageSync(key)
 			if(typeof value === "object") {

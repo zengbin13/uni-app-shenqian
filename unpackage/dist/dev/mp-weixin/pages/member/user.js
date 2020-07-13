@@ -94,7 +94,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components = {
   cell: function() {
-    return __webpack_require__.e(/*! import() | components/cell/cell */ "components/cell/cell").then(__webpack_require__.bind(null, /*! @/components/cell/cell.vue */ 128))
+    return __webpack_require__.e(/*! import() | components/cell/cell */ "components/cell/cell").then(__webpack_require__.bind(null, /*! @/components/cell/cell.vue */ 140))
   }
 }
 var render = function() {
@@ -134,7 +134,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var cell = function cell() {__webpack_require__.e(/*! require.ensure | components/cell/cell */ "components/cell/cell").then((function () {return resolve(__webpack_require__(/*! ../../components/cell/cell.vue */ 128));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var cell = function cell() {__webpack_require__.e(/*! require.ensure | components/cell/cell */ "components/cell/cell").then((function () {return resolve(__webpack_require__(/*! ../../components/cell/cell.vue */ 140));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 

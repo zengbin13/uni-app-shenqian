@@ -16,12 +16,16 @@ Vue.prototype.$queue = queue
 // 注册全局组件
 import goodsItem from "./components/goods-item/goods-item.vue"
 Vue.component('goods-item', goodsItem)
+import goodsItemPlus from "./components/goods-item-plus/goods-item-plus.vue"
+Vue.component('goods-item-plus', goodsItemPlus)
 import backTop from '@/components/back-top/back-top.vue';
 Vue.component('back-top', backTop)
 import cell from '@/components/cell/cell.vue';
 Vue.component('cell', cell)
 import searchBar from '@/components/search-bar/search-bar.vue';
 Vue.component('search-bar', searchBar)
+import back from '@/components/back/back.vue';
+Vue.component('back', back)
 
 App.mpType = 'app'
 

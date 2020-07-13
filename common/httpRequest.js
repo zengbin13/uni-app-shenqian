@@ -22,7 +22,11 @@ export function request(url, data= {}, method="GET") {
 				}) 
 				reject(err)
 			},
-			success(res) {	
+			success(res) {
+				if(res.data.code === undefined && res.data.msg === undefined) {
+					resolve(res)
+					return;
+				}
 				let code = res.data.code
 				let msg = res.data.msg.toUpperCase()
 				if(msg !=="SUCCESS" && code !== 1 ) {

@@ -25,7 +25,7 @@
 /* 透明度 */
 /* 文章场景相关 */
 .header-wrap.data-v-57280228 {
-  background-color: #c7000a;
+  background-color: #db0011;
 }
 .header-wrap .header-category.data-v-57280228 {
   height: 90rpx;
@@ -47,7 +47,7 @@
   margin-left: 10rpx;
 }
 .header-category .activeCategory.data-v-57280228 {
-  color: #c7000a;
+  color: #db0011;
   background-color: #fff;
   border-radius: 20rpx;
 }

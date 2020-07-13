@@ -197,11 +197,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
-var _this;var wInput = function wInput() {__webpack_require__.e(/*! require.ensure | components/watch-login/watch-input */ "components/watch-login/watch-input").then((function () {return resolve(__webpack_require__(/*! ../../components/watch-login/watch-input.vue */ 156));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var wButton = function wButton() {__webpack_require__.e(/*! require.ensure | components/watch-login/watch-button */ "components/watch-login/watch-button").then((function () {return resolve(__webpack_require__(/*! ../../components/watch-login/watch-button.vue */ 163));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var back = function back() {__webpack_require__.e(/*! require.ensure | pages/login/back */ "pages/login/back").then((function () {return resolve(__webpack_require__(/*! ./back.vue */ 170));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+var _this;var wInput = function wInput() {__webpack_require__.e(/*! require.ensure | components/watch-login/watch-input */ "components/watch-login/watch-input").then((function () {return resolve(__webpack_require__(/*! ../../components/watch-login/watch-input.vue */ 175));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var wButton = function wButton() {__webpack_require__.e(/*! require.ensure | components/watch-login/watch-button */ "components/watch-login/watch-button").then((function () {return resolve(__webpack_require__(/*! ../../components/watch-login/watch-button.vue */ 182));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};
 
-
-
-{
+//button
+var _default = {
   data: function data() {
     return {
       phoneData: '', //用户/电话
@@ -213,8 +212,7 @@ var _this;var wInput = function wInput() {__webpack_require__.e(/*! require.ensu
   },
   components: {
     wInput: wInput,
-    wButton: wButton,
-    back: back },
+    wButton: wButton },
 
   mounted: function mounted() {
     _this = this;

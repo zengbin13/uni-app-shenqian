@@ -122,6 +122,16 @@
 			}
 		},
 		{
+			"path" : "pages/search/search-content",
+			"style" : {
+				"navigationBarTitleText": "搜索内容",
+				"app-plus":{
+					"titleNView":false,
+					"bounce":"none"
+				}
+			}
+		},
+		{
 			"path" : "pages/member/footprint",
 			"style" : {
 				"navigationBarTitleText": "我的足迹",

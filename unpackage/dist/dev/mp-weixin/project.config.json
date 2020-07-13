@@ -8,10 +8,8 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "",
-	"appid": "touristappid",
+	"appid": "wx6b54ccbf7e401af5",
 	"projectname": "uni-shenqian",
-	"simulatorType": "wechat",
-	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,
@@ -38,15 +36,23 @@
 			"list": [
 				{
 					"id": -1,
-					"name": "pages/login/login",
-					"pathName": "pages/login/login",
+					"name": "pages/index/index",
+					"pathName": "pages/search/search",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 1,
+					"name": "pages/search/search-content",
+					"pathName": "pages/search/search-content",
 					"query": "",
 					"scene": null
 				},
 				{
 					"id": -1,
-					"name": "pages/member/user",
-					"pathName": "pages/member/user",
+					"name": "pages/detail/detail",
+					"pathName": "pages/detail/detail",
+					"query": "id=6257680",
 					"scene": null
 				}
 			]

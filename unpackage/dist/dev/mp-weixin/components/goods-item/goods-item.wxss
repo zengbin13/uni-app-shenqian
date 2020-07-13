@@ -75,7 +75,7 @@
   padding: 2rpx 6rpx;
 }
 .goods-item-info .cash-back .cash-back-item1.data-v-7b7b5584 {
-  background-color: #c7000a;
+  background-color: #db0011;
 }
 .goods-item-info .cash-back .cash-back-item2.data-v-7b7b5584 {
   background-color: #ff927c;
@@ -94,7 +94,7 @@
   padding: 8rpx 8rpx 14rpx;
 }
 .goods-item-info .price .itemendprice.data-v-7b7b5584 {
-  color: #c7000a;
+  color: #db0011;
 }
 .goods-item-info .price .itemendprice text.data-v-7b7b5584 {
   font-size: 32rpx;

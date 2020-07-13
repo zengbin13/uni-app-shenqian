@@ -59,7 +59,7 @@
 			handleClick() {
 				uni.navigateTo({
 					url:`/pages/detail/detail?id=${this.goodsInfo.itemid}`
-				})()
+				})
 			}
 		}
 	}

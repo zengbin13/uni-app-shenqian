@@ -17,14 +17,16 @@
 		</view>
 		<!-- 主体内容非首页 -->
 		<view class="content-sec" v-else>
+			<!-- banner区域 -->
 			<view class="banner" v-if="category[currentIndex].banner.length">
 				<view v-for="item in category[currentIndex].banner" :key="item.son_name" class="banner-item">
 					<image :src="item.imgurl" mode="aspectFill"></image>
 					<text>{{item.son_name}}</text>
 				</view>
 			</view>
+			<!-- 内容区域 -->
 			<view class="content-sec-wrap">
-				<block v-for="item in this.category[this.currentIndex].orderList" :key="item.itempic"><goods-item :goodsInfo="item" class="content-sec-item"></goods-item></block>			
+				<goods-item :goodsInfo="item" class="content-sec-item" v-for="(item, index) in this.category[this.currentIndex].orderList" :key="item.itemid + index"></goods-item>	
 			</view>
 		</view>
 		<!-- 回到顶部 -->
@@ -33,6 +35,7 @@
 </template>
 
 <script>
+import goodsItem from "@/components/goods-item/goods-item.vue"
 export default {
 	data() {
 		return {
@@ -681,6 +684,9 @@ export default {
 			isBackTop: false
 		};
 	},
+	components:{
+		goodsItem,
+	},
 	onLoad() {
 		this.getOrderList(this.currentIndex)
 	},
@@ -774,9 +780,9 @@ export default {
 .content-sec-wrap {
 	display: flex;
 	flex-wrap: wrap;
+	// border: 1px solid #007AFF;
 	.content-sec-item {
 		width: 50%;
 	}
-	
 }
 </style>
