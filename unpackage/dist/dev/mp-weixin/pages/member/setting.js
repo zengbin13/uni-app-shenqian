@@ -92,7 +92,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components = {
   cell: function() {
-    return __webpack_require__.e(/*! import() | components/cell/cell */ "components/cell/cell").then(__webpack_require__.bind(null, /*! @/components/cell/cell.vue */ 140))
+    return __webpack_require__.e(/*! import() | components/cell/cell */ "components/cell/cell").then(__webpack_require__.bind(null, /*! @/components/cell/cell.vue */ 157))
   }
 }
 var render = function() {

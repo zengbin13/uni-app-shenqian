@@ -26,7 +26,7 @@
 			</view>
 			<!-- 内容区域 -->
 			<view class="content-sec-wrap">
-				<goods-item :goodsInfo="item" class="content-sec-item" v-for="(item, index) in this.category[this.currentIndex].orderList" :key="item.itemid + index"></goods-item>	
+				<goods-item :goodsInfo="item" class="content-sec-item" v-for="(item, index) in category[currentIndex].orderList" :key="item.itemid + index"></goods-item>	
 			</view>
 		</view>
 		<!-- 回到顶部 -->

@@ -80,9 +80,9 @@
 					<text class="iconfont icon-home"></text>
 					<view @tap="goHome">首页</view>
 				</view>
-				<view class="collect">
+				<view class="collect" @click="clickCollect" :class="{'active-collect': isActiveCollect}">
 					<text class="iconfont icon-collect"></text>
-					<view>收藏</view>
+					<view>{{collectName}}</view>
 				</view>
 			</view>
 			<view class="pay-right">
@@ -92,6 +92,25 @@
 		</view>
 		<!-- backtop -->
 		<back-top @backtop="handleBackTop" :active="isBackTop"></back-top>
+		<!-- 导航菜单框 -->
+		<view class="navigatorBox" :class="{'navigatorBox-hide': isNavigatorBox}">
+			<navigator class="navigatorBox-item" url="/pages/index/index" open-type="switchTab">
+				<text class="iconfont icon-home"></text>
+				<view>返回首页</view>
+			</navigator>
+			<navigator class="navigatorBox-item" url="/pages/search/search-content">
+				<text class="iconfont icon-search"></text>
+				<view>超级搜索</view>
+			</navigator>
+			<navigator class="navigatorBox-item" url="/pages/member/footprint">
+				<text class="iconfont icon-jiaoyin"></text>
+				<view>我的足迹</view>
+			</navigator>
+			<navigator class="navigatorBox-item" url="/pages/member/user" open-type="switchTab">
+				<text class="iconfont icon-collect"></text>
+				<view>个人中心</view>
+			</navigator>
+		</view>
 	</view>
 </template>
 
@@ -107,31 +126,55 @@ export default {
 			highestCashBack: '',
 			goods: {},
 			recommendList: [],
-			isBackTop: false
+			isBackTop: false,
+			isNavigatorBox: true,
+			collectName: "收藏",
+			isActiveCollect: false
 		};
 	},
 	onLoad(option) {
-		if (option.id) {
-			this.id = option.id;
-			this.relation_id = option.relation_id;
-			this.getGoodsInfo();
-			this.getRecommendGoods();
-		} else {
-			uni.switchTab({
-				url: '/pages/discovery/list'
-			});
+		// 是否重定向
+		this.redirect(option)
+		// 判断是否收藏
+		let collectList = this.$queue.getStorageData("collectList") || []
+		console.log(this.id);
+		console.log(collectList);
+		let index = collectList.findIndex(item => item === this.id)
+		if(index !== -1) {
+			this.collectName="已收藏"
+			this.isActiveCollect=true
 		}
 	},
 	onPageScroll(e) {
 		this.isBackTop = e.scrollTop > 500;
 	},
+	onNavigationBarButtonTap(e) {
+		this.isNavigatorBox = !this.isNavigatorBox
+		if(!this.isNavigatorBox) {
+			setTimeout(() => {
+				this.isNavigatorBox = true
+			}, 5000)
+		}
+	},
 	methods: {
+		// 重定向
+		redirect(option) {
+			if (option.id) {
+				this.id = option.id;
+				this.relation_id = option.relation_id;
+				this.getGoodsInfo();
+				this.getRecommendGoods();
+			} else {
+				uni.switchTab({
+					url: '/pages/discovery/list'
+				});
+			}
+		},
 		// 加载商品详情数据
 		getGoodsInfo() {
 			let url = `/api/item_detail/apikey/maxd/itemid/${this.id}`;
 			this.$request(url).then(res => {
 				let resData = res.data.data;
-				console.log(resData);
 				// 轮播图数据
 				if (resData.taobao_image) {
 					this.swiperList = resData.taobao_image.split(',');
@@ -156,7 +199,6 @@ export default {
 			this.$request(url).then(res => {
 				let resData = res.data.data;
 				this.recommendList = resData;
-				console.log(resData);
 			});
 		},
 		// 点击回到顶部
@@ -171,6 +213,35 @@ export default {
 			uni.switchTab({
 				url:"/pages/index/index"
 			})
+		},
+		// 点击收藏
+		clickCollect(){
+			// 判断是否登录
+			let token = this.$queue.getStorageData("token")
+			if(!token) {
+				uni.navigateTo({
+					url: "../login/login"
+				})
+			}
+			if(token) {
+				let collectList = this.$queue.getStorageData("collectList") || []
+				// 判断是否存在收藏
+				let index = collectList.findIndex(item => item === this.id)
+				if(index === -1) {
+					// 不存在收藏
+					collectList.push(this.id)
+					this.isActiveCollect = true
+					this.collectName="已收藏"
+					this.$queue.setStorageData("collectList", collectList)
+				} else {
+					// 存在收藏_删除该项
+					collectList.splice(index, 1)
+					this.isActiveCollect = false
+					this.collectName="收藏"
+					this.$queue.setStorageData("collectList", collectList)
+				}
+				
+			}
 		},
 	},
 	filters: {
@@ -382,12 +453,18 @@ page {
 	.pay-left {
 		flex: 2;
 		display: flex;
-		justify-content: space-evenly;
+		// justify-content: space-evenly;
 		align-items: center;
 		text-align: center;
 		font-size: 24rpx;
+		.home, .collect {
+			flex: 1;
+		}
 		.iconfont {
 			font-size: 36rpx;
+		}
+		.active-collect {
+			color: $color-main
 		}
 	}
 	.pay-right {
@@ -410,5 +487,38 @@ page {
 			margin: 0 20rpx 0 10rpx;
 		}
 	}
+}
+.navigatorBox {
+	position: fixed;
+	z-index: 109;
+	zoom: 1;
+	top: 110rpx;
+	right: 20rpx;
+	width: 280rpx;
+	height: 400rpx;
+	border-radius: 30rpx;
+	background-color: rgba(58, 58, 58,.8);
+	color: #fff;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	overflow: hidden;
+	transition: all .5s ease 0s;
+	.navigatorBox-item {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin: 0 30rpx;
+		padding: 30rpx 0;
+		border-bottom: 1rpx solid rgb(134, 133, 131);
+		.iconfont {
+			padding-right: 18rpx;
+			font-size: 38rpx;
+		}
+	}
+}
+.navigatorBox-hide {
+	right: -400rpx;
+	opacity: 0;
 }
 </style>

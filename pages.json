@@ -60,6 +60,38 @@
 			}
 		},
 		{
+			"path" : "pages/detail/pdd",
+			"style" : {
+				"navigationBarTitleText": "商品详情-拼多多",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"titleNView": {
+						"type": "transparent",
+						"buttons": [{
+							"type": "menu"
+						}]
+					}
+				}
+			}
+		},
+		{
+			"path" : "pages/detail/jd",
+			"style" : {
+				"navigationBarTitleText": "商品详情-京东",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"titleNView": {
+						"type": "transparent",
+						"buttons": [{
+							"type": "menu"
+						}]
+					}
+				}
+			}
+		},
+		{
 				"path" : "pages/member/setting",
 				"style" : {}
 		},
@@ -143,12 +175,12 @@
 	"globalStyle": {
 			"navigationBarTextStyle": "white",
 			"navigationBarTitleText": "省钱兄",
-			"navigationBarBackgroundColor": "#c7000a",
-			"backgroundColor": "#c7000a"
+			"navigationBarBackgroundColor": "#db0011",
+			"backgroundColor": "#db0011"
 	},
 	"tabBar": {
 		"color": "#666666",
-		"selectedColor": "#c7000a",
+		"selectedColor": "#db0011",
 		"borderStyle": "black",
 		"backgroundColor": "#ffffff",
 		"list": [

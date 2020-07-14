@@ -5,6 +5,8 @@
     "pages/discovery/list",
     "pages/member/user",
     "pages/detail/detail",
+    "pages/detail/pdd",
+    "pages/detail/jd",
     "pages/member/setting",
     "pages/member/user-agreement",
     "pages/member/privacy-agreement",
@@ -20,12 +22,12 @@
   "window": {
     "navigationBarTextStyle": "white",
     "navigationBarTitleText": "省钱兄",
-    "navigationBarBackgroundColor": "#c7000a",
-    "backgroundColor": "#c7000a"
+    "navigationBarBackgroundColor": "#db0011",
+    "backgroundColor": "#db0011"
   },
   "tabBar": {
     "color": "#666666",
-    "selectedColor": "#c7000a",
+    "selectedColor": "#db0011",
     "borderStyle": "black",
     "backgroundColor": "#ffffff",
     "list": [

@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "商品详情-拼多多",
+  "usingComponents": {
+    "goods-item": "/components/goods-item/goods-item",
+    "back-top": "/components/back-top/back-top"
+  }
+}

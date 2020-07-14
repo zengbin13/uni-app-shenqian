@@ -24,6 +24,17 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
+.fixed.data-v-2b2c1472 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  z-index: 99;
+}
+.content.data-v-2b2c1472 {
+  margin-top: 320rpx;
+}
 .search-header.data-v-2b2c1472 {
   padding-top: 30rpx;
   height: 150rpx;

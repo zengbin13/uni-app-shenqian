@@ -9,7 +9,7 @@
 				</view>
 				<view class="price-wrap">
 					<text class="price">￥{{price}}</text>
-					<text class="sales">已售{{sales}}</text>
+					<text class="sales">已售{{formatSales}}</text>
 				</view>
 				<view class="coupon-wrap">
 					<view class="coupon"><text>{{coupon}}元券</text></view>
@@ -32,13 +32,24 @@
 		computed:{
 			shoptypeName() {
 				if(this.shoptype === "A") {
-					return "淘宝"
-				}else if(this.shoptype === "B") {
 					return "拼多多"
+				}else if(this.shoptype === "B") {
+					return "天猫"
 				} else if(this.shoptype === "C"){
-					return "JD"
-				} else {
 					return "淘宝"
+				} else if(this.shoptype === "D"){
+					return "JD"
+				}
+			},
+			formatSales() {
+				if(this.sales === "10万+") {
+					return this.sales
+				}else if(parseInt(this.sales) > 9999) {
+					return parseFloat(this.sales / 10000).toFixed(2) + "万"
+				} else if(parseInt(this.sales) > 99999) {
+					return "10万+"
+				} else {
+					return this.sales
 				}
 			}
 		},
@@ -46,12 +57,12 @@
 			handleClick() {
 				let url;
 				if(this.shoptype === "A") {
-					url = `/pages/detail/detail?id=${this.itemid}`
-				}
-				if(this.shoptype === "B") {
 					url = `/pages/detail/pdd?id=${this.itemid}`
 				}
-				if(this.shoptype === "C") {
+				if(this.shoptype === "B" || this.shoptype === "C") {
+					url = `/pages/detail/detail?id=${this.itemid}`
+				}
+				if(this.shoptype === "D") {
 					url = `/pages/detail/jd?id=${this.itemid}`
 				}
 				uni.navigateTo({
