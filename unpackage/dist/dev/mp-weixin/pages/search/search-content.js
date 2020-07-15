@@ -104,15 +104,6 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  var g0 = (_vm.item.itemprice - _vm.item.itemendprice).toFixed(0)
-  _vm.$mp.data = Object.assign(
-    {},
-    {
-      $root: {
-        g0: g0
-      }
-    }
-  )
 }
 var recyclableRender = false
 var staticRenderFns = []
@@ -458,7 +449,8 @@ var _default =
     clickCancel: function clickCancel() {
       this.searchText = '';
     },
-    clickSearch: function clickSearch() {
+    // 点击搜索
+    clickSearch: function clickSearch() {var _this = this;
       if (!this.searchText) {
         uni.showToast({
           icon: 'none',
@@ -467,6 +459,16 @@ var _default =
       }
       // 回到顶部
       this.handleBackTop();
+      // 添加搜索历史
+      var searchHistory = this.$queue.getStorageData("searchHistory") || [];
+      // 判断是否已经存在
+      var flag = searchHistory.find(function (item) {
+        return _this.searchText === item;
+      });
+      if (!flag) {
+        searchHistory.push(this.searchText);
+      }
+      this.$queue.setStorageData("searchHistory", searchHistory);
       // 清空数据_3个
       this.taobaoData.forEach(function (item) {
         item.data = [];
@@ -496,60 +498,61 @@ var _default =
         this.getJdList();
       }
     },
-    getTaobaoList: function getTaobaoList() {var _this = this;
+    getTaobaoList: function getTaobaoList() {var _this2 = this;
       var url = "/api/supersearch/apikey/maxd/keyword/".concat(this.searchText, "/back/20/sort/").concat(this.taobaoSort, "/min_id/").concat(this.min_id, "/is_coupon/1/tb_p/").concat(this.taobaoPage);
       this.$request(url).then(function (res) {
         var resList = res.data.data;
         // 改变请求参数
-        _this.min_id = res.data.min_id;
-        _this.taobaoPage = res.data.tb_p;
+        _this2.min_id = res.data.min_id;
+        _this2.taobaoPage = res.data.tb_p;
         // 修正获得的数据
         resList.forEach(function (item) {
-          item.tkmoney = (item.itemendprice * (item.tkrates * 0.01) * _this.grade).toFixed(2);
+          item.tkmoney = (item.itemendprice * (item.tkrates * 0.01) * _this2.grade).toFixed(2);
         });
         // 保存数据
-        var resIndex = _this.currentTabItem;
-        _this.taobaoData[resIndex].data = [].concat(_toConsumableArray(_this.taobaoData[resIndex].data), _toConsumableArray(resList));
-        _this.taobaoData[resIndex].total = _this.taobaoData[resIndex].data.length;
+        var resIndex = _this2.currentTabItem;
+        _this2.taobaoData[resIndex].data = [].concat(_toConsumableArray(_this2.taobaoData[resIndex].data), _toConsumableArray(resList));
+        _this2.taobaoData[resIndex].total = _this2.taobaoData[resIndex].data.length;
       });
     },
-    getPddList: function getPddList() {var _this2 = this;
+    getPddList: function getPddList() {var _this3 = this;
       var url = "/tao/pdd/list/keyword/".concat(this.pddSort, "/page/").concat(this.pddPage, "/pageSize/20?keyword=").concat(this.searchText);
       this.$request(url).then(function (res) {
         // 改变请求参数
-        _this2.pddPage += 1;
+        _this3.pddPage += 1;
         // 修正数据
         var resList = res.data.goodsSearchResponse.goodsList;
         resList.forEach(function (item) {
           item.itemprice = (item.minGroupPrice * 0.01).toFixed(2);
           item.itemendprice = ((item.minGroupPrice - item.couponDiscount) * 0.01).toFixed(2);
-          item.tkmoney = ((item.minGroupPrice - item.couponDiscount) * 0.01 * (item.promotionRate * 0.001) * _this2.grade).toFixed(2);
+          item.tkmoney = ((item.minGroupPrice - item.couponDiscount) * 0.01 * (item.promotionRate * 0.001) * _this3.grade).toFixed(2);
+          item.couponmoney = (item.itemprice - item.itemendprice).toFixed(0);
         });
         // 保存数据
-        var resIndex = _this2.currentTabItem;
-        _this2.pddData[resIndex].data = [].concat(_toConsumableArray(_this2.pddData[resIndex].data), _toConsumableArray(resList));
-        _this2.pddData[resIndex].total = _this2.pddData[resIndex].data.length;
+        var resIndex = _this3.currentTabItem;
+        _this3.pddData[resIndex].data = [].concat(_toConsumableArray(_this3.pddData[resIndex].data), _toConsumableArray(resList));
+        _this3.pddData[resIndex].total = _this3.pddData[resIndex].data.length;
 
       });
     },
-    getJdList: function getJdList() {var _this3 = this;
+    getJdList: function getJdList() {var _this4 = this;
       var url = "/tao/jd/goods/list/".concat(this.jdPage, "?sortName=").concat(this.jdSort, "&keywords=").concat(this.searchText);
       this.$request(url).then(function (res) {
         // 改变请求参数
 
-        _this3.jdPage += 1;
+        _this4.jdPage += 1;
         // 修正数据
         var resList = res.data.data.list;
         resList.forEach(function (item) {
           item.itempic = item.imageInfo.imageList[0].url;
           item.couponmoney = parseInt(item.priceInfo.lowestPrice - item.priceInfo.lowestCouponPrice).toFixed(0);
-          item.tkmoney = (item.commissionInfo.couponCommission * _this3.grade).toFixed(2);
+          item.tkmoney = (item.commissionInfo.couponCommission * _this4.grade).toFixed(2);
         });
-        var resIndex = _this3.currentTabItem;
+        var resIndex = _this4.currentTabItem;
 
         //保存数据
-        _this3.jdData[resIndex].data = [].concat(_toConsumableArray(_this3.jdData[resIndex].data), _toConsumableArray(resList));
-        _this3.jdData[resIndex].total = _this3.jdData[resIndex].data.length;
+        _this4.jdData[resIndex].data = [].concat(_toConsumableArray(_this4.jdData[resIndex].data), _toConsumableArray(resList));
+        _this4.jdData[resIndex].total = _this4.jdData[resIndex].data.length;
 
       });
     },

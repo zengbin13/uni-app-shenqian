@@ -40,6 +40,13 @@
 					"id": -1,
 					"name": "pages/search/search-content",
 					"pathName": "pages/search/search-content",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/member/footprint",
+					"pathName": "pages/member/footprint",
 					"scene": null
 				}
 			]

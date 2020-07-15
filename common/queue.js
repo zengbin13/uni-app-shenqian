@@ -51,5 +51,9 @@ export default {
 		this.removeStorageData("image_url");
 		this.removeStorageData("relation_id");
 		this.removeStorageData("mobile");
+	},
+	// 获取公共域名
+	publicDomain() {
+		return "https://www.gomyorder.cn"
 	}
 }

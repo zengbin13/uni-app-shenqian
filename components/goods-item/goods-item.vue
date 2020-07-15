@@ -57,6 +57,29 @@
 		},
 		methods: {
 			handleClick() {
+				console.log(this.goodsInfo);
+				// 添加历史记录
+				let browseItem = {
+					img:this.goodsInfo.itempic,
+					shoptype:this.goodsInfo.shoptype,
+					title:this.goodsInfo.itemtitle,
+					price:this.goodsInfo.itemprice,
+					sales:this.goodsInfo.itemsale,
+					coupon:this.goodsInfo.couponmoney,
+					cashback:this.goodsInfo.tkmoney,
+					shopname:this.goodsInfo.shopname,
+					itemid:this.goodsInfo.itemid
+				}
+				let taobaoBrowseList = this.$queue.getStorageData("taobaoBrowseList") || []
+				let flag = taobaoBrowseList.find(item => item === browseItem)
+				if(!flag) {
+					taobaoBrowseList.push(browseItem)
+					if(taobaoBrowseList.length > 100) {
+						taobaoBrowseList.splice(0, 1)
+					}
+					this.$queue.setStorageData("taobaoBrowseList", taobaoBrowseList)
+				}
+				// 导航跳转
 				uni.navigateTo({
 					url:`/pages/detail/detail?id=${this.goodsInfo.itemid}`
 				})

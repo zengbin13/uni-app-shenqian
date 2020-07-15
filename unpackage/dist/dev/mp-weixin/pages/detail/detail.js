@@ -93,8 +93,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "recyclableRender", function() { return recyclableRender; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components = {
-  goodsItem: function() {
-    return __webpack_require__.e(/*! import() | components/goods-item/goods-item */ "components/goods-item/goods-item").then(__webpack_require__.bind(null, /*! @/components/goods-item/goods-item.vue */ 136))
+  goodsItemPlus: function() {
+    return __webpack_require__.e(/*! import() | components/goods-item-plus/goods-item-plus */ "components/goods-item-plus/goods-item-plus").then(__webpack_require__.bind(null, /*! @/components/goods-item-plus/goods-item-plus.vue */ 143))
   },
   backTop: function() {
     return __webpack_require__.e(/*! import() | components/back-top/back-top */ "components/back-top/back-top").then(__webpack_require__.bind(null, /*! @/components/back-top/back-top.vue */ 150))
@@ -269,6 +269,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
@@ -284,34 +297,44 @@ var _default =
       isBackTop: false,
       isNavigatorBox: true,
       collectName: "收藏",
-      isActiveCollect: false };
+      isActiveCollect: false,
+      goodsItem: {} };
 
   },
-  onLoad: function onLoad(option) {var _this = this;
+  onLoad: function onLoad(option) {
     // 是否重定向
     this.redirect(option);
     // 判断是否收藏
-    var collectList = this.$queue.getStorageData("collectList") || [];
-    console.log(this.id);
-    console.log(collectList);
-    var index = collectList.findIndex(function (item) {return item === _this.id;});
-    if (index !== -1) {
-      this.collectName = "已收藏";
-      this.isActiveCollect = true;
-    }
+    this.collect();
   },
   onPageScroll: function onPageScroll(e) {
     this.isBackTop = e.scrollTop > 500;
   },
-  onNavigationBarButtonTap: function onNavigationBarButtonTap(e) {var _this2 = this;
+  onNavigationBarButtonTap: function onNavigationBarButtonTap(e) {
     this.isNavigatorBox = !this.isNavigatorBox;
-    if (!this.isNavigatorBox) {
-      setTimeout(function () {
-        _this2.isNavigatorBox = true;
-      }, 5000);
-    }
   },
   methods: {
+    // 添加浏览记录
+    addBrowseHistory: function addBrowseHistory() {var _this = this;
+      var taobaoBrowseList = this.$queue.getStorageData("taobaoBrowseList") || [];
+      var flag = taobaoBrowseList.find(function (item) {return item.itemid === _this.goodsItem.itemid;});
+      if (!flag) {
+        taobaoBrowseList.push(this.goodsItem);
+        if (taobaoBrowseList.length > 100) {
+          taobaoBrowseList.splice(0, 1);
+        }
+        this.$queue.setStorageData("taobaoBrowseList", taobaoBrowseList);
+      }
+    },
+    // 判断收藏
+    collect: function collect() {var _this2 = this;
+      var taobaoCollect = this.$queue.getStorageData("taobaoCollect") || [];
+      var index = taobaoCollect.findIndex(function (item) {return item.itemid === _this2.id;});
+      if (index !== -1) {
+        this.collectName = "已收藏";
+        this.isActiveCollect = true;
+      }
+    },
     // 重定向
     redirect: function redirect(option) {
       if (option.id) {
@@ -346,6 +369,19 @@ var _default =
         _this3.highestCashBack = (resData.tkmoney * 0.7).toFixed(2);
         // 商品详细数据
         _this3.goods = resData;
+        // 保存商品展示数据
+        _this3.goodsItem = {
+          img: _this3.goods.itempic,
+          shoptype: _this3.goods.shoptype,
+          title: _this3.goods.itemtitle,
+          price: _this3.goods.itemprice,
+          sales: _this3.goods.itemsale,
+          coupon: _this3.goods.couponmoney,
+          cashback: _this3.goods.tkmoney,
+          shopname: _this3.goods.shopname,
+          itemid: _this3.goods.itemid };
+
+        _this3.addBrowseHistory();
       });
     },
     //获取相关商品推荐数据
@@ -353,7 +389,11 @@ var _default =
       var url = "/api/get_similar_info/apikey/maxd/itemid/".concat(this.id);
       this.$request(url).then(function (res) {
         var resData = res.data.data;
+        resData.forEach(function (item) {
+          item.tkmoney = (item.itemendprice * (item.tkrates * 0.01) * _this4.grade).toFixed(2);
+        });
         _this4.recommendList = resData;
+        // console.log(resData);
       });
     },
     // 点击回到顶部
@@ -378,22 +418,23 @@ var _default =
           url: "../login/login" });
 
       }
+      // 收藏数据 
       if (token) {
-        var collectList = this.$queue.getStorageData("collectList") || [];
+        var taobaoCollect = this.$queue.getStorageData("taobaoCollect") || [];
         // 判断是否存在收藏
-        var index = collectList.findIndex(function (item) {return item === _this5.id;});
+        var index = taobaoCollect.findIndex(function (item) {return item.itemid === _this5.id;});
         if (index === -1) {
           // 不存在收藏
-          collectList.push(this.id);
+          taobaoCollect.push(this.goodsItem);
           this.isActiveCollect = true;
           this.collectName = "已收藏";
-          this.$queue.setStorageData("collectList", collectList);
+          this.$queue.setStorageData("taobaoCollect", taobaoCollect);
         } else {
           // 存在收藏_删除该项
-          collectList.splice(index, 1);
+          taobaoCollect.splice(index, 1);
           this.isActiveCollect = false;
           this.collectName = "收藏";
-          this.$queue.setStorageData("collectList", collectList);
+          this.$queue.setStorageData("taobaoCollect", taobaoCollect);
         }
 
       }

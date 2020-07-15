@@ -173,6 +173,29 @@ var _default2 =
 
   methods: {
     handleClick: function handleClick() {
+      console.log(this.goodsInfo);
+      // 添加历史记录
+      var browseItem = {
+        img: this.goodsInfo.itempic,
+        shoptype: this.goodsInfo.shoptype,
+        title: this.goodsInfo.itemtitle,
+        price: this.goodsInfo.itemprice,
+        sales: this.goodsInfo.itemsale,
+        coupon: this.goodsInfo.couponmoney,
+        cashback: this.goodsInfo.tkmoney,
+        shopname: this.goodsInfo.shopname,
+        itemid: this.goodsInfo.itemid };
+
+      var taobaoBrowseList = this.$queue.getStorageData("taobaoBrowseList") || [];
+      var flag = taobaoBrowseList.find(function (item) {return item === browseItem;});
+      if (!flag) {
+        taobaoBrowseList.push(browseItem);
+        if (taobaoBrowseList.length > 100) {
+          taobaoBrowseList.splice(0, 1);
+        }
+        this.$queue.setStorageData("taobaoBrowseList", taobaoBrowseList);
+      }
+      // 导航跳转
       uni.navigateTo({
         url: "/pages/detail/detail?id=".concat(this.goodsInfo.itemid) });
 

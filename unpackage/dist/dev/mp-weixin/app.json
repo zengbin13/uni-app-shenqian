@@ -16,7 +16,9 @@
     "pages/login/forget",
     "pages/search/search",
     "pages/search/search-content",
-    "pages/member/footprint"
+    "pages/member/footprint",
+    "pages/member/footprint2",
+    "pages/member/collect"
   ],
   "subPackages": [],
   "window": {

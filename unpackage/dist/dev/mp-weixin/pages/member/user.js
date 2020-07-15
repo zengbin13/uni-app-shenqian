@@ -196,7 +196,8 @@ __webpack_require__.r(__webpack_exports__);
       { id: 3, number: 0, title: "今日订单", unit: "笔" }],
 
       userId: '',
-      nickName: "游客" };
+      nickName: "游客",
+      message: "每个月25号结算【上月预估】金额，建议26号进行提现" };
 
   },
   onLoad: function onLoad() {

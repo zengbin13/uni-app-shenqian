@@ -48,32 +48,29 @@
 						name: '京东'
 					}
 				],
-				message: "提示: 足迹最多保存100个宝贝，如果超出100个宝贝，如果此时浏览了新的宝贝，最末尾的宝贝将会自动删除",
-				taobaoBrowseList: [],
-				pddBrowseList: [],
-				jdBrowseList: []
+				message: "提示: 收藏最多保存100个宝贝，如果超出100个宝贝，如果此时收藏了新的宝贝，最末尾的宝贝将会自动删除",
+				taobaoCollect: [],
+				pddCollect: [],
+				jdCollect: []
 			}
 		},
-		onLoad() {
-			this.taobaoBrowseList = this.$queue.getStorageData("taobaoBrowseList") || []
-			this.pddBrowseList = this.$queue.getStorageData("pddBrowseList") || []
-			this.jdBrowseList = this.$queue.getStorageData("jdBrowseList") || []
-			console.log(this.taobaoBrowseList);
-			console.log(this.pddBrowseList);
-			console.log(this.jdBrowseList);
+		onShow() {
+			this.taobaoCollect = this.$queue.getStorageData("taobaoCollect") || []
+			this.pddCollect = this.$queue.getStorageData("pddCollect") || []
+			this.jdCollect = this.$queue.getStorageData("jdCollect") || []
 		},
 		computed:{
 			dataList() {
 				if(this.currentTab === 0) {
-					return this.taobaoBrowseList
+					return this.taobaoCollect
 				}
 				if(this.currentTab === 1) {
-					return this.pddBrowseList
-					console.log(this.pddBrowseList);
+					return this.pddCollect
+					console.log(this.pddCollect);
 				}
 				if(this.currentTab === 2) {
-					return this.jdBrowseList
-					console.log(this.jdBrowseList);
+					return this.jdCollect
+					console.log(this.jdCollect);
 				}
 			}
 		},

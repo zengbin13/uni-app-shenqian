@@ -55,14 +55,59 @@
 		},
 		methods: {
 			handleClick() {
+				// 添加历史记录
+				let browseItem = {
+					img:this.img,
+					shoptype:this.shoptype,
+					title:this.title,
+					price:this.price,
+					sales:this.sales,
+					coupon:this.coupon || 0,
+					cashback:this.cashback,
+					shopname:this.shopname,
+					itemid:this.itemid
+				}
 				let url;
-				if(this.shoptype === "A") {
+				if(this.shoptype === "A") {					
+					// 拼多多浏览历史
+					let pddBrowseList = this.$queue.getStorageData("pddBrowseList") || []
+					let flag = pddBrowseList.find(item => item === browseItem)
+					if(!flag) {
+						pddBrowseList.push(browseItem)
+						if(pddBrowseList.length > 100) {
+							pddBrowseList.splice(0, 1)
+						}
+						this.$queue.setStorageData("pddBrowseList", pddBrowseList)
+					}
+					// 拼多多详情界面
 					url = `/pages/detail/pdd?id=${this.itemid}`
 				}
 				if(this.shoptype === "B" || this.shoptype === "C") {
+					// 淘宝浏览历史
+					let taobaoBrowseList = this.$queue.getStorageData("taobaoBrowseList") || []
+					let flag = taobaoBrowseList.find(item => item === browseItem)
+					if(!flag) {
+						taobaoBrowseList.push(browseItem)
+						if(taobaoBrowseList.length > 100) {
+							taobaoBrowseList.splice(0, 1)
+						}
+						this.$queue.setStorageData("taobaoBrowseList", taobaoBrowseList)
+					}
+					// 淘宝详情界面
 					url = `/pages/detail/detail?id=${this.itemid}`
 				}
 				if(this.shoptype === "D") {
+					// 京东浏览历史
+					let jdBrowseList = this.$queue.getStorageData("jdBrowseList") || []
+					let flag = jdBrowseList.find(item => item === browseItem)
+					if(!flag) {
+						jdBrowseList.push(browseItem)
+						if(jdBrowseList.length > 100) {
+							jdBrowseList.splice(0, 1)
+						}
+						this.$queue.setStorageData("jdBrowseList", jdBrowseList)
+					}
+					// 京东详情界面
 					url = `/pages/detail/jd?id=${this.itemid}`
 				}
 				uni.navigateTo({

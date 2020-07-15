@@ -48,7 +48,7 @@
 						:title="item.goodsDesc"
 						:price="item.itemendprice"
 						:sales="item.salesTip"
-						:coupon="(item.itemprice - item.itemendprice).toFixed(0)"
+						:coupon="item.couponmoney"
 						:cashback="item.tkmoney"
 						:shopname="item.mallName"
 						:itemid="item.goodsId"
@@ -310,6 +310,7 @@ export default {
 		clickCancel() {
 			this.searchText = '';
 		},
+		// 点击搜索
 		clickSearch() {
 			if (!this.searchText) {
 				uni.showToast({
@@ -319,6 +320,16 @@ export default {
 			}
 			// 回到顶部
 			this.handleBackTop()
+			// 添加搜索历史
+			let searchHistory = this.$queue.getStorageData("searchHistory") || []
+			// 判断是否已经存在
+			let flag = searchHistory.find(item => {
+				return this.searchText === item
+			})
+			if(!flag) {
+				searchHistory.push(this.searchText)
+			}
+			this.$queue.setStorageData("searchHistory", searchHistory)
 			// 清空数据_3个
 			this.taobaoData.forEach(item => {
 				item.data = []
@@ -376,6 +387,7 @@ export default {
 					item.itemprice = (item.minGroupPrice * 0.01).toFixed(2);
 					item.itemendprice = ((item.minGroupPrice - item.couponDiscount) * 0.01).toFixed(2);
 					item.tkmoney = ((item.minGroupPrice - item.couponDiscount) * 0.01 * (item.promotionRate * 0.001) * this.grade).toFixed(2);
+					item.couponmoney = (item.itemprice - item.itemendprice).toFixed(0)
 				});
 				// 保存数据
 				let resIndex = this.currentTabItem

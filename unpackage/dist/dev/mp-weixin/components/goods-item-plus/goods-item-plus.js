@@ -171,14 +171,59 @@ var _default =
 
   methods: {
     handleClick: function handleClick() {
+      // 添加历史记录
+      var browseItem = {
+        img: this.img,
+        shoptype: this.shoptype,
+        title: this.title,
+        price: this.price,
+        sales: this.sales,
+        coupon: this.coupon || 0,
+        cashback: this.cashback,
+        shopname: this.shopname,
+        itemid: this.itemid };
+
       var url;
       if (this.shoptype === "A") {
+        // 拼多多浏览历史
+        var pddBrowseList = this.$queue.getStorageData("pddBrowseList") || [];
+        var flag = pddBrowseList.find(function (item) {return item === browseItem;});
+        if (!flag) {
+          pddBrowseList.push(browseItem);
+          if (pddBrowseList.length > 100) {
+            pddBrowseList.splice(0, 1);
+          }
+          this.$queue.setStorageData("pddBrowseList", pddBrowseList);
+        }
+        // 拼多多详情界面
         url = "/pages/detail/pdd?id=".concat(this.itemid);
       }
       if (this.shoptype === "B" || this.shoptype === "C") {
+        // 淘宝浏览历史
+        var taobaoBrowseList = this.$queue.getStorageData("taobaoBrowseList") || [];
+        var _flag = taobaoBrowseList.find(function (item) {return item === browseItem;});
+        if (!_flag) {
+          taobaoBrowseList.push(browseItem);
+          if (taobaoBrowseList.length > 100) {
+            taobaoBrowseList.splice(0, 1);
+          }
+          this.$queue.setStorageData("taobaoBrowseList", taobaoBrowseList);
+        }
+        // 淘宝详情界面
         url = "/pages/detail/detail?id=".concat(this.itemid);
       }
       if (this.shoptype === "D") {
+        // 京东浏览历史
+        var jdBrowseList = this.$queue.getStorageData("jdBrowseList") || [];
+        var _flag2 = jdBrowseList.find(function (item) {return item === browseItem;});
+        if (!_flag2) {
+          jdBrowseList.push(browseItem);
+          if (jdBrowseList.length > 100) {
+            jdBrowseList.splice(0, 1);
+          }
+          this.$queue.setStorageData("jdBrowseList", jdBrowseList);
+        }
+        // 京东详情界面
         url = "/pages/detail/jd?id=".concat(this.itemid);
       }
       uni.navigateTo({

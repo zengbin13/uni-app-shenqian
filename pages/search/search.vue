@@ -57,7 +57,6 @@
 			// 获取关键词
 			getKeyword() {
 				this.$request("/api/hot_key/apikey/maxd").then(res => {
-					console.log(res.data.data);
 					this.keywordList = res.data.data
 				})
 			},

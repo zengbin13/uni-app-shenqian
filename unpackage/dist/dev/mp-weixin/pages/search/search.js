@@ -193,7 +193,6 @@ var _default =
     // 获取关键词
     getKeyword: function getKeyword() {var _this = this;
       this.$request("/api/hot_key/apikey/maxd").then(function (res) {
-        console.log(res.data.data);
         _this.keywordList = res.data.data;
       });
     },

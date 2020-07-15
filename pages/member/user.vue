@@ -29,19 +29,19 @@
 				</view>
 			</view>
 			<view class="message">
-				每个月25号结算【上月预估】金额，建议26号进行提现
+				{{message}}
 				<text class="iconfont icon-xiaoxi"></text>
 			</view>
 			<view class="menu">
-				<cell :iconName="'icon-lishi'" :iconColor="'#5eba8f'">浏览历史</cell>
-				<cell :iconName="'icon-star-opp'" :iconColor="'#54b4ef'">我的收藏</cell>
-				<cell :iconName="'icon-tuiguang'" :iconColor="'#f7d888'" :info="'邀好友拿高佣'">推广中心</cell>
-				<cell :iconName="'icon-anquan'" :iconColor="'#9789f7'">账号安全</cell>
-				<cell :iconName="'icon-kefu12'" :iconColor="'#ff3333'">联系客服</cell>
-				<cell :iconName="'icon-awesome'" :iconColor="'#2e49e0'">APP下载</cell>
-				<cell :iconName="'icon-fankui1'" :iconColor="'#00ff7f'" :url="'/pages/member/feedback'">意见反馈</cell>
-					<cell :iconName="'icon-shezhi'" :iconColor="'#e07472'" :url="'/pages/member/setting'">设置中心</cell>	
-				<cell :iconName="'icon-shezhi'" :iconColor="'#e07472'" @tap="signOut" v-if="userId">退出登录</cell>
+				<cell iconName="icon-lishi" iconColor="#5eba8f" url="/pages/member/footprint">浏览历史</cell>
+				<cell iconName="icon-star-opp" iconColor="#54b4ef" url="/pages/member/collect">我的收藏</cell>
+				<cell iconName="icon-tuiguang" iconColor="#f7d888" info="邀好友拿高佣">推广中心</cell>
+				<cell iconName="icon-anquan" iconColor="#9789f7">账号安全</cell>
+				<cell iconName="icon-kefu12" iconColor="#ff3333">联系客服</cell>
+				<cell iconName="icon-awesome" iconColor="#00ecec">APP下载</cell>
+				<cell iconName="icon-fankui1" iconColor="#00ff7f" url="/pages/member/feedback">意见反馈</cell>
+					<cell iconName="icon-shezhi" iconColor=" #5555ff" url="/pages/member/setting">设置中心</cell>	
+				<cell iconName="icon-tuichu1" iconColor="#e07d72" @tap="signOut" v-if="userId">退出登录</cell>
 			</view>
 			</view>
 		</view>
@@ -60,7 +60,8 @@
 					{id:3, number: 0, title: "今日订单", unit: "笔"},
 				],
 				userId: '',
-				nickName: "游客"
+				nickName: "游客",
+				message: "每个月25号结算【上月预估】金额，建议26号进行提现"
 			}
 		},
 		onLoad() {
