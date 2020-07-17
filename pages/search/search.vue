@@ -1,15 +1,19 @@
 <template>
 	<view class="search">
 		<view class="search-header">
+			<!-- #ifdef H5 -->
 			<back class="back"></back>
 			<view class="search-header-title">
 				<text>全网超级搜</text>
 			</view>
-			<view class="search-bar">
-				<input type="text" v-model="searchText" placeholder="输入关键字或粘贴宝贝标题" class="input" />
-				<text class="iconfont icon-x" v-show="searchText" @click="clickCancel"></text>
-				<view class="search-btn" @tap="clickSearch">
-					搜索
+			<!-- #endif -->
+			<view class="search-bar-wrap">
+				<view class="search-bar">
+					<input type="text" v-model="searchText" placeholder="输入关键字或粘贴宝贝标题" class="input" />
+					<text class="iconfont icon-x" v-show="searchText" @click="clickCancel"></text>
+					<view class="search-btn" @tap="clickSearch">
+						搜索
+					</view>
 				</view>
 			</view>
 		</view>
@@ -81,6 +85,12 @@
 			},
 			// 点击搜索
 			clickSearch() {
+				if(!this.searchText) {
+					uni.showToast({
+						icon:"none",
+						title:"搜索数据不能为空"
+					})
+				}
 				// 读取缓存
 				let history = this.$queue.getStorageData("searchHistory") || []
 				// 判断是否已经存在
@@ -106,8 +116,12 @@
 		background-color: #fff;
 	}
 	.search-header {
-		height: 300rpx;
+		/* #ifdef H5 */
 		background-image: linear-gradient(90deg, $color-sec1, $color-main);
+		/* #endif */
+		/* #ifndef H5 */
+		background-image: linear-gradient(90deg, $color-main, $color-main);
+		/* #endif */
 		.back {
 			color: #fff;
 		}
@@ -119,6 +133,9 @@
 			color: #fff;
 			letter-spacing: 0.05rem;
 		}
+	}
+	.search-bar-wrap {
+		padding: 40rpx 0;
 	}
 	.search-bar {
 		margin: 0 auto;

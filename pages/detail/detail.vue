@@ -13,7 +13,7 @@
 					<text class="iconfont icon-poster"></text>
 					生成海报
 				</view>
-				<view class="share">
+				<view class="share" @tap="handleClickModel">
 					<text class="iconfont icon-share"></text>
 					分享好友
 				</view>
@@ -151,12 +151,23 @@
 				<canvas class="hideCanvas" canvas-id="default_PosterCanvasId" :style="{width: (poster.width||10) + 'px', height: (poster.height||10) + 'px'}"></canvas>
 			</view>
 		</view>
+		<!-- 分享模态框 -->
+		<simple-model @clickModel="handleClickModel" v-if="model" @clickModelButton="handleClickButton">
+			<view class="model-cotent">
+				<view>{{goodsItem.title}}</view>
+				<view>【在售价】{{goodsItem.price}}元</view>
+				<view>【券后价】{{(goodsItem.price - goodsItem.coupon).toFixed(2)}}元</view>
+				<view>复製此信息进入【手机Tao宝】即可查看并下单￥86Bi1BmAvzd￥</view>
+				<view>【必买理由】{{goods.itemdesc}}元</view>
+			</view>		
+</simple-model>
 	</view>
 </template>
 
 <script>
 import _app from '@/js_sdk/QuShe-SharerPoster/QS-SharePoster/app.js';
 import { getSharePoster } from '@/js_sdk/QuShe-SharerPoster/QS-SharePoster/QS-SharePoster.js';
+import simpleModel from "@/components/simple-model/simple-model.vue"
 export default {
 	data() {
 		return {
@@ -175,7 +186,8 @@ export default {
 			goodsItem: {},
 			poster: {},
 			qrShow: false,
-			canvasId: 'default_PosterCanvasId'
+			canvasId: 'default_PosterCanvasId',
+			model: false
 		};
 	},
 	onLoad(option) {
@@ -189,6 +201,9 @@ export default {
 	},
 	onNavigationBarButtonTap(e) {
 		this.isNavigatorBox = !this.isNavigatorBox;
+	},
+	components:{
+		simpleModel
 	},
 	methods: {
 		// 添加浏览记录
@@ -206,7 +221,7 @@ export default {
 		// 判断收藏
 		collect() {
 			let taobaoCollect = this.$queue.getStorageData('taobaoCollect') || [];
-			let index = taobaoCollect.findIndex(item => item.itemid === this.id);
+			let index = taobaoCollect.findIndex(item => item.itemid == this.id);
 			if (index !== -1) {
 				this.collectName = '已收藏';
 				this.isActiveCollect = true;
@@ -221,7 +236,7 @@ export default {
 				this.getRecommendGoods();
 			} else {
 				uni.switchTab({
-					url: '/pages/discovery/list'
+					url: '/pages/index/index'
 				});
 			}
 		},
@@ -299,7 +314,7 @@ export default {
 			if (token) {
 				let taobaoCollect = this.$queue.getStorageData('taobaoCollect') || [];
 				// 判断是否存在收藏
-				let index = taobaoCollect.findIndex(item => item.itemid === this.id);
+				let index = taobaoCollect.findIndex(item => item.itemid == this.id);
 				if (index === -1) {
 					// 不存在收藏
 					taobaoCollect.push(this.goodsItem);
@@ -350,8 +365,8 @@ export default {
 								text: this.goodsItem.title,
 								size: fontSize,
 								color: "#000",
-								dx: 20,
-								dy:1000 + fontSize,
+								dx: 20.5,
+								dy:1000.5 + fontSize,
 								lineFeed: {
 									maxWidth: 980,
 									lineHeight: fontSize * 1.2
@@ -363,8 +378,8 @@ export default {
 								text: `券后价 ￥${(this.goodsItem.price - this.goodsItem.coupon).toFixed(2)} `,
 								size: fontSize * 1.2,
 								color: "#e5312f",
-								dx: 20,
-								dy:1230,
+								dx: 20.5,
+								dy:1230.5,
 								textAlign: 'left',
 								textBaseline: 'bottom',
 							},
@@ -373,8 +388,8 @@ export default {
 								text: this.goodsItem.price ,
 								size: fontSize * 0.8,
 								color: "#999",
-								dx: 400,
-								dy:1220,
+								dx: 400.5,
+								dy:1220.5,
 								textAlign: 'left',
 								textBaseline: 'bottom',
 								lineThrough: {
@@ -386,8 +401,8 @@ export default {
 								type: 'text',
 								text: "省钱兄精选好物",
 								size: fontSize * 1,
-								dx: 20,
-								dy:1350,
+								dx: 20.5,
+								dy:1350.5,
 								textAlign: 'left',
 								textBaseline: 'bottom'
 							},
@@ -395,8 +410,8 @@ export default {
 								type: 'text',
 								text: "长按或扫描识别二维码领券",
 								size: fontSize * 0.8,
-								dx: 20,
-								dy:1420,
+								dx: 20.5,
+								dy:1420.5,
 								color: "#999",
 								textAlign: 'left',
 								textBaseline: 'bottom'
@@ -406,8 +421,8 @@ export default {
 								// text: `${this.$queue.publicDomain()}/pages/detail/detail/id=${this.goodsItem.itemid}`,
 								text: `https://www.gomyorder.cn/pages/detail/pdd?itemid=6933476339`,
 								size: 250,
-								dx: 720,
-								dy: 1200
+								dx: 720.5,
+								dy: 1200.5
 							}
 						]
 					},
@@ -417,17 +432,7 @@ export default {
 						bgScale
 					}) => { // 为动态设置画布宽高的方法，
 						this.poster = bgObj;
-					},
-					setDraw: ({
-								Context,
-								bgObj,
-								type,
-								bgScale
-							}) => {
-								Context.setFillStyle('#fff');
-								Context.setGlobalAlpha(0.5);
-								Context.fillRect(0, bgObj.height - bgObj.height * 0.2, bgObj.width, bgObj.height * 0.2);
-							}
+					}
 				});
 				_app.log('海报生成成功, 时间:' + new Date() + '， 临时路径: ' + d.poster.tempFilePath)
 				this.poster.finalPath = d.poster.tempFilePath;
@@ -462,6 +467,23 @@ export default {
 		},
 		hideQr() {
 			this.qrShow = false;
+		},
+		// 分享相关
+		handleClickModel() {
+			this.model = !this.model
+		},
+		handleClickButton() {
+			// #ifdef H5
+			// #endif
+			// #ifndef H5
+			uni.setClipboardData({
+			    data: `${this.goodsItem.title}
+					【在售价】${this.goodsItem.price}元
+					【券后价】${(this.goodsItem.price- this.goodsItem.coupon).toFixed(2)}元
+					复製此信息进入【手机Tao宝】即可查看并下单￥86Bi1BmAvzd￥					   【必买理由】${this.goods.itemdesc}元
+					`,
+			});
+			// #endif
 		}
 	},
 	filters: {

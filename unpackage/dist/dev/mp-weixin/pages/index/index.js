@@ -104,11 +104,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "recyclableRender", function() { return recyclableRender; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components = {
+  goodsIndex: function() {
+    return __webpack_require__.e(/*! import() | components/goods-index/goods-index */ "components/goods-index/goods-index").then(__webpack_require__.bind(null, /*! @/components/goods-index/goods-index.vue */ 184))
+  },
   goodsItem: function() {
-    return __webpack_require__.e(/*! import() | components/goods-item/goods-item */ "components/goods-item/goods-item").then(__webpack_require__.bind(null, /*! @/components/goods-item/goods-item.vue */ 136))
+    return __webpack_require__.e(/*! import() | components/goods-item/goods-item */ "components/goods-item/goods-item").then(__webpack_require__.bind(null, /*! @/components/goods-item/goods-item.vue */ 177))
   },
   backTop: function() {
-    return __webpack_require__.e(/*! import() | components/back-top/back-top */ "components/back-top/back-top").then(__webpack_require__.bind(null, /*! @/components/back-top/back-top.vue */ 150))
+    return __webpack_require__.e(/*! import() | components/back-top/back-top */ "components/back-top/back-top").then(__webpack_require__.bind(null, /*! @/components/back-top/back-top.vue */ 198))
   }
 }
 var render = function() {
@@ -146,7 +149,95 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;function _toConsumableArray(arr) {return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();}function _nonIterableSpread() {throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");}function _unsupportedIterableToArray(o, minLen) {if (!o) return;if (typeof o === "string") return _arrayLikeToArray(o, minLen);var n = Object.prototype.toString.call(o).slice(8, -1);if (n === "Object" && o.constructor) n = o.constructor.name;if (n === "Map" || n === "Set") return Array.from(n);if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);}function _iterableToArray(iter) {if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter);}function _arrayWithoutHoles(arr) {if (Array.isArray(arr)) return _arrayLikeToArray(arr);}function _arrayLikeToArray(arr, len) {if (len == null || len > arr.length) len = arr.length;for (var i = 0, arr2 = new Array(len); i < len; i++) {arr2[i] = arr[i];}return arr2;}var goodsItem = function goodsItem() {__webpack_require__.e(/*! require.ensure | components/goods-item/goods-item */ "components/goods-item/goods-item").then((function () {return resolve(__webpack_require__(/*! @/components/goods-item/goods-item.vue */ 136));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;function _toConsumableArray(arr) {return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();}function _nonIterableSpread() {throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");}function _unsupportedIterableToArray(o, minLen) {if (!o) return;if (typeof o === "string") return _arrayLikeToArray(o, minLen);var n = Object.prototype.toString.call(o).slice(8, -1);if (n === "Object" && o.constructor) n = o.constructor.name;if (n === "Map" || n === "Set") return Array.from(n);if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);}function _iterableToArray(iter) {if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter);}function _arrayWithoutHoles(arr) {if (Array.isArray(arr)) return _arrayLikeToArray(arr);}function _arrayLikeToArray(arr, len) {if (len == null || len > arr.length) len = arr.length;for (var i = 0, arr2 = new Array(len); i < len; i++) {arr2[i] = arr[i];}return arr2;}var goodsItem = function goodsItem() {__webpack_require__.e(/*! require.ensure | components/goods-item/goods-item */ "components/goods-item/goods-item").then((function () {return resolve(__webpack_require__(/*! @/components/goods-item/goods-item.vue */ 177));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -828,8 +919,12 @@ __webpack_require__.r(__webpack_exports__);
         banner: [] }],
 
 
-      currentIndex: 2,
-      isBackTop: false };
+      currentIndex: 0,
+      isBackTop: false,
+      swiperList: [],
+      mainList: [],
+      mainList2: [],
+      choiceList: [] };
 
   },
   components: {
@@ -837,6 +932,11 @@ __webpack_require__.r(__webpack_exports__);
 
   onLoad: function onLoad() {
     this.getOrderList(this.currentIndex);
+    // 首页数据
+    this.getSwiperData();
+    this.getMainList();
+    this.getMainList2();
+    this.getChoiceList();
   },
   onPageScroll: function onPageScroll(e) {
     this.isBackTop = e.scrollTop > 500;
@@ -845,6 +945,32 @@ __webpack_require__.r(__webpack_exports__);
     this.getOrderList(this.currentIndex);
   },
   methods: {
+    // 首页数据
+    getSwiperData: function getSwiperData() {var _this = this;
+      this.$request("/tao/banner/user/list").then(function (res) {
+        _this.swiperList = res.data.data;
+      });
+    },
+    // https://www.gomyorder.cn/tao/activity/state/1
+    getMainList: function getMainList() {var _this2 = this;
+      this.$request("/tao/activity/state/1").then(function (res) {
+        _this2.mainList = res.data.data;
+      });
+    },
+    getMainList2: function getMainList2() {var _this3 = this;
+      this.$request("/tao/activity/state/2").then(function (res) {
+        _this3.mainList2 = res.data.data;
+        _this3.mainList2.forEach(function (item) {
+          item.titleList = item.title.split("-");
+        });
+      });
+    },
+    getChoiceList: function getChoiceList() {var _this4 = this;
+      var url = '/api/get_trill_data/apikey/maxd/min_id/0/back/10/cat_id/0';
+      this.$request(url).then(function (res) {
+        _this4.choiceList = res.data.data;
+      });
+    },
     // 回到顶部
     handleBackTop: function handleBackTop() {
       uni.pageScrollTo({
@@ -858,13 +984,13 @@ __webpack_require__.r(__webpack_exports__);
       this.scrollLeft = index * 48;
       this.getOrderList(index);
     },
-    // 请求非首页数据
-    getOrderList: function getOrderList(index) {var _this = this;
+    // 请求商品数据
+    getOrderList: function getOrderList(index) {var _this5 = this;
       var url = "/api/column/apikey/maxd/type/9/back/10/min_id/".concat(this.category[index].page, "/sort/9/cid/").concat(this.category[index].positon);
       this.$request(url).then(function (res) {
         console.log(res.data.data);
-        _this.category[index].page += 1;
-        _this.category[index].orderList = [].concat(_toConsumableArray(_this.category[index].orderList), _toConsumableArray(res.data.data));
+        _this5.category[index].page += 1;
+        _this5.category[index].orderList = [].concat(_toConsumableArray(_this5.category[index].orderList), _toConsumableArray(res.data.data));
       });
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

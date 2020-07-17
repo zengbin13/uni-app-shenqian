@@ -84,7 +84,7 @@ export default {
 			isBackTop: false,
 			grade: 0,
 			showList: [],
-			searchText: '衣服',
+			searchText: '',
 			currentTab: 0,
 			currentTabItem: 0,
 			tabList: [
@@ -317,6 +317,7 @@ export default {
 					icon: 'none',
 					title: '搜索内容不能为空'
 				});
+				return
 			}
 			// 回到顶部
 			this.handleBackTop()

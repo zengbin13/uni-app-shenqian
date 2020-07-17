@@ -1,6 +1,4 @@
 {
   "navigationBarTitleText": "全网超级搜",
-  "usingComponents": {
-    "back": "/components/back/back"
-  }
+  "usingComponents": {}
 }

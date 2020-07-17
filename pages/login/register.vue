@@ -67,7 +67,7 @@
 		
 		data() {
 			return {
-				phoneData:'18723170206', // 用户/电话
+				phoneData:'', // 用户/电话
 				passData:'', //密码
 				verCode:"", //验证码
 				showAgree:false, //协议是否选择
@@ -157,7 +157,7 @@
 					msg: this.verCode,
 					platform: "app",
 					invitation: 2231278816,
-					openid: this.$queue.getStorageData("openid")
+					// openid: this.$queue.getStorageData("openid")
 				}, "POST").then(res => {
 					let token = res.data.data.uuid
 					let userId = res.data.data.userId
@@ -165,6 +165,9 @@
 					this.$queue.setStorageData("token", token)
 					this.$queue.setStorageData("userId", userId)
 					this.$queue.setStorageData("mobile", mobile)
+					this.uni.navigateTo({
+						url: '/pages/member/user'
+					});
 					//getUserInfo
 					// this.getUserInfo(userId, token);
 				})

@@ -17,10 +17,10 @@
 						<text style="color: gainsboro">—</text>
 					</view>
 					<view class="category-wrap-items">
-						<view class="category-wrap-item" v-for="(item, indez) in categoryData.info" :key="indez">
+						<navigator class="category-wrap-item" v-for="(item, indez) in categoryData.info" :key="indez" :url="`/pages/category/search?cid=${category.cid}&name=${item.son_name}`" hover-class="none">
 							<image :src="item.imgurl"x mode="aspectFill" lazy-load></image>
 							<view class="son-name">{{ item.son_name }}</view>
-						</view>
+						</navigator>
 					</view>
 				</view>
 			</view>

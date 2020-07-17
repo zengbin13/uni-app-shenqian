@@ -24,12 +24,23 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
+page.data-v-57280228 {
+  background-color: #f7f7f7;
+}
 .header-wrap.data-v-57280228 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 99;
   background-color: #db0011;
 }
 .header-wrap .header-category.data-v-57280228 {
   height: 90rpx;
   width: 100vw;
+}
+.content-wrap.data-v-57280228 {
+  margin-top: 90rpx;
 }
 .header-category.data-v-57280228 {
   white-space: nowrap;
@@ -79,5 +90,152 @@
 }
 .content-sec-wrap .content-sec-item.data-v-57280228 {
   width: 50%;
+}
+.main-swiper.data-v-57280228 {
+  padding: 10rpx;
+  background-color: #fff;
+}
+.main-swiper swiper-item.data-v-57280228 {
+  border-radius: 30rpx;
+}
+.main-swiper image.data-v-57280228 {
+  height: 280rpx;
+}
+.main-list.data-v-57280228 {
+  background-color: #fff;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  padding: 20rpx 30rpx 0;
+  -webkit-flex-wrap: wrap;
+          flex-wrap: wrap;
+}
+.main-list .main-list-item.data-v-57280228 {
+  width: 20%;
+  margin-bottom: 15rpx;
+}
+.main-list .main-list-item image.data-v-57280228 {
+  width: 100rpx;
+  height: 100rpx;
+  margin: 0 auto;
+}
+.main-list .main-list-item .main-list-item-text.data-v-57280228 {
+  text-align: center;
+  padding-top: 10rpx;
+}
+.main-vip.data-v-57280228 {
+  background-color: #fff;
+}
+.main-vip image.data-v-57280228 {
+  margin: 0 auto;
+  width: 90vw;
+  height: 180rpx;
+}
+.main-block image.data-v-57280228 {
+  width: 130rpx;
+}
+.main-block .block-title.data-v-57280228 {
+  font-size: 32rpx;
+  color: #000;
+  font-weight: 600;
+  line-height: 52rpx;
+}
+.main-block .block-desc.data-v-57280228 {
+  font-size: 24rpx;
+  color: #666;
+  line-height: 42rpx;
+}
+.main-block .block-top.data-v-57280228 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+  -webkit-box-align: stretch;
+  -webkit-align-items: stretch;
+          align-items: stretch;
+}
+.main-block .block-top .block-1.data-v-57280228 {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+  background-color: #fff;
+  padding: 15rpx;
+  margin: 10rpx 5rpx 10rpx 10rpx;
+  border-radius: 10rpx;
+}
+.main-block .block-top .block-1 .block-1-title.data-v-57280228 {
+  color: #f15c6d;
+  font-size: 32rpx;
+  font-weight: 600;
+  padding: 20rpx 0;
+}
+.main-block .block-top .block-1 .block-1-title text.data-v-57280228 {
+  color: #fff;
+  background-color: #f15c6d;
+  font-size: 30rpx;
+  padding: 4rpx 6rpx;
+  margin-left: 10rpx;
+  border-radius: 8rpx;
+}
+.main-block .block-top .block-1 .block-1-desc.data-v-57280228 {
+  color: #8b91a2;
+}
+.main-block .block-top .block-1 image.data-v-57280228 {
+  width: 160rpx;
+  margin: 20rpx auto 0;
+}
+.main-block .block-top .block-top-right.data-v-57280228 {
+  background-color: #f7f7f7;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+  margin: 10rpx 10rpx 10rpx 5rpx;
+}
+.main-block .block-top .block-top-right .block-2.data-v-57280228 {
+  margin-bottom: 10rpx;
+}
+.main-block .block-top .block-top-right .block-2 .block-desc.data-v-57280228 {
+  color: #ff8e4f;
+}
+.main-block .block-top .block-top-right .block-3 .block-desc.data-v-57280228 {
+  color: #3cb8ff;
+}
+.main-block .block-top .block-top-right .block-2.data-v-57280228, .main-block .block-top .block-top-right .block-3.data-v-57280228 {
+  padding: 20rpx 0 20rpx 20rpx;
+  background-color: #fff;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+  border-radius: 10rpx;
+}
+.main-block .block-bottom.data-v-57280228 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+  -webkit-justify-content: space-evenly;
+          justify-content: space-evenly;
+}
+.main-block .block-bottom .block-4.data-v-57280228, .main-block .block-bottom .block-5.data-v-57280228, .main-block .block-bottom .block-6.data-v-57280228 {
+  background-color: #fff;
+  width: 235rpx;
+  padding: 20rpx;
+}
+.main-block .block-bottom .block-4 image.data-v-57280228, .main-block .block-bottom .block-5 image.data-v-57280228, .main-block .block-bottom .block-6 image.data-v-57280228 {
+  margin: 0 auto;
+}
+.main-title.data-v-57280228 {
+  color: #f15b6c;
+  font-size: 36rpx;
+  text-align: center;
+  padding: 20rpx 0;
+}
+.main-title.data-v-57280228::before, .main-title.data-v-57280228::after {
+  content: " — ";
 }
 

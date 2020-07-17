@@ -57,7 +57,6 @@
 		},
 		methods: {
 			handleClick() {
-				console.log(this.goodsInfo);
 				// 添加历史记录
 				let browseItem = {
 					img:this.goodsInfo.itempic,

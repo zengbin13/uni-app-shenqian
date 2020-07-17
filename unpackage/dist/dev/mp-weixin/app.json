@@ -2,6 +2,7 @@
   "pages": [
     "pages/index/index",
     "pages/category/category",
+    "pages/category/search",
     "pages/discovery/list",
     "pages/member/user",
     "pages/detail/detail",
@@ -18,7 +19,8 @@
     "pages/search/search-content",
     "pages/member/footprint",
     "pages/member/footprint2",
-    "pages/member/collect"
+    "pages/member/collect",
+    "pages/member/publisher"
   ],
   "subPackages": [],
   "window": {
@@ -46,10 +48,10 @@
         "text": "分类"
       },
       {
-        "pagePath": "pages/discovery/list",
+        "pagePath": "pages/search/search",
         "iconPath": "static/img/footer/hot.png",
         "selectedIconPath": "static/img/footer/hot-act.png",
-        "text": "人工精选"
+        "text": "超级搜索"
       },
       {
         "pagePath": "pages/member/user",
@@ -62,6 +64,7 @@
   "usingComponents": {
     "cu-custom": "/colorui/components/cu-custom",
     "goods-item": "/components/goods-item/goods-item",
+    "goods-index": "/components/goods-index/goods-index",
     "goods-item-plus": "/components/goods-item-plus/goods-item-plus",
     "back-top": "/components/back-top/back-top",
     "cell": "/components/cell/cell",

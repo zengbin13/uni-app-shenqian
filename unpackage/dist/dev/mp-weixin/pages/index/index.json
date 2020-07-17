@@ -2,6 +2,7 @@
   "navigationBarTitleText": "省钱兄",
   "onReachBottomDistance": 100,
   "usingComponents": {
+    "goods-index": "/components/goods-index/goods-index",
     "goods-item": "/components/goods-item/goods-item",
     "back-top": "/components/back-top/back-top"
   }

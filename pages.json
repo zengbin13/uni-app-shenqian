@@ -15,7 +15,7 @@
 		{
 			"path": "pages/category/category",
 			"style": {
-				"navigationBarTitleText": "category",
+				"navigationBarTitleText": "商品分类",
 				"h5": {
 					"titleNView": false,
 					"scrollIndicator": "none"
@@ -23,9 +23,17 @@
 			}
 		},
 		{
+			"path": "pages/category/search",
+			"style": {
+				"navigationBarTitleText": "分类搜索",
+				"navigationBarBackgroundColor":"#fff",
+				"navigationBarTextStyle":"black"
+			}
+		},
+		{
 			"path": "pages/discovery/list",
 			"style": {
-				"navigationBarTitleText": "discovery",
+				"navigationBarTitleText": "精选好物",
 				"h5": {
 					"titleNView": false,
 					"scrollIndicator": "none"
@@ -186,8 +194,16 @@
 				"navigationBarBackgroundColor": "#fff",
 				"navigationBarTextStyle": "black"
 			}
+		},
+		{
+					"path" : "pages/member/publisher",
+					"style" : {
+						"app-plus": {
+							"titleNView": false
+						}
+					}
 		}
-  ],
+    ],
 	"globalStyle": {
 			"navigationBarTextStyle": "white",
 			"navigationBarTitleText": "省钱兄",
@@ -212,12 +228,22 @@
 				"selectedIconPath": "static/img/footer/type-act.png",
 				"text": "分类"
 			},
+			//#ifdef H5
 			{
 				"pagePath": "pages/discovery/list",
 				"iconPath": "static/img/footer/hot.png",
 				"selectedIconPath": "static/img/footer/hot-act.png",
 				"text": "人工精选"
 			},
+			//#endif
+			//#ifndef H5
+			{
+				"pagePath": "pages/search/search",
+				"iconPath": "static/img/footer/hot.png",
+				"selectedIconPath": "static/img/footer/hot-act.png",
+				"text": "超级搜索"
+			},
+			//#endif
 			{
 				"pagePath": "pages/member/user",
 				"iconPath": "static/img/footer/my.png",

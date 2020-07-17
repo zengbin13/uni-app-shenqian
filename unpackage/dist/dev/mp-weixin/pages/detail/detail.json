@@ -2,6 +2,7 @@
   "navigationBarTitleText": "商品详情",
   "usingComponents": {
     "goods-item-plus": "/components/goods-item-plus/goods-item-plus",
-    "back-top": "/components/back-top/back-top"
+    "back-top": "/components/back-top/back-top",
+    "simple-model": "/components/simple-model/simple-model"
   }
 }

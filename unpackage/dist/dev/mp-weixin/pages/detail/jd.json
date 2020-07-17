@@ -1,7 +1,7 @@
 {
   "navigationBarTitleText": "商品详情-京东",
   "usingComponents": {
-    "goods-item": "/components/goods-item/goods-item",
-    "back-top": "/components/back-top/back-top"
+    "back-top": "/components/back-top/back-top",
+    "simple-model": "/components/simple-model/simple-model"
   }
 }

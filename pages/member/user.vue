@@ -10,7 +10,7 @@
 					<text class="iconfont icon-huiyuan"></text>
 					会员购买商品享省钱+返现
 				</view>
-				<view class="vip-right">
+				<view class="vip-right" @click="handleApplication">
 					会员申请
 				</view>
 			</view>
@@ -22,7 +22,7 @@
 			<view class="order">
 				<cell>全部订单明细</cell>
 				<view class="order-detail">
-					<view class="order-item" v-for="item in orderList" :key="item.id">
+					<view class="order-item" v-for="(item, index) in orderList" :key="item.id" @click="handleOrderItem(index)">
 						<text class="order-number">{{item.number + ' ' + item.unit}}</text>
 						<text class="order-desc">{{item.title}}</text>
 					</view>
@@ -35,13 +35,17 @@
 			<view class="menu">
 				<cell iconName="icon-lishi" iconColor="#5eba8f" url="/pages/member/footprint">浏览历史</cell>
 				<cell iconName="icon-star-opp" iconColor="#54b4ef" url="/pages/member/collect">我的收藏</cell>
-				<cell iconName="icon-tuiguang" iconColor="#f7d888" info="邀好友拿高佣">推广中心</cell>
+				<view @click="promote">
+					<cell iconName="icon-tuiguang" iconColor="#f7d888" info="邀好友拿高佣">推广中心</cell>
+				</view>
 				<cell iconName="icon-anquan" iconColor="#9789f7">账号安全</cell>
 				<cell iconName="icon-kefu12" iconColor="#ff3333">联系客服</cell>
 				<cell iconName="icon-awesome" iconColor="#00ecec">APP下载</cell>
 				<cell iconName="icon-fankui1" iconColor="#00ff7f" url="/pages/member/feedback">意见反馈</cell>
 					<cell iconName="icon-shezhi" iconColor=" #5555ff" url="/pages/member/setting">设置中心</cell>	
-				<cell iconName="icon-tuichu1" iconColor="#e07d72" @tap="signOut" v-if="userId">退出登录</cell>
+				<view class="" @click="signOut">
+					<cell iconName="icon-tuichu1" iconColor="#e07d72"   v-if="userId">退出登录</cell>
+				</view>
 			</view>
 			</view>
 		</view>
@@ -65,9 +69,32 @@
 			}
 		},
 		onLoad() {
+		},
+		onShow() {
 			this.getUserInfo()
 		},
 		methods: {
+			handleApplication() {
+				let token = this.$queue.getStorageData("token")
+				if(token) {
+					uni.navigateTo({
+						url: "/pages/member/publisher"
+					})
+				} else {
+					uni.showModal({
+						title:"提示",
+						content: "请先完成登陆注册",
+						success() {
+							if (res.confirm) {
+							    this.$queue.clearLogin()
+							    uni.navigateTo({
+							    	url:"../login/login"
+							    })
+							}
+						}
+					})
+				}
+			},
 			getUserInfo() {
 				this.userId = this.$queue.getStorageData("userId")
 				if(!this.userId) return
@@ -80,35 +107,72 @@
 				// 具有token
 				if(token) {
 					uni.showToast({
-						title:"您已经登录，切换账户请先退出"
+						title:"您已经登录，切换账户请先退出",
+						icon:"none"
 					})
 				}
 				// 不具有token
 				if(!token) {
 					this.$queue.setStorageData("href", "/pages/member/user")
-	
 				uni.navigateTo({
 					url: '/pages/login/login'
 				});
-
-
 				// uni.navigateTo({
 				// 	url: '/pages/public/login'
 				// });
-
+				}
+			},
+			promote() {
+				uni.showModal({
+				    title: '温馨提示',
+				    content: '此功能为会员专享功能,申请成为会员后可使用',
+						confirmColor:"#db0011"
+				});
+			},
+			handleOrderItem(index) {
+				if(index === 0) {
+					uni.showModal({
+						showCancel: false,
+						title: '上月预估收入说明',
+						confirmColor:"#db0011",
+						content: '上月个人【确认收货】和团队【确认收货】订单的佣金收入本月25号结算',
+					});
+				}
+				if(index === 1) {
+					uni.showModal({
+						showCancel: false,
+						confirmColor:"#db0011",
+						title: '本月预估收入说明',
+						content: '本月用户【已付款】+【确认收货】订单的佣金收入，下月25号结算',
+					});
+				}
+				if(index === 2) {
+					uni.showModal({
+						showCancel: false,
+						confirmColor:"#db0011",
+						title: '团队收益说明',
+						content: '本月团队【确认收货】和【已付款】订单的佣金收入！下月25号结算',
+					});
+				}
+				if(index === 3) {
+					uni.showModal({
+						showCancel: false,
+						confirmColor:"#db0011",
+						title: '今日订单说明',
+						content: '今日用户【已付款】的订单笔数',
+					});
 				}
 			},
 			signOut() {
-				let token = this.$queue.getStorageData("token")
-				if(!token) return 
 				uni.showModal({
-				    title: '提示',
-				    content: '确认退出当前账户',
+				    title: '温馨提示',
+				    content: '是否退出当前账户',
+						confirmColor:"#db0011",
 				    success: res => {
 				        if (res.confirm) {
 				            this.$queue.clearLogin()
 				            uni.reLaunch({
-				            	url:"../member/user"
+				            	url:"/pages/member/user"
 				            })
 				        } else if (res.cancel) {
 				            // console.log('用户点击取消');

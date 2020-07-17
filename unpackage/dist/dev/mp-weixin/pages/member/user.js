@@ -94,7 +94,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components = {
   cell: function() {
-    return __webpack_require__.e(/*! import() | components/cell/cell */ "components/cell/cell").then(__webpack_require__.bind(null, /*! @/components/cell/cell.vue */ 157))
+    return __webpack_require__.e(/*! import() | components/cell/cell */ "components/cell/cell").then(__webpack_require__.bind(null, /*! @/components/cell/cell.vue */ 205))
   }
 }
 var render = function() {
@@ -134,7 +134,11 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var cell = function cell() {__webpack_require__.e(/*! require.ensure | components/cell/cell */ "components/cell/cell").then((function () {return resolve(__webpack_require__(/*! ../../components/cell/cell.vue */ 157));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var cell = function cell() {__webpack_require__.e(/*! require.ensure | components/cell/cell */ "components/cell/cell").then((function () {return resolve(__webpack_require__(/*! ../../components/cell/cell.vue */ 205));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+
+
+
+
 
 
 
@@ -201,9 +205,32 @@ __webpack_require__.r(__webpack_exports__);
 
   },
   onLoad: function onLoad() {
+  },
+  onShow: function onShow() {
     this.getUserInfo();
   },
   methods: {
+    handleApplication: function handleApplication() {
+      var token = this.$queue.getStorageData("token");
+      if (token) {
+        uni.navigateTo({
+          url: "/pages/member/publisher" });
+
+      } else {
+        uni.showModal({
+          title: "提示",
+          content: "请先完成登陆注册",
+          success: function success() {
+            if (res.confirm) {
+              this.$queue.clearLogin();
+              uni.navigateTo({
+                url: "../login/login" });
+
+            }
+          } });
+
+      }
+    },
     getUserInfo: function getUserInfo() {var _this = this;
       this.userId = this.$queue.getStorageData("userId");
       if (!this.userId) return;
@@ -216,35 +243,72 @@ __webpack_require__.r(__webpack_exports__);
       // 具有token
       if (token) {
         uni.showToast({
-          title: "您已经登录，切换账户请先退出" });
+          title: "您已经登录，切换账户请先退出",
+          icon: "none" });
 
       }
       // 不具有token
       if (!token) {
         this.$queue.setStorageData("href", "/pages/member/user");
-
         uni.navigateTo({
           url: '/pages/login/login' });
-
-
 
         // uni.navigateTo({
         // 	url: '/pages/public/login'
         // });
+      }
+    },
+    promote: function promote() {
+      uni.showModal({
+        title: '温馨提示',
+        content: '此功能为会员专享功能,申请成为会员后可使用',
+        confirmColor: "#db0011" });
+
+    },
+    handleOrderItem: function handleOrderItem(index) {
+      if (index === 0) {
+        uni.showModal({
+          showCancel: false,
+          title: '上月预估收入说明',
+          confirmColor: "#db0011",
+          content: '上月个人【确认收货】和团队【确认收货】订单的佣金收入本月25号结算' });
+
+      }
+      if (index === 1) {
+        uni.showModal({
+          showCancel: false,
+          confirmColor: "#db0011",
+          title: '本月预估收入说明',
+          content: '本月用户【已付款】+【确认收货】订单的佣金收入，下月25号结算' });
+
+      }
+      if (index === 2) {
+        uni.showModal({
+          showCancel: false,
+          confirmColor: "#db0011",
+          title: '团队收益说明',
+          content: '本月团队【确认收货】和【已付款】订单的佣金收入！下月25号结算' });
+
+      }
+      if (index === 3) {
+        uni.showModal({
+          showCancel: false,
+          confirmColor: "#db0011",
+          title: '今日订单说明',
+          content: '今日用户【已付款】的订单笔数' });
 
       }
     },
     signOut: function signOut() {var _this2 = this;
-      var token = this.$queue.getStorageData("token");
-      if (!token) return;
       uni.showModal({
-        title: '提示',
-        content: '确认退出当前账户',
+        title: '温馨提示',
+        content: '是否退出当前账户',
+        confirmColor: "#db0011",
         success: function success(res) {
           if (res.confirm) {
             _this2.$queue.clearLogin();
             uni.reLaunch({
-              url: "../member/user" });
+              url: "/pages/member/user" });
 
           } else if (res.cancel) {
             // console.log('用户点击取消');

@@ -760,7 +760,7 @@ function initData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -1898,6 +1898,10 @@ function clear() {
     this.removeStorageData("image_url");
     this.removeStorageData("relation_id");
     this.removeStorageData("mobile");
+  },
+  // 获取公共域名
+  publicDomain: function publicDomain() {
+    return "https://www.gomyorder.cn";
   } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
@@ -7433,7 +7437,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -7454,14 +7458,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -7537,7 +7541,7 @@ var patch = function(oldVnode, vnode) {
     });
     var diffData = this.$shouldDiffData === false ? data : diff(data, mpData);
     if (Object.keys(diffData).length) {
-      if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
           ']差量更新',
           JSON.stringify(diffData));
@@ -7932,7 +7936,7 @@ internalMixin(Vue);
 
 /***/ }),
 
-/***/ 218:
+/***/ 273:
 /*!**************************************************************************************************!*\
   !*** C:/Users/yu13/Documents/HBuilderProjects/uni-shenqian/components/uni-ui/uni-icons/icons.js ***!
   \**************************************************************************************************/
@@ -8113,6 +8117,3868 @@ module.exports = g;
 /***/ (function(module, exports) {
 
 
+
+/***/ }),
+
+/***/ 53:
+/*!*********************************************************************************************!*\
+  !*** ./node_modules/@vue/babel-preset-app/node_modules/@babel/runtime/regenerator/index.js ***!
+  \*********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! regenerator-runtime */ 54);
+
+/***/ }),
+
+/***/ 54:
+/*!************************************************************!*\
+  !*** ./node_modules/regenerator-runtime/runtime-module.js ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/**
+ * Copyright (c) 2014-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+// This method of obtaining a reference to the global object needs to be
+// kept identical to the way it is obtained in runtime.js
+var g = (function() {
+  return this || (typeof self === "object" && self);
+})() || Function("return this")();
+
+// Use `getOwnPropertyNames` because not all browsers support calling
+// `hasOwnProperty` on the global `self` object in a worker. See #183.
+var hadRuntime = g.regeneratorRuntime &&
+  Object.getOwnPropertyNames(g).indexOf("regeneratorRuntime") >= 0;
+
+// Save the old regeneratorRuntime in case it needs to be restored later.
+var oldRuntime = hadRuntime && g.regeneratorRuntime;
+
+// Force reevalutation of runtime.js.
+g.regeneratorRuntime = undefined;
+
+module.exports = __webpack_require__(/*! ./runtime */ 55);
+
+if (hadRuntime) {
+  // Restore the original runtime.
+  g.regeneratorRuntime = oldRuntime;
+} else {
+  // Remove the global property added by runtime.js.
+  try {
+    delete g.regeneratorRuntime;
+  } catch(e) {
+    g.regeneratorRuntime = undefined;
+  }
+}
+
+
+/***/ }),
+
+/***/ 55:
+/*!*****************************************************!*\
+  !*** ./node_modules/regenerator-runtime/runtime.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+/**
+ * Copyright (c) 2014-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+!(function(global) {
+  "use strict";
+
+  var Op = Object.prototype;
+  var hasOwn = Op.hasOwnProperty;
+  var undefined; // More compressible than void 0.
+  var $Symbol = typeof Symbol === "function" ? Symbol : {};
+  var iteratorSymbol = $Symbol.iterator || "@@iterator";
+  var asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator";
+  var toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag";
+
+  var inModule = typeof module === "object";
+  var runtime = global.regeneratorRuntime;
+  if (runtime) {
+    if (inModule) {
+      // If regeneratorRuntime is defined globally and we're in a module,
+      // make the exports object identical to regeneratorRuntime.
+      module.exports = runtime;
+    }
+    // Don't bother evaluating the rest of this file if the runtime was
+    // already defined globally.
+    return;
+  }
+
+  // Define the runtime globally (as expected by generated code) as either
+  // module.exports (if we're in a module) or a new, empty object.
+  runtime = global.regeneratorRuntime = inModule ? module.exports : {};
+
+  function wrap(innerFn, outerFn, self, tryLocsList) {
+    // If outerFn provided and outerFn.prototype is a Generator, then outerFn.prototype instanceof Generator.
+    var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator;
+    var generator = Object.create(protoGenerator.prototype);
+    var context = new Context(tryLocsList || []);
+
+    // The ._invoke method unifies the implementations of the .next,
+    // .throw, and .return methods.
+    generator._invoke = makeInvokeMethod(innerFn, self, context);
+
+    return generator;
+  }
+  runtime.wrap = wrap;
+
+  // Try/catch helper to minimize deoptimizations. Returns a completion
+  // record like context.tryEntries[i].completion. This interface could
+  // have been (and was previously) designed to take a closure to be
+  // invoked without arguments, but in all the cases we care about we
+  // already have an existing method we want to call, so there's no need
+  // to create a new function object. We can even get away with assuming
+  // the method takes exactly one argument, since that happens to be true
+  // in every case, so we don't have to touch the arguments object. The
+  // only additional allocation required is the completion record, which
+  // has a stable shape and so hopefully should be cheap to allocate.
+  function tryCatch(fn, obj, arg) {
+    try {
+      return { type: "normal", arg: fn.call(obj, arg) };
+    } catch (err) {
+      return { type: "throw", arg: err };
+    }
+  }
+
+  var GenStateSuspendedStart = "suspendedStart";
+  var GenStateSuspendedYield = "suspendedYield";
+  var GenStateExecuting = "executing";
+  var GenStateCompleted = "completed";
+
+  // Returning this object from the innerFn has the same effect as
+  // breaking out of the dispatch switch statement.
+  var ContinueSentinel = {};
+
+  // Dummy constructor functions that we use as the .constructor and
+  // .constructor.prototype properties for functions that return Generator
+  // objects. For full spec compliance, you may wish to configure your
+  // minifier not to mangle the names of these two functions.
+  function Generator() {}
+  function GeneratorFunction() {}
+  function GeneratorFunctionPrototype() {}
+
+  // This is a polyfill for %IteratorPrototype% for environments that
+  // don't natively support it.
+  var IteratorPrototype = {};
+  IteratorPrototype[iteratorSymbol] = function () {
+    return this;
+  };
+
+  var getProto = Object.getPrototypeOf;
+  var NativeIteratorPrototype = getProto && getProto(getProto(values([])));
+  if (NativeIteratorPrototype &&
+      NativeIteratorPrototype !== Op &&
+      hasOwn.call(NativeIteratorPrototype, iteratorSymbol)) {
+    // This environment has a native %IteratorPrototype%; use it instead
+    // of the polyfill.
+    IteratorPrototype = NativeIteratorPrototype;
+  }
+
+  var Gp = GeneratorFunctionPrototype.prototype =
+    Generator.prototype = Object.create(IteratorPrototype);
+  GeneratorFunction.prototype = Gp.constructor = GeneratorFunctionPrototype;
+  GeneratorFunctionPrototype.constructor = GeneratorFunction;
+  GeneratorFunctionPrototype[toStringTagSymbol] =
+    GeneratorFunction.displayName = "GeneratorFunction";
+
+  // Helper for defining the .next, .throw, and .return methods of the
+  // Iterator interface in terms of a single ._invoke method.
+  function defineIteratorMethods(prototype) {
+    ["next", "throw", "return"].forEach(function(method) {
+      prototype[method] = function(arg) {
+        return this._invoke(method, arg);
+      };
+    });
+  }
+
+  runtime.isGeneratorFunction = function(genFun) {
+    var ctor = typeof genFun === "function" && genFun.constructor;
+    return ctor
+      ? ctor === GeneratorFunction ||
+        // For the native GeneratorFunction constructor, the best we can
+        // do is to check its .name property.
+        (ctor.displayName || ctor.name) === "GeneratorFunction"
+      : false;
+  };
+
+  runtime.mark = function(genFun) {
+    if (Object.setPrototypeOf) {
+      Object.setPrototypeOf(genFun, GeneratorFunctionPrototype);
+    } else {
+      genFun.__proto__ = GeneratorFunctionPrototype;
+      if (!(toStringTagSymbol in genFun)) {
+        genFun[toStringTagSymbol] = "GeneratorFunction";
+      }
+    }
+    genFun.prototype = Object.create(Gp);
+    return genFun;
+  };
+
+  // Within the body of any async function, `await x` is transformed to
+  // `yield regeneratorRuntime.awrap(x)`, so that the runtime can test
+  // `hasOwn.call(value, "__await")` to determine if the yielded value is
+  // meant to be awaited.
+  runtime.awrap = function(arg) {
+    return { __await: arg };
+  };
+
+  function AsyncIterator(generator) {
+    function invoke(method, arg, resolve, reject) {
+      var record = tryCatch(generator[method], generator, arg);
+      if (record.type === "throw") {
+        reject(record.arg);
+      } else {
+        var result = record.arg;
+        var value = result.value;
+        if (value &&
+            typeof value === "object" &&
+            hasOwn.call(value, "__await")) {
+          return Promise.resolve(value.__await).then(function(value) {
+            invoke("next", value, resolve, reject);
+          }, function(err) {
+            invoke("throw", err, resolve, reject);
+          });
+        }
+
+        return Promise.resolve(value).then(function(unwrapped) {
+          // When a yielded Promise is resolved, its final value becomes
+          // the .value of the Promise<{value,done}> result for the
+          // current iteration.
+          result.value = unwrapped;
+          resolve(result);
+        }, function(error) {
+          // If a rejected Promise was yielded, throw the rejection back
+          // into the async generator function so it can be handled there.
+          return invoke("throw", error, resolve, reject);
+        });
+      }
+    }
+
+    var previousPromise;
+
+    function enqueue(method, arg) {
+      function callInvokeWithMethodAndArg() {
+        return new Promise(function(resolve, reject) {
+          invoke(method, arg, resolve, reject);
+        });
+      }
+
+      return previousPromise =
+        // If enqueue has been called before, then we want to wait until
+        // all previous Promises have been resolved before calling invoke,
+        // so that results are always delivered in the correct order. If
+        // enqueue has not been called before, then it is important to
+        // call invoke immediately, without waiting on a callback to fire,
+        // so that the async generator function has the opportunity to do
+        // any necessary setup in a predictable way. This predictability
+        // is why the Promise constructor synchronously invokes its
+        // executor callback, and why async functions synchronously
+        // execute code before the first await. Since we implement simple
+        // async functions in terms of async generators, it is especially
+        // important to get this right, even though it requires care.
+        previousPromise ? previousPromise.then(
+          callInvokeWithMethodAndArg,
+          // Avoid propagating failures to Promises returned by later
+          // invocations of the iterator.
+          callInvokeWithMethodAndArg
+        ) : callInvokeWithMethodAndArg();
+    }
+
+    // Define the unified helper method that is used to implement .next,
+    // .throw, and .return (see defineIteratorMethods).
+    this._invoke = enqueue;
+  }
+
+  defineIteratorMethods(AsyncIterator.prototype);
+  AsyncIterator.prototype[asyncIteratorSymbol] = function () {
+    return this;
+  };
+  runtime.AsyncIterator = AsyncIterator;
+
+  // Note that simple async functions are implemented on top of
+  // AsyncIterator objects; they just return a Promise for the value of
+  // the final result produced by the iterator.
+  runtime.async = function(innerFn, outerFn, self, tryLocsList) {
+    var iter = new AsyncIterator(
+      wrap(innerFn, outerFn, self, tryLocsList)
+    );
+
+    return runtime.isGeneratorFunction(outerFn)
+      ? iter // If outerFn is a generator, return the full iterator.
+      : iter.next().then(function(result) {
+          return result.done ? result.value : iter.next();
+        });
+  };
+
+  function makeInvokeMethod(innerFn, self, context) {
+    var state = GenStateSuspendedStart;
+
+    return function invoke(method, arg) {
+      if (state === GenStateExecuting) {
+        throw new Error("Generator is already running");
+      }
+
+      if (state === GenStateCompleted) {
+        if (method === "throw") {
+          throw arg;
+        }
+
+        // Be forgiving, per 25.3.3.3.3 of the spec:
+        // https://people.mozilla.org/~jorendorff/es6-draft.html#sec-generatorresume
+        return doneResult();
+      }
+
+      context.method = method;
+      context.arg = arg;
+
+      while (true) {
+        var delegate = context.delegate;
+        if (delegate) {
+          var delegateResult = maybeInvokeDelegate(delegate, context);
+          if (delegateResult) {
+            if (delegateResult === ContinueSentinel) continue;
+            return delegateResult;
+          }
+        }
+
+        if (context.method === "next") {
+          // Setting context._sent for legacy support of Babel's
+          // function.sent implementation.
+          context.sent = context._sent = context.arg;
+
+        } else if (context.method === "throw") {
+          if (state === GenStateSuspendedStart) {
+            state = GenStateCompleted;
+            throw context.arg;
+          }
+
+          context.dispatchException(context.arg);
+
+        } else if (context.method === "return") {
+          context.abrupt("return", context.arg);
+        }
+
+        state = GenStateExecuting;
+
+        var record = tryCatch(innerFn, self, context);
+        if (record.type === "normal") {
+          // If an exception is thrown from innerFn, we leave state ===
+          // GenStateExecuting and loop back for another invocation.
+          state = context.done
+            ? GenStateCompleted
+            : GenStateSuspendedYield;
+
+          if (record.arg === ContinueSentinel) {
+            continue;
+          }
+
+          return {
+            value: record.arg,
+            done: context.done
+          };
+
+        } else if (record.type === "throw") {
+          state = GenStateCompleted;
+          // Dispatch the exception by looping back around to the
+          // context.dispatchException(context.arg) call above.
+          context.method = "throw";
+          context.arg = record.arg;
+        }
+      }
+    };
+  }
+
+  // Call delegate.iterator[context.method](context.arg) and handle the
+  // result, either by returning a { value, done } result from the
+  // delegate iterator, or by modifying context.method and context.arg,
+  // setting context.delegate to null, and returning the ContinueSentinel.
+  function maybeInvokeDelegate(delegate, context) {
+    var method = delegate.iterator[context.method];
+    if (method === undefined) {
+      // A .throw or .return when the delegate iterator has no .throw
+      // method always terminates the yield* loop.
+      context.delegate = null;
+
+      if (context.method === "throw") {
+        if (delegate.iterator.return) {
+          // If the delegate iterator has a return method, give it a
+          // chance to clean up.
+          context.method = "return";
+          context.arg = undefined;
+          maybeInvokeDelegate(delegate, context);
+
+          if (context.method === "throw") {
+            // If maybeInvokeDelegate(context) changed context.method from
+            // "return" to "throw", let that override the TypeError below.
+            return ContinueSentinel;
+          }
+        }
+
+        context.method = "throw";
+        context.arg = new TypeError(
+          "The iterator does not provide a 'throw' method");
+      }
+
+      return ContinueSentinel;
+    }
+
+    var record = tryCatch(method, delegate.iterator, context.arg);
+
+    if (record.type === "throw") {
+      context.method = "throw";
+      context.arg = record.arg;
+      context.delegate = null;
+      return ContinueSentinel;
+    }
+
+    var info = record.arg;
+
+    if (! info) {
+      context.method = "throw";
+      context.arg = new TypeError("iterator result is not an object");
+      context.delegate = null;
+      return ContinueSentinel;
+    }
+
+    if (info.done) {
+      // Assign the result of the finished delegate to the temporary
+      // variable specified by delegate.resultName (see delegateYield).
+      context[delegate.resultName] = info.value;
+
+      // Resume execution at the desired location (see delegateYield).
+      context.next = delegate.nextLoc;
+
+      // If context.method was "throw" but the delegate handled the
+      // exception, let the outer generator proceed normally. If
+      // context.method was "next", forget context.arg since it has been
+      // "consumed" by the delegate iterator. If context.method was
+      // "return", allow the original .return call to continue in the
+      // outer generator.
+      if (context.method !== "return") {
+        context.method = "next";
+        context.arg = undefined;
+      }
+
+    } else {
+      // Re-yield the result returned by the delegate method.
+      return info;
+    }
+
+    // The delegate iterator is finished, so forget it and continue with
+    // the outer generator.
+    context.delegate = null;
+    return ContinueSentinel;
+  }
+
+  // Define Generator.prototype.{next,throw,return} in terms of the
+  // unified ._invoke helper method.
+  defineIteratorMethods(Gp);
+
+  Gp[toStringTagSymbol] = "Generator";
+
+  // A Generator should always return itself as the iterator object when the
+  // @@iterator function is called on it. Some browsers' implementations of the
+  // iterator prototype chain incorrectly implement this, causing the Generator
+  // object to not be returned from this call. This ensures that doesn't happen.
+  // See https://github.com/facebook/regenerator/issues/274 for more details.
+  Gp[iteratorSymbol] = function() {
+    return this;
+  };
+
+  Gp.toString = function() {
+    return "[object Generator]";
+  };
+
+  function pushTryEntry(locs) {
+    var entry = { tryLoc: locs[0] };
+
+    if (1 in locs) {
+      entry.catchLoc = locs[1];
+    }
+
+    if (2 in locs) {
+      entry.finallyLoc = locs[2];
+      entry.afterLoc = locs[3];
+    }
+
+    this.tryEntries.push(entry);
+  }
+
+  function resetTryEntry(entry) {
+    var record = entry.completion || {};
+    record.type = "normal";
+    delete record.arg;
+    entry.completion = record;
+  }
+
+  function Context(tryLocsList) {
+    // The root entry object (effectively a try statement without a catch
+    // or a finally block) gives us a place to store values thrown from
+    // locations where there is no enclosing try statement.
+    this.tryEntries = [{ tryLoc: "root" }];
+    tryLocsList.forEach(pushTryEntry, this);
+    this.reset(true);
+  }
+
+  runtime.keys = function(object) {
+    var keys = [];
+    for (var key in object) {
+      keys.push(key);
+    }
+    keys.reverse();
+
+    // Rather than returning an object with a next method, we keep
+    // things simple and return the next function itself.
+    return function next() {
+      while (keys.length) {
+        var key = keys.pop();
+        if (key in object) {
+          next.value = key;
+          next.done = false;
+          return next;
+        }
+      }
+
+      // To avoid creating an additional object, we just hang the .value
+      // and .done properties off the next function object itself. This
+      // also ensures that the minifier will not anonymize the function.
+      next.done = true;
+      return next;
+    };
+  };
+
+  function values(iterable) {
+    if (iterable) {
+      var iteratorMethod = iterable[iteratorSymbol];
+      if (iteratorMethod) {
+        return iteratorMethod.call(iterable);
+      }
+
+      if (typeof iterable.next === "function") {
+        return iterable;
+      }
+
+      if (!isNaN(iterable.length)) {
+        var i = -1, next = function next() {
+          while (++i < iterable.length) {
+            if (hasOwn.call(iterable, i)) {
+              next.value = iterable[i];
+              next.done = false;
+              return next;
+            }
+          }
+
+          next.value = undefined;
+          next.done = true;
+
+          return next;
+        };
+
+        return next.next = next;
+      }
+    }
+
+    // Return an iterator with no values.
+    return { next: doneResult };
+  }
+  runtime.values = values;
+
+  function doneResult() {
+    return { value: undefined, done: true };
+  }
+
+  Context.prototype = {
+    constructor: Context,
+
+    reset: function(skipTempReset) {
+      this.prev = 0;
+      this.next = 0;
+      // Resetting context._sent for legacy support of Babel's
+      // function.sent implementation.
+      this.sent = this._sent = undefined;
+      this.done = false;
+      this.delegate = null;
+
+      this.method = "next";
+      this.arg = undefined;
+
+      this.tryEntries.forEach(resetTryEntry);
+
+      if (!skipTempReset) {
+        for (var name in this) {
+          // Not sure about the optimal order of these conditions:
+          if (name.charAt(0) === "t" &&
+              hasOwn.call(this, name) &&
+              !isNaN(+name.slice(1))) {
+            this[name] = undefined;
+          }
+        }
+      }
+    },
+
+    stop: function() {
+      this.done = true;
+
+      var rootEntry = this.tryEntries[0];
+      var rootRecord = rootEntry.completion;
+      if (rootRecord.type === "throw") {
+        throw rootRecord.arg;
+      }
+
+      return this.rval;
+    },
+
+    dispatchException: function(exception) {
+      if (this.done) {
+        throw exception;
+      }
+
+      var context = this;
+      function handle(loc, caught) {
+        record.type = "throw";
+        record.arg = exception;
+        context.next = loc;
+
+        if (caught) {
+          // If the dispatched exception was caught by a catch block,
+          // then let that catch block handle the exception normally.
+          context.method = "next";
+          context.arg = undefined;
+        }
+
+        return !! caught;
+      }
+
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        var record = entry.completion;
+
+        if (entry.tryLoc === "root") {
+          // Exception thrown outside of any try block that could handle
+          // it, so set the completion value of the entire function to
+          // throw the exception.
+          return handle("end");
+        }
+
+        if (entry.tryLoc <= this.prev) {
+          var hasCatch = hasOwn.call(entry, "catchLoc");
+          var hasFinally = hasOwn.call(entry, "finallyLoc");
+
+          if (hasCatch && hasFinally) {
+            if (this.prev < entry.catchLoc) {
+              return handle(entry.catchLoc, true);
+            } else if (this.prev < entry.finallyLoc) {
+              return handle(entry.finallyLoc);
+            }
+
+          } else if (hasCatch) {
+            if (this.prev < entry.catchLoc) {
+              return handle(entry.catchLoc, true);
+            }
+
+          } else if (hasFinally) {
+            if (this.prev < entry.finallyLoc) {
+              return handle(entry.finallyLoc);
+            }
+
+          } else {
+            throw new Error("try statement without catch or finally");
+          }
+        }
+      }
+    },
+
+    abrupt: function(type, arg) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        if (entry.tryLoc <= this.prev &&
+            hasOwn.call(entry, "finallyLoc") &&
+            this.prev < entry.finallyLoc) {
+          var finallyEntry = entry;
+          break;
+        }
+      }
+
+      if (finallyEntry &&
+          (type === "break" ||
+           type === "continue") &&
+          finallyEntry.tryLoc <= arg &&
+          arg <= finallyEntry.finallyLoc) {
+        // Ignore the finally entry if control is not jumping to a
+        // location outside the try/catch block.
+        finallyEntry = null;
+      }
+
+      var record = finallyEntry ? finallyEntry.completion : {};
+      record.type = type;
+      record.arg = arg;
+
+      if (finallyEntry) {
+        this.method = "next";
+        this.next = finallyEntry.finallyLoc;
+        return ContinueSentinel;
+      }
+
+      return this.complete(record);
+    },
+
+    complete: function(record, afterLoc) {
+      if (record.type === "throw") {
+        throw record.arg;
+      }
+
+      if (record.type === "break" ||
+          record.type === "continue") {
+        this.next = record.arg;
+      } else if (record.type === "return") {
+        this.rval = this.arg = record.arg;
+        this.method = "return";
+        this.next = "end";
+      } else if (record.type === "normal" && afterLoc) {
+        this.next = afterLoc;
+      }
+
+      return ContinueSentinel;
+    },
+
+    finish: function(finallyLoc) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        if (entry.finallyLoc === finallyLoc) {
+          this.complete(entry.completion, entry.afterLoc);
+          resetTryEntry(entry);
+          return ContinueSentinel;
+        }
+      }
+    },
+
+    "catch": function(tryLoc) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        if (entry.tryLoc === tryLoc) {
+          var record = entry.completion;
+          if (record.type === "throw") {
+            var thrown = record.arg;
+            resetTryEntry(entry);
+          }
+          return thrown;
+        }
+      }
+
+      // The context.catch method must only be called with a location
+      // argument that corresponds to a known catch block.
+      throw new Error("illegal catch attempt");
+    },
+
+    delegateYield: function(iterable, resultName, nextLoc) {
+      this.delegate = {
+        iterator: values(iterable),
+        resultName: resultName,
+        nextLoc: nextLoc
+      };
+
+      if (this.method === "next") {
+        // Deliberately forget the last sent value so that we don't
+        // accidentally pass it on to the delegate.
+        this.arg = undefined;
+      }
+
+      return ContinueSentinel;
+    }
+  };
+})(
+  // In sloppy mode, unbound `this` refers to the global object, fallback to
+  // Function constructor if we're in global strict mode. That is sadly a form
+  // of indirect eval which violates Content Security Policy.
+  (function() {
+    return this || (typeof self === "object" && self);
+  })() || Function("return this")()
+);
+
+
+/***/ }),
+
+/***/ 56:
+/*!*************************************************************************************************************!*\
+  !*** C:/Users/yu13/Documents/HBuilderProjects/uni-shenqian/js_sdk/QuShe-SharerPoster/QS-SharePoster/app.js ***!
+  \*************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(uni) {var _log = console.log; // 如果在项目的APP.vue文件中的onlaunch中设置 console.log = ()=> {} 则在此也不会有打印信息
+// log = ()=>{};	// 打开注释则该插件不会打印任何信息
+var _app = {
+  //交互控制
+  log: function log(t) {
+    _log(t);
+  }, // 打印控制,
+  showLoading: function showLoading(msg, ifmask) {
+    uni.showLoading({
+      title: msg,
+      mask: ifmask || false });
+
+  },
+  hideLoading: function hideLoading() {
+    uni.hideLoading();
+  },
+  showToast: function showToast(msg, icon) {
+    uni.showToast({
+      title: msg,
+      icon: icon || 'none' });
+
+  },
+  getPosterUrl: function getPosterUrl(objs) {// 后端获取背景图的url路径方法
+    var
+    backgroundImage =
+
+
+    objs.backgroundImage,type = objs.type,formData = objs.formData;
+    return new Promise(function (rs, rj) {
+      var image;
+      if (backgroundImage) {
+        image = backgroundImage;
+      } else {
+        switch (type) {//根据type获取背景图, 一般要改成request获取
+          case 1:
+            image = '';
+            break;
+          default:
+            image = '/static/1.png';
+            break;}
+
+      }
+      if (image) {
+        rs(image); // resolve图片的路径
+      } else {
+        rj('背景图片路径不存在');
+      }
+    });
+  },
+
+
+
+
+
+
+  //下面一般不用动他
+  shareTypeListSheetArray: {
+    array: [0, 1, 2, 3, 4, 5] },
+  // 分享类型 0-图文链接 1-纯文字 2-纯图片 3-音乐 4-视频 5-小程序
+  isArray: function isArray(arg) {
+    return Object.prototype.toString.call(arg) === '[object Array]';
+  },
+  isObject: function isObject(arg) {
+    return Object.prototype.toString.call(arg) === '[object Object]';
+  },
+  isPromise: function isPromise(obj) {
+    return !!obj && (typeof obj === 'object' || typeof obj === 'function') && typeof obj.then === 'function';
+  },
+  isNull: function isNull(arg) {
+    return arg === null;
+  },
+  isUndefined: function isUndefined(arg) {
+    return arg === undefined;
+  },
+  isUndef: function isUndef(arg) {
+    return arg === undefined;
+  },
+  isNotNull_string: function isNotNull_string(arg) {
+    return arg !== null && arg !== undefined && arg !== '';
+  },
+  isFn: function isFn(fn) {
+    return fn && typeof fn === 'function';
+  },
+  getStorage: function getStorage(key, scb, fcb) {
+    uni.getStorage({
+      key: key,
+      success: function success(res) {
+        if (res.data && res.data != "") {
+          if (scb) scb(res.data);
+        } else {
+          if (fcb) fcb();
+        }
+      },
+      fail: function fail() {
+        if (fcb) fcb();
+      } });
+
+  },
+  setStorage: function setStorage(key, data) {
+    _log('设置缓存');
+    _log('key：' + key);
+    _log('data：' + JSON.stringify(data));
+    uni.setStorage({
+      key: key,
+      data: data });
+
+  },
+  setStorageSync: function setStorageSync(key, data) {
+    uni.setStorageSync(key, data);
+  },
+  getStorageSync: function getStorageSync(key) {
+    return uni.getStorageSync(key);
+  },
+  clearStorageSync: function clearStorageSync() {
+    uni.clearStorageSync();
+  },
+  removeStorageSync: function removeStorageSync(key) {
+    uni.removeStorageSync(key);
+  },
+  getImageInfo: function getImageInfo(url, cb, fcb) {
+    url = checkMPUrl(url);
+    uni.getImageInfo({
+      src: url,
+      success: function success(res) {
+        if (cb && typeof cb == 'function') cb(res);
+      },
+      fail: function fail(err) {
+        if (fcb && typeof fcb == 'function') fcb(err);
+      } });
+
+  },
+  downloadFile: function downloadFile(url, cb) {
+    url = checkMPUrl(url);
+    uni.downloadFile({
+      url: url,
+      success: function success(res) {
+        if (cb && typeof cb == 'function') cb(res);
+      } });
+
+  },
+  downloadFile_PromiseFc: function downloadFile_PromiseFc(url) {
+    return new Promise(function (rs, rj) {
+      if (url.substring(0, 4) !== 'http') {
+        rs(url);
+      } else {
+        url = checkMPUrl(url);
+        _log('url:' + url);
+        uni.downloadFile({
+          url: url,
+          success: function success(res) {
+            if (res && res.tempFilePath)
+            rs(res.tempFilePath);else
+
+            rj('not find tempFilePath');
+          },
+          fail: function fail(err) {
+            rj(err);
+          } });
+
+      }
+    });
+  },
+  saveFile: function saveFile(url) {
+    uni.saveFile({
+      tempFilePath: url,
+      success: function success(res) {
+        _log('保存成功:' + JSON.stringify(res));
+      } });
+
+  },
+  downLoadAndSaveFile_PromiseFc: function downLoadAndSaveFile_PromiseFc(url) {
+    return new Promise(function (rs, rj) {
+      _log('准备下载并保存图片:' + url);
+      if (url.substring(0, 4) === 'http') {
+        url = checkMPUrl(url);
+        uni.downloadFile({
+          url: url,
+          success: function success(d_res) {
+            _log('下载背景图成功：' + JSON.stringify(d_res));
+            if (d_res && d_res.tempFilePath) {
+
+
+
+
+
+
+              uni.saveFile({
+                tempFilePath: d_res.tempFilePath,
+                success: function success(s_res) {
+                  _log('保存背景图成功:' + JSON.stringify(s_res));
+                  if (s_res && s_res.savedFilePath)
+                  rs(s_res.savedFilePath);else
+
+                  rs(d_res.tempFilePath);
+                },
+                fail: function fail(err) {
+                  rs(d_res.tempFilePath);
+                } });
+
+
+
+            } else {
+              rj('not find tempFilePath');
+            }
+          },
+          fail: function fail(err) {
+            rj(err);
+          } });
+
+      } else {
+        rs(url);
+      }
+    });
+  },
+  checkFile_PromiseFc: function checkFile_PromiseFc(url) {
+    return new Promise(function (rs, rj) {
+      uni.getSavedFileList({
+        success: function success(res) {
+          var d = res.fileList;
+          var index = d.findIndex(function (item) {
+            return item.filePath === url;
+          });
+          rs(index);
+        },
+        fail: function fail(err) {
+          rj(err);
+        } });
+
+    });
+  },
+  removeSavedFile: function removeSavedFile(path) {
+    uni.getSavedFileList({
+      success: function success(res) {
+        var d = res.fileList;
+        var index = d.findIndex(function (item) {
+          return item.filePath === path;
+        });
+        if (index >= 0)
+        uni.removeSavedFile({
+          filePath: path });
+
+      } });
+
+  },
+  fileNameInPath: function fileNameInPath(path) {
+    var s = path.split("/");
+    return s[s.length - 1];
+  },
+  getImageInfo_PromiseFc: function getImageInfo_PromiseFc(imgPath) {
+    return new Promise(function (rs, rj) {
+      _log('准备获取图片信息:' + imgPath);
+      imgPath = checkMPUrl(imgPath);
+      uni.getImageInfo({
+        src: imgPath,
+        success: function success(res) {
+          _log('获取图片信息成功:' + JSON.stringify(res));
+          rs(res);
+        },
+        fail: function fail(err) {
+          _log('获取图片信息失败:' + JSON.stringify(err));
+          rj(err);
+        } });
+
+    });
+  },
+  previewImage: function previewImage(urls) {
+    if (typeof urls == 'string')
+    urls = [urls];
+    uni.previewImage({
+      urls: urls });
+
+  },
+  actionSheet: function actionSheet(obj, cb) {
+    var sheetArray = [];
+    for (var i = 0; i < obj.array.length; i++) {
+      switch (obj.array[i]) {
+        case 'sinaweibo':
+          sheetArray[i] = '新浪微博';
+          break;
+        case 'qq':
+          sheetArray[i] = 'QQ';
+          break;
+        case 'weixin':
+          sheetArray[i] = '微信';
+          break;
+        case 'WXSceneSession':
+          sheetArray[i] = '微信好友';
+          break;
+        case 'WXSenceTimeline':
+          sheetArray[i] = '微信朋友圈';
+          break;
+        case 'WXSceneFavorite':
+          sheetArray[i] = '微信收藏';
+          break;
+        case 0:
+          sheetArray[i] = '图文链接';
+          break;
+        case 1:
+          sheetArray[i] = '纯文字';
+          break;
+        case 2:
+          sheetArray[i] = '纯图片';
+          break;
+        case 3:
+          sheetArray[i] = '音乐';
+          break;
+        case 4:
+          sheetArray[i] = '视频';
+          break;
+        case 5:
+          sheetArray[i] = '小程序';
+          break;
+        default:
+          break;}
+
+    }
+    this.showActionSheet(sheetArray, cb);
+  },
+  showActionSheet: function showActionSheet(sheetArray, cb) {
+    uni.showActionSheet({
+      itemList: sheetArray,
+      success: function success(e) {
+        if (cb && typeof cb == 'function') cb(e.tapIndex);
+      } });
+
+  },
+  getProvider: function getProvider(type, cb, sheet) {
+    var _this = this;
+    uni.getProvider({
+      service: type,
+      success: function success(res) {
+        if (sheet) {
+          var obj = {};
+          obj.array = res.provider;
+          _this.actionSheet(obj, function (index) {
+            if (cb && typeof cb == "function") cb(res.provider[index]);
+          });
+        } else {
+          if (type == 'payment') {
+            var providers = res.provider;
+            var payTypeArray = [];
+            for (var i = 0; i < providers.length; i++) {
+              if (providers[i] == 'wxpay') {
+                payTypeArray[i] = {
+                  name: '微信支付',
+                  value: providers[i],
+                  img: '/static/image/wei.png' };
+
+              } else if (providers[i] == 'alipay') {
+                payTypeArray[i] = {
+                  name: "支付宝支付",
+                  value: providers[i],
+                  img: '/static/image/ali.png' };
+
+              }
+            }
+            if (cb && typeof cb == "function") cb(payTypeArray);
+          } else {
+            if (cb && typeof cb == "function") cb(res);
+          }
+        }
+      } });
+
+  } };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function checkMPUrl(url) {
+
+  if (false) {}
+
+  return url;
+}
+
+module.exports = _app;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+
+/***/ }),
+
+/***/ 57:
+/*!************************************************************************************************************************!*\
+  !*** C:/Users/yu13/Documents/HBuilderProjects/uni-shenqian/js_sdk/QuShe-SharerPoster/QS-SharePoster/QS-SharePoster.js ***!
+  \************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@vue/babel-preset-app/node_modules/@babel/runtime/regenerator */ 53));var _app2 = _interopRequireDefault(__webpack_require__(/*! ./app.js */ 56));
+var _QRCodeAlg = _interopRequireDefault(__webpack_require__(/*! ./QRCodeAlg.js */ 58));
+var _imageTools = __webpack_require__(/*! ./image-tools.js */ 59);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _toConsumableArray(arr) {return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();}function _nonIterableSpread() {throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");}function _unsupportedIterableToArray(o, minLen) {if (!o) return;if (typeof o === "string") return _arrayLikeToArray(o, minLen);var n = Object.prototype.toString.call(o).slice(8, -1);if (n === "Object" && o.constructor) n = o.constructor.name;if (n === "Map" || n === "Set") return Array.from(n);if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);}function _iterableToArray(iter) {if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter);}function _arrayWithoutHoles(arr) {if (Array.isArray(arr)) return _arrayLikeToArray(arr);}function _arrayLikeToArray(arr, len) {if (len == null || len > arr.length) len = arr.length;for (var i = 0, arr2 = new Array(len); i < len; i++) {arr2[i] = arr[i];}return arr2;}function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}
+var ShreUserPosterBackgroundKey = 'ShrePosterBackground_'; // 背景图片缓存名称前缀
+var idKey = 'QSSHAREPOSTER_IDKEY'; //drawArray自动生成的idkey
+var isMp = false;
+
+isMp = true;
+
+
+var nbgScale = 1;
+// export default 
+function getSharePoster(obj) {
+  return new Promise( /*#__PURE__*/function () {var _ref = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee(resolve, reject) {var result1, result2;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.prev = 0;_context.next = 3;return (
+
+                returnPromise(obj));case 3:result1 = _context.sent;
+              resolve(result1);_context.next = 21;break;case 7:_context.prev = 7;_context.t0 = _context["catch"](0);_context.prev = 9;
+
+
+
+              if (obj.bgScale) {
+                obj.bgScale = Number(obj.bgScale) - 0.1;
+              } else {
+                nbgScale = nbgScale - 0.1;
+              }
+              console.log('------------清除缓存后, 开始第二次尝试------------');_context.next = 14;return (
+                returnPromise(obj));case 14:result2 = _context.sent;
+              resolve(result2);_context.next = 21;break;case 18:_context.prev = 18;_context.t1 = _context["catch"](9);
+
+              //TODO handle the exception
+              reject(_context.t1);case 21:case "end":return _context.stop();}}}, _callee, null, [[0, 7], [9, 18]]);}));return function (_x, _x2) {return _ref.apply(this, arguments);};}());
+
+
+
+
+}
+
+function returnPromise(obj) {var
+
+  type =
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  obj.type,formData = obj.formData,background = obj.background,posterCanvasId = obj.posterCanvasId,backgroundImage = obj.backgroundImage,reserve = obj.reserve,textArray = obj.textArray,drawArray = obj.drawArray,qrCodeArray = obj.qrCodeArray,imagesArray = obj.imagesArray,setCanvasWH = obj.setCanvasWH,setCanvasToTempFilePath = obj.setCanvasToTempFilePath,setDraw = obj.setDraw,bgScale = obj.bgScale,Context = obj.Context,_this = obj._this,delayTimeScale = obj.delayTimeScale,drawDelayTime = obj.drawDelayTime;
+  return new Promise( /*#__PURE__*/function () {var _ref2 = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2(rs, rj) {var bgObj, params, i, hasAllInfoCallback, _i, drawArrayItem, newData, drawArray_copy, _i2, item, _newData, item_idKey, poster;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:_context2.prev = 0;
+
+              _app2.default.showLoading('正在准备海报数据');
+              if (!Context) {
+                _app2.default.log('没有画布对象,创建画布对象');
+                Context = uni.createCanvasContext(posterCanvasId, _this || null);
+              }if (!(
+
+              background && background.width && background.height)) {_context2.next = 7;break;}
+              bgObj = background;_context2.next = 10;break;case 7:_context2.next = 9;return (
+
+                getShreUserPosterBackground({
+                  backgroundImage: backgroundImage,
+                  type: type,
+                  formData: formData }));case 9:bgObj = _context2.sent;case 10:
+
+
+              bgScale = bgScale || nbgScale;
+              bgObj.width = bgObj.width * bgScale;
+              bgObj.height = bgObj.height * bgScale;
+
+              _app2.default.log('获取背景图信息对象成功:' + JSON.stringify(bgObj));
+              params = {
+                bgObj: bgObj,
+                type: type,
+                bgScale: bgScale,
+                getBgObj: function getBgObj() {
+                  return params.bgObj;
+                },
+                setBgObj: function setBgObj(newBgObj) {
+                  var n = _objectSpread({}, params.bgObj, {}, newBgObj);
+                  params.bgObj = n;
+                  bgObj = n;
+                } };if (!
+
+              imagesArray) {_context2.next = 23;break;}
+              if (typeof imagesArray == 'function')
+              imagesArray = imagesArray(params);
+              _app2.default.showLoading('正在生成需绘制图片的临时路径');
+              _app2.default.log('准备设置图片');_context2.next = 21;return (
+                setImage(imagesArray));case 21:imagesArray = _context2.sent;
+              _app2.default.hideLoading();case 23:
+
+              if (textArray) {
+                if (typeof textArray == 'function')
+                textArray = textArray(params);
+                textArray = setText(Context, textArray);
+
+              }if (!
+              qrCodeArray) {_context2.next = 38;break;}
+              if (typeof qrCodeArray == 'function')
+              qrCodeArray = qrCodeArray(params);
+              _app2.default.showLoading('正在生成需绘制图片的临时路径');
+              i = 0;case 28:if (!(i < qrCodeArray.length)) {_context2.next = 37;break;}
+              _app2.default.log(i);if (!
+              qrCodeArray[i].image) {_context2.next = 34;break;}_context2.next = 33;return (
+                _app2.default.downloadFile_PromiseFc(qrCodeArray[i].image));case 33:qrCodeArray[i].image = _context2.sent;case 34:i++;_context2.next = 28;break;case 37:
+
+              _app2.default.hideLoading();case 38:if (!
+
+              drawArray) {_context2.next = 99;break;}
+              if (typeof drawArray == 'function') {
+                drawArray = drawArray(params);
+              }if (!
+              _app2.default.isPromise(drawArray)) {_context2.next = 44;break;}_context2.next = 43;return (
+                drawArray);case 43:drawArray = _context2.sent;case 44:if (!(
+
+
+              _app2.default.isArray(drawArray) && drawArray.length > 0)) {_context2.next = 99;break;}
+              hasAllInfoCallback = false;
+              _i = 0;case 47:if (!(_i < drawArray.length)) {_context2.next = 79;break;}
+              drawArrayItem = drawArray[_i];
+              if (_app2.default.isFn(drawArrayItem.allInfoCallback) && !hasAllInfoCallback) hasAllInfoCallback = true;
+              drawArrayItem[idKey] = _i;
+              newData = void 0;_context2.t0 =
+              drawArrayItem.type;_context2.next = _context2.t0 ===
+              'image' ? 55 : _context2.t0 ===
+
+
+              'text' ? 59 : _context2.t0 ===
+
+
+              'qrcode' ? 61 : _context2.t0 ===
+
+
+
+
+
+              'custom' ? 67 : _context2.t0 ===
+
+              'fillrect' ? 68 : _context2.t0 ===
+
+              'strokeRect' ? 69 : _context2.t0 ===
+
+              'roundStrokeRect' ? 70 : _context2.t0 ===
+
+              'roundFillRect' ? 71 : 72;break;case 55:_context2.next = 57;return setImage(drawArrayItem);case 57:newData = _context2.sent;return _context2.abrupt("break", 74);case 59:newData = setText(Context, drawArrayItem);return _context2.abrupt("break", 74);case 61:if (!drawArrayItem.image) {_context2.next = 66;break;}_context2.next = 64;return _app2.default.downloadFile_PromiseFc(drawArrayItem.image);case 64:_context2.t1 = _context2.sent;newData = { image: _context2.t1 };case 66:return _context2.abrupt("break", 74);case 67:return _context2.abrupt("break", 74);case 68:return _context2.abrupt("break", 74);case 69:return _context2.abrupt("break", 74);case 70:return _context2.abrupt("break", 74);case 71:return _context2.abrupt("break", 74);case 72:
+
+
+              _app2.default.log('未识别的类型');return _context2.abrupt("break", 74);case 74:
+
+
+              if (newData && _app2.default.isObject(newData)) {
+                drawArray[_i] = _objectSpread({}, drawArrayItem, {},
+                newData);
+
+              };case 76:_i++;_context2.next = 47;break;case 79:if (!
+
+
+              hasAllInfoCallback) {_context2.next = 99;break;}
+              _app2.default.log('----------------hasAllInfoCallback----------------');
+              drawArray_copy = _toConsumableArray(drawArray);
+              drawArray_copy.sort(function (a, b) {
+                var a_serialNum = !_app2.default.isUndef(a.serialNum) && !_app2.default.isNull(a.serialNum) ? Number(a.serialNum) : Number.NEGATIVE_INFINITY;
+                var b_serialNum = !_app2.default.isUndef(b.serialNum) && !_app2.default.isNull(b.serialNum) ? Number(b.serialNum) : Number.NEGATIVE_INFINITY;
+                return a_serialNum - b_serialNum;
+              });
+              _app2.default.log('开始for循环');
+
+              _i2 = 0;case 85:if (!(_i2 < drawArray_copy.length)) {_context2.next = 98;break;}
+              item = _objectSpread({}, drawArray_copy[_i2]);if (!
+
+              _app2.default.isFn(item.allInfoCallback)) {_context2.next = 95;break;}
+              _newData = item.allInfoCallback({
+                drawArray: drawArray });if (!
+
+              _app2.default.isPromise(_newData)) {_context2.next = 93;break;}_context2.next = 92;return _newData;case 92:_newData = _context2.sent;case 93:
+              item_idKey = item[idKey];
+              if (!_app2.default.isUndef(item_idKey)) {
+                drawArray[item[idKey]] = _objectSpread({}, item, {},
+                _newData);
+
+              } else {
+                console.log('程序错误 找不到idKey!!!	...这不应该啊');
+              }case 95:_i2++;_context2.next = 85;break;case 98:
+
+
+              _app2.default.log('for循环结束');case 99:
+
+
+
+              console.log('params:' + JSON.stringify(params));if (!(
+              setCanvasWH && typeof setCanvasWH == 'function')) {_context2.next = 103;break;}_context2.next = 103;return (
+                new Promise(function (resolve, reject) {
+                  setCanvasWH(params);
+                  setTimeout(function () {
+                    resolve();
+                  }, 50);
+                }));case 103:_context2.next = 105;return (
+
+                drawShareImage({
+                  Context: Context,
+                  type: type,
+                  posterCanvasId: posterCanvasId,
+                  reserve: reserve,
+                  drawArray: drawArray,
+                  textArray: textArray,
+                  imagesArray: imagesArray,
+                  bgObj: bgObj,
+                  qrCodeArray: qrCodeArray,
+                  setCanvasToTempFilePath: setCanvasToTempFilePath,
+                  setDraw: setDraw,
+                  bgScale: bgScale,
+                  _this: _this,
+                  delayTimeScale: delayTimeScale,
+                  drawDelayTime: drawDelayTime }));case 105:poster = _context2.sent;
+
+              _app2.default.hideLoading();
+              rs({
+                bgObj: bgObj,
+                poster: poster,
+                type: type });_context2.next = 113;break;case 110:_context2.prev = 110;_context2.t2 = _context2["catch"](0);
+
+
+              //TODO handle the exception
+              rj(_context2.t2);case 113:case "end":return _context2.stop();}}}, _callee2, null, [[0, 110]]);}));return function (_x3, _x4) {return _ref2.apply(this, arguments);};}());
+
+
+}
+
+function drawShareImage(obj) {//绘制海报方法
+  var
+  Context =
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  obj.Context,type = obj.type,posterCanvasId = obj.posterCanvasId,reserve = obj.reserve,bgObj = obj.bgObj,drawArray = obj.drawArray,textArray = obj.textArray,qrCodeArray = obj.qrCodeArray,imagesArray = obj.imagesArray,setCanvasToTempFilePath = obj.setCanvasToTempFilePath,setDraw = obj.setDraw,bgScale = obj.bgScale,_this = obj._this,delayTimeScale = obj.delayTimeScale,drawDelayTime = obj.drawDelayTime;
+  var params = {
+    Context: Context,
+    bgObj: bgObj,
+    type: type,
+    bgScale: bgScale };
+
+  delayTimeScale = delayTimeScale !== undefined ? delayTimeScale : 15;
+  drawDelayTime = drawDelayTime !== undefined ? drawDelayTime : 100;
+  return new Promise(function (rs, rj) {
+    try {
+      _app2.default.showLoading('正在绘制海报');
+      _app2.default.log('背景对象:' + JSON.stringify(bgObj));
+      if (bgObj && bgObj.path) {
+        _app2.default.log('背景有图片路径');
+        Context.drawImage(bgObj.path, 0, 0, bgObj.width, bgObj.height);
+      } else {
+        _app2.default.log('背景没有图片路径');
+        if (bgObj.backgroundColor) {
+          _app2.default.log('背景有背景颜色:' + bgObj.backgroundColor);
+          Context.setFillStyle(bgObj.backgroundColor);
+          Context.fillRect(0, 0, bgObj.width, bgObj.height);
+        } else {
+          _app2.default.log('背景没有背景颜色');
+        }
+      }
+
+      _app2.default.showLoading('绘制图片');
+      if (imagesArray && imagesArray.length > 0)
+      drawImage(Context, imagesArray);
+
+      _app2.default.showLoading('绘制自定义内容');
+      if (setDraw && typeof setDraw == 'function') setDraw(params);
+
+      _app2.default.showLoading('绘制文本');
+      if (textArray && textArray.length > 0)
+      drawText(Context, textArray, bgObj);
+
+      _app2.default.showLoading('绘制二维码');
+      if (qrCodeArray && qrCodeArray.length > 0) {
+        for (var i = 0; i < qrCodeArray.length; i++) {
+          drawQrCode(Context, qrCodeArray[i]);
+        }
+      }
+
+      _app2.default.showLoading('绘制可控层级序列');
+      if (drawArray && drawArray.length > 0) {
+        for (var _i3 = 0; _i3 < drawArray.length; _i3++) {
+          var drawArrayItem = drawArray[_i3];
+          _app2.default.log('绘制可控层级序列, drawArrayItem:' + JSON.stringify(drawArrayItem));
+          switch (drawArrayItem.type) {
+            case 'image':
+              _app2.default.log('绘制可控层级序列, 绘制图片');
+              drawImage(Context, drawArrayItem);
+              break;
+            case 'text':
+              _app2.default.log('绘制可控层级序列, 绘制文本');
+              drawText(Context, drawArrayItem, bgObj);
+              break;
+            case 'qrcode':
+              _app2.default.log('绘制可控层级序列, 绘制二维码');
+              drawQrCode(Context, drawArrayItem);
+              break;
+            case 'custom':
+              _app2.default.log('绘制可控层级序列, 绘制自定义内容');
+              if (drawArrayItem.setDraw && typeof drawArrayItem.setDraw === 'function')
+              drawArrayItem.setDraw(Context);
+              break;drawRoundStrokeRect, drawStrokeRect;
+            case 'fillRect':
+              _app2.default.log('绘制可控层级序列, 绘制填充直角矩形');
+              drawFillRect(Context, drawArrayItem);
+              break;
+            case 'strokeRect':
+              _app2.default.log('绘制可控层级序列, 绘制线条直角矩形');
+              drawStrokeRect(Context, drawArrayItem);
+              break;
+            case 'roundStrokeRect':
+              _app2.default.log('绘制可控层级序列, 绘制线条圆角矩形');
+              drawRoundStrokeRect(Context, drawArrayItem);
+              break;
+            case 'roundFillRect':
+              _app2.default.log('绘制可控层级序列, 绘制填充圆角矩形');
+              drawRoundFillRect(Context, drawArrayItem);
+              break;
+            default:
+              _app2.default.log('未识别的类型');
+              break;}
+
+        }
+      }
+      _app2.default.showLoading('绘制中');
+      setTimeout(function () {
+        _app2.default.log('准备执行draw方法');
+        _app2.default.log('Context:' + Context);
+        var fn = function fn() {
+          _app2.default.showLoading('正在输出图片');
+          var setObj = setCanvasToTempFilePath || {};
+          if (setObj && typeof setObj == 'function')
+          setObj = setCanvasToTempFilePath(bgObj, type);
+          var canvasToTempFilePathFn;
+          var data = _objectSpread({
+            x: 0,
+            y: 0,
+            width: bgObj.width,
+            height: bgObj.height,
+            destWidth: bgObj.width, // 若H5使用这里请不要乘以二
+            destHeight: bgObj.height, // 若H5使用这里请不要乘以二
+            quality: .8,
+            fileType: 'jpg' },
+          setObj);
+
+          _app2.default.log('canvasToTempFilePath的data对象:' + JSON.stringify(data));
+          canvasToTempFilePathFn = function canvasToTempFilePathFn() {
+            var toTempFilePathObj = _objectSpread({},
+            data, {
+              canvasId: posterCanvasId,
+              success: function success(res) {
+                _app2.default.hideLoading();
+                rs(res);
+              },
+              fail: function fail(err) {
+                _app2.default.hideLoading();
+                _app2.default.log('输出图片失败:' + JSON.stringify(err));
+                rj('输出图片失败:' + JSON.stringify(err));
+              } });
+
+            uni.canvasToTempFilePath(toTempFilePathObj, _this || null);
+          };
+          var delayTime = 0;
+          if (qrCodeArray) {
+            qrCodeArray.forEach(function (item) {
+              if (item.text) {
+                delayTime += Number(item.text.length);
+              }
+            });
+          }
+          if (imagesArray) {
+            imagesArray.forEach(function () {
+              delayTime += delayTimeScale;
+            });
+          }
+          if (textArray) {
+            textArray.forEach(function () {
+              delayTime += delayTimeScale;
+            });
+          }
+          if (drawArray) {
+            drawArray.forEach(function (item) {
+              switch (item.type) {
+                case 'text':
+                  if (item.text) {
+                    delayTime += item.text.length;
+                  }
+                  break;
+                default:
+                  delayTime += delayTimeScale;
+                  break;}
+
+            });
+          }
+          _app2.default.log('延时系数:' + delayTimeScale);
+          _app2.default.log('总计延时:' + delayTime);
+          setTimeout(canvasToTempFilePathFn, delayTime);
+        };
+        Context.draw(typeof reserve == 'boolean' ? reserve : false, fn);
+      }, drawDelayTime);
+    } catch (e) {
+      //TODO handle the exception
+      _app2.default.hideLoading();
+      rj(e);
+    }
+  });
+}
+
+// export
+function drawFillRect(Context) {var drawArrayItem = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {}; //填充矩形
+  _app2.default.log('进入绘制填充直角矩形方法, drawArrayItem:' + JSON.stringify(drawArrayItem));
+  Context.setFillStyle(drawArrayItem.backgroundColor || 'black');
+  Context.setGlobalAlpha(drawArrayItem.alpha || 1);
+  Context.fillRect(drawArrayItem.dx || 0, drawArrayItem.dy || 0, drawArrayItem.width || 0, drawArrayItem.height || 0);
+  Context.setGlobalAlpha(1);
+}
+
+// export
+function drawStrokeRect(Context) {var drawArrayItem = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {}; //线条矩形
+  Context.setStrokeStyle(drawArrayItem.color || 'black');
+  Context.setLineWidth(drawArrayItem.lineWidth || 1);
+  Context.strokeRect(drawArrayItem.dx, drawArrayItem.dy, drawArrayItem.width, drawArrayItem.height);
+}
+
+// export
+function drawRoundStrokeRect(Context) {var drawArrayItem = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};var
+  dx = drawArrayItem.dx,dy = drawArrayItem.dy,width = drawArrayItem.width,height = drawArrayItem.height,r = drawArrayItem.r,lineWidth = drawArrayItem.lineWidth,color = drawArrayItem.color;
+  r = r || width * .1;
+
+  if (width < 2 * r) {
+    r = width / 2;
+  }
+  if (width < 2 * r) {
+    r = width / 2;
+  }
+  Context.beginPath();
+  Context.moveTo(dx + r, dy);
+  Context.arcTo(dx + width, dy, dx + width, dy + height, r);
+  Context.arcTo(dx + width, dy + height, dx, dy + height, r);
+  Context.arcTo(dx, dy + height, dx, dy, r);
+  Context.arcTo(dx, dy, dx + width, dy, r);
+  Context.closePath();
+  Context.setLineWidth(lineWidth || 1);
+  Context.setStrokeStyle(color || 'black');
+  Context.stroke();
+}
+
+// export
+function drawRoundFillRect(Context) {var drawArrayItem = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};var
+  dx = drawArrayItem.dx,dy = drawArrayItem.dy,width = drawArrayItem.width,height = drawArrayItem.height,r = drawArrayItem.r,backgroundColor = drawArrayItem.backgroundColor;
+  r = r || width * .1;
+
+  if (width < 2 * r) {
+    r = width / 2;
+  }
+  if (width < 2 * r) {
+    r = width / 2;
+  }
+  Context.beginPath();
+  Context.moveTo(dx + r, dy);
+  Context.arcTo(dx + width, dy, dx + width, dy + height, r);
+  Context.arcTo(dx + width, dy + height, dx, dy + height, r);
+  Context.arcTo(dx, dy + height, dx, dy, r);
+  Context.arcTo(dx, dy, dx + width, dy, r);
+  Context.closePath();
+  Context.setFillStyle(backgroundColor);
+  Context.fill();
+}
+
+// export 
+function setText(Context, texts) {// 设置文本数据
+  _app2.default.log('进入设置文字方法, texts:' + JSON.stringify(texts));
+  if (texts && _app2.default.isArray(texts)) {
+    _app2.default.log('texts是数组');
+    if (texts.length > 0) {
+      for (var i = 0; i < texts.length; i++) {
+        _app2.default.log('字符串信息-初始化之前:' + JSON.stringify(texts[i]));
+        texts[i] = setTextFn(Context, texts[i]);
+      }
+    }
+  } else {
+    _app2.default.log('texts是对象');
+    texts = setTextFn(Context, texts);
+  }
+  _app2.default.log('返回texts:' + JSON.stringify(texts));
+  return texts;
+}
+
+function setTextFn(Context, textItem) {
+  _app2.default.log('进入设置文字方法, textItem:' + JSON.stringify(textItem));
+  if (_app2.default.isNotNull_string(textItem.text)) {
+    textItem.text = String(textItem.text);
+    textItem.alpha = textItem.alpha !== undefined ? Number(textItem.alpha) : 1;
+    textItem.color = textItem.color || 'black';
+    textItem.size = textItem.size !== undefined ? Number(textItem.size) : 10;
+    textItem.textAlign = textItem.textAlign || 'left';
+    textItem.textBaseline = textItem.textBaseline || 'middle';
+    textItem.dx = Number(textItem.dx) || 0;
+    textItem.dy = Number(textItem.dy) || 0;
+    textItem.size = Math.ceil(Number(textItem.size));
+    _app2.default.log('字符串信息-初始化默认值后:' + JSON.stringify(textItem));
+    var textLength = countTextLength(Context, {
+      text: textItem.text,
+      size: textItem.size });
+
+    _app2.default.log('字符串信息-初始化时的文本长度:' + textLength);
+    var infoCallBackObj = {};
+    if (textItem.infoCallBack && typeof textItem.infoCallBack === 'function') {
+      infoCallBackObj = textItem.infoCallBack(textLength);
+    }
+    textItem = _objectSpread({},
+    textItem, {
+      textLength: textLength },
+    infoCallBackObj);
+
+    _app2.default.log('字符串信息-infoCallBack后:' + JSON.stringify(textItem));
+  }
+  return textItem;
+}
+
+function countTextLength(Context, obj) {
+  _app2.default.log('计算文字长度, obj:' + JSON.stringify(obj));var
+
+  text =
+
+  obj.text,size = obj.size;
+  Context.setFontSize(size);
+  var textLength;
+  try {
+    textLength = Context.measureText(text); // 官方文档说 App端自定义组件编译模式暂时不可用measureText方法
+  } catch (e) {
+    //TODO handle the exception
+    textLength = {};
+  }
+  textLength = {};
+  _app2.default.log('measureText计算文字长度, textLength:' + JSON.stringify(textLength));
+  textLength = textLength && textLength.width ? textLength.width : 0;
+  if (!textLength) {
+    var l = 0;
+    for (var j = 0; j < text.length; j++) {
+      var t = text.substr(j, 1);
+      var countL = countStrLength(t);
+      _app2.default.log('计算文字宽度系数:' + countL);
+      l += countL;
+    }
+    _app2.default.log('文字宽度总系数:' + l);
+    textLength = l * size;
+  }
+  return textLength;
+}
+
+//计算字符长度系数
+function countStrLength(t) {
+  var l;
+  if (/a/.test(t)) {
+    l = 0.552734375;
+  } else if (/b/.test(t)) {
+    l = 0.638671875;
+  } else if (/c/.test(t)) {
+    l = 0.50146484375;
+  } else if (/d/.test(t)) {
+    l = 0.6396484375;
+  } else if (/e/.test(t)) {
+    l = 0.5673828125;
+  } else if (/f/.test(t)) {
+    l = 0.3466796875;
+  } else if (/g/.test(t)) {
+    l = 0.6396484375;
+  } else if (/h/.test(t)) {
+    l = 0.61572265625;
+  } else if (/i/.test(t)) {
+    l = 0.26611328125;
+  } else if (/j/.test(t)) {
+    l = 0.26708984375;
+  } else if (/k/.test(t)) {
+    l = 0.54443359375;
+  } else if (/l/.test(t)) {
+    l = 0.26611328125;
+  } else if (/m/.test(t)) {
+    l = 0.93701171875;
+  } else if (/n/.test(t)) {
+    l = 0.6162109375;
+  } else if (/o/.test(t)) {
+    l = 0.6357421875;
+  } else if (/p/.test(t)) {
+    l = 0.638671875;
+  } else if (/q/.test(t)) {
+    l = 0.6396484375;
+  } else if (/r/.test(t)) {
+    l = 0.3818359375;
+  } else if (/s/.test(t)) {
+    l = 0.462890625;
+  } else if (/t/.test(t)) {
+    l = 0.37255859375;
+  } else if (/u/.test(t)) {
+    l = 0.6162109375;
+  } else if (/v/.test(t)) {
+    l = 0.52490234375;
+  } else if (/w/.test(t)) {
+    l = 0.78955078125;
+  } else if (/x/.test(t)) {
+    l = 0.5068359375;
+  } else if (/y/.test(t)) {
+    l = 0.529296875;
+  } else if (/z/.test(t)) {
+    l = 0.49169921875;
+  } else if (/A/.test(t)) {
+    l = 0.70361328125;
+  } else if (/B/.test(t)) {
+    l = 0.62744140625;
+  } else if (/C/.test(t)) {
+    l = 0.6689453125;
+  } else if (/D/.test(t)) {
+    l = 0.76171875;
+  } else if (/E/.test(t)) {
+    l = 0.5498046875;
+  } else if (/F/.test(t)) {
+    l = 0.53125;
+  } else if (/G/.test(t)) {
+    l = 0.74365234375;
+  } else if (/H/.test(t)) {
+    l = 0.7734375;
+  } else if (/I/.test(t)) {
+    l = 0.2939453125;
+  } else if (/J/.test(t)) {
+    l = 0.39599609375;
+  } else if (/K/.test(t)) {
+    l = 0.634765625;
+  } else if (/L/.test(t)) {
+    l = 0.51318359375;
+  } else if (/M/.test(t)) {
+    l = 0.97705078125;
+  } else if (/N/.test(t)) {
+    l = 0.81298828125;
+  } else if (/O/.test(t)) {
+    l = 0.81494140625;
+  } else if (/P/.test(t)) {
+    l = 0.61181640625;
+  } else if (/Q/.test(t)) {
+    l = 0.81494140625;
+  } else if (/R/.test(t)) {
+    l = 0.65283203125;
+  } else if (/S/.test(t)) {
+    l = 0.5771484375;
+  } else if (/T/.test(t)) {
+    l = 0.5732421875;
+  } else if (/U/.test(t)) {
+    l = 0.74658203125;
+  } else if (/V/.test(t)) {
+    l = 0.67626953125;
+  } else if (/W/.test(t)) {
+    l = 1.017578125;
+  } else if (/X/.test(t)) {
+    l = 0.64501953125;
+  } else if (/Y/.test(t)) {
+    l = 0.603515625;
+  } else if (/Z/.test(t)) {
+    l = 0.6201171875;
+  } else if (/[0-9]/.test(t)) {
+    l = 0.58642578125;
+  } else if (/[\u4e00-\u9fa5]/.test(t)) {
+    l = 1;
+  } else if (/ /.test(t)) {
+    l = 0.2958984375;
+  } else if (/\`/.test(t)) {
+    l = 0.294921875;
+  } else if (/\~/.test(t)) {
+    l = 0.74169921875;
+  } else if (/\!/.test(t)) {
+    l = 0.3125;
+  } else if (/\@/.test(t)) {
+    l = 1.03125;
+  } else if (/\#/.test(t)) {
+    l = 0.63818359375;
+  } else if (/\$/.test(t)) {
+    l = 0.58642578125;
+  } else if (/\%/.test(t)) {
+    l = 0.8896484375;
+  } else if (/\^/.test(t)) {
+    l = 0.74169921875;
+  } else if (/\&/.test(t)) {
+    l = 0.8701171875;
+  } else if (/\*/.test(t)) {
+    l = 0.455078125;
+  } else if (/\(/.test(t)) {
+    l = 0.333984375;
+  } else if (/\)/.test(t)) {
+    l = 0.333984375;
+  } else if (/\_/.test(t)) {
+    l = 0.4482421875;
+  } else if (/\-/.test(t)) {
+    l = 0.4326171875;
+  } else if (/\+/.test(t)) {
+    l = 0.74169921875;
+  } else if (/\=/.test(t)) {
+    l = 0.74169921875;
+  } else if (/\|/.test(t)) {
+    l = 0.26904296875;
+  } else if (/\\/.test(t)) {
+    l = 0.416015625;
+  } else if (/\[/.test(t)) {
+    l = 0.333984375;
+  } else if (/\]/.test(t)) {
+    l = 0.333984375;
+  } else if (/\;/.test(t)) {
+    l = 0.24072265625;
+  } else if (/\'/.test(t)) {
+    l = 0.25634765625;
+  } else if (/\,/.test(t)) {
+    l = 0.24072265625;
+  } else if (/\./.test(t)) {
+    l = 0.24072265625;
+  } else if (/\//.test(t)) {
+    l = 0.42724609375;
+  } else if (/\{/.test(t)) {
+    l = 0.333984375;
+  } else if (/\}/.test(t)) {
+    l = 0.333984375;
+  } else if (/\:/.test(t)) {
+    l = 0.24072265625;
+  } else if (/\"/.test(t)) {
+    l = 0.435546875;
+  } else if (/\</.test(t)) {
+    l = 0.74169921875;
+  } else if (/\>/.test(t)) {
+    l = 0.74169921875;
+  } else if (/\?/.test(t)) {
+    l = 0.48291015625;
+  } else {
+    l = 1;
+  }
+  return l;
+}
+
+// export 
+function setImage(images) {// 设置图片数据
+  _app2.default.log('进入设置图片数据方法');
+  return new Promise( /*#__PURE__*/function () {var _ref3 = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee3(resolve, rejcet) {var i;return _regenerator.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:_context3.prev = 0;if (!(
+
+              images && _app2.default.isArray(images))) {_context3.next = 14;break;}
+              _app2.default.log('images是一个数组');
+              i = 0;case 4:if (!(i < images.length)) {_context3.next = 12;break;}
+              _app2.default.log('设置图片数据循环中:' + i);_context3.next = 8;return (
+                setImageFn(images[i]));case 8:images[i] = _context3.sent;case 9:i++;_context3.next = 4;break;case 12:_context3.next = 18;break;case 14:
+
+
+              _app2.default.log('images是一个对象');_context3.next = 17;return (
+                setImageFn(images));case 17:images = _context3.sent;case 18:
+
+              resolve(images);_context3.next = 24;break;case 21:_context3.prev = 21;_context3.t0 = _context3["catch"](0);
+
+              //TODO handle the exception
+              rejcet(_context3.t0);case 24:case "end":return _context3.stop();}}}, _callee3, null, [[0, 21]]);}));return function (_x5, _x6) {return _ref3.apply(this, arguments);};}());
+
+
+}
+
+function base64ToPathFn(path) {
+  var reg = /^\s*data:([a-z]+\/[a-z0-9-+.]+(;[a-z-]+=[a-z0-9-]+)?)?(;base64)?,([a-z0-9!$&',()*+;=\-._~:@\/?%\s]*?)\s*$/i;
+  if (!reg.test(path)) {
+    return Promise.resolve(path);
+  }
+  return (0, _imageTools.base64ToPath)(path);
+}
+
+function setImageFn(image) {
+  return new Promise( /*#__PURE__*/function () {var _ref4 = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee4(resolve, reject) {var imgUrl, hasinfoCallBack, imageInfo;return _regenerator.default.wrap(function _callee4$(_context4) {while (1) {switch (_context4.prev = _context4.next) {case 0:if (!
+              image.url) {_context4.next = 20;break;}_context4.next = 3;return (
+                base64ToPathFn(image.url));case 3:image.url = _context4.sent;
+              imgUrl = image.url;_context4.next = 7;return (
+                _app2.default.downloadFile_PromiseFc(imgUrl));case 7:imgUrl = _context4.sent;
+              image.url = imgUrl;
+              hasinfoCallBack = image.infoCallBack && typeof image.infoCallBack === 'function';
+              imageInfo = {};_context4.next = 13;return (
+                _app2.default.getImageInfo_PromiseFc(imgUrl));case 13:imageInfo = _context4.sent;
+              if (hasinfoCallBack) {
+                image = _objectSpread({},
+                image, {},
+                image.infoCallBack(imageInfo));
+
+              }
+              image.dx = Number(image.dx) || 0;
+              image.dy = Number(image.dy) || 0;
+              image.dWidth = Number(image.dWidth || imageInfo.width);
+              image.dHeight = Number(image.dHeight || imageInfo.height);
+              image = _objectSpread({},
+              image, {
+                imageInfo: imageInfo });case 20:
+
+
+              resolve(image);case 21:case "end":return _context4.stop();}}}, _callee4);}));return function (_x7, _x8) {return _ref4.apply(this, arguments);};}());
+
+}
+
+// export 
+function drawText(Context, textArray, bgObj) {// 先遍历换行再绘制
+  if (!_app2.default.isArray(textArray)) {
+    _app2.default.log('遍历文本方法, 不是数组');
+    textArray = [textArray];
+  } else {
+    _app2.default.log('遍历文本方法, 是数组');
+  }
+  _app2.default.log('遍历文本方法, textArray:' + JSON.stringify(textArray));
+  var newArr = [];
+  if (textArray && textArray.length > 0) {
+    for (var j = 0; j < textArray.length; j++) {
+      var textItem = textArray[j];
+      if (textItem.text && textItem.lineFeed) {
+        var lineNum = -1,
+        maxWidth = bgObj.width,
+        lineHeight = textItem.size,
+        dx = textItem.dx;
+        if (_app2.default.isObject(textItem.lineFeed)) {
+          var lineFeed = textItem.lineFeed;
+          lineNum = lineFeed.lineNum !== undefined && typeof lineFeed.lineNum === 'number' && lineFeed.lineNum >= 0 ?
+          lineFeed.lineNum : lineNum;
+          maxWidth = lineFeed.maxWidth !== undefined && typeof lineFeed.maxWidth === 'number' ? lineFeed.maxWidth :
+          maxWidth;
+          lineHeight = lineFeed.lineHeight !== undefined && typeof lineFeed.lineHeight === 'number' ? lineFeed.lineHeight :
+          lineHeight;
+          dx = lineFeed.dx !== undefined && typeof lineFeed.dx === 'number' ? lineFeed.dx : dx;
+        }
+        var chr = textItem.text.split("");
+        var temp = "";
+        var row = [];
+        //循环出几行文字组成数组
+        for (var a = 0, len = chr.length; a < len; a++) {
+          if (countTextLength(Context, {
+            text: temp,
+            size: textItem.size }) <=
+          maxWidth && countTextLength(Context, {
+            text: temp + chr[a],
+            size: textItem.size }) <=
+          maxWidth) {
+            temp += chr[a];
+            if (a == chr.length - 1) {
+              row.push(temp);
+            }
+          } else {
+            row.push(temp);
+            temp = chr[a];
+          }
+        }
+        _app2.default.log('循环出的文本数组:' + JSON.stringify(row));
+        //只显示几行 变量间距lineHeight  变量行数lineNum
+        var allNum = lineNum >= 0 && lineNum < row.length ? lineNum : row.length;
+
+        for (var i = 0; i < allNum; i++) {
+          var str = row[i];
+          if (i == allNum - 1 && allNum < row.length) {
+            str = str.substring(0, str.length - 1) + '...';
+          }
+          var obj = _objectSpread({}, textItem, {
+            text: str,
+            dx: i === 0 ? textItem.dx : dx >= 0 ? dx : textItem.dx,
+            dy: textItem.dy + i * lineHeight,
+            textLength: countTextLength(Context, {
+              text: str,
+              size: textItem.size }) });
+
+
+          _app2.default.log('重新组成的文本对象:' + JSON.stringify(obj));
+          newArr.push(obj);
+        }
+      } else {
+        newArr.push(textItem);
+      }
+    }
+  }
+  _app2.default.log('绘制文本新数组:' + JSON.stringify(newArr));
+  drawTexts(Context, newArr);
+}
+
+function setFont() {var textItem = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  if (textItem.font && typeof textItem.font === 'string') {
+    _app2.default.log(textItem.font);
+    return textItem.font;
+  } else {
+    var fontStyle = 'normal';
+    var fontVariant = 'normal';
+    var fontWeight = 'normal';
+    var fontSize = textItem.size || 10;
+    var fontFamily = 'sans-serif';
+    fontSize = Math.ceil(Number(fontSize));
+    if (textItem.fontStyle && typeof textItem.fontStyle === 'string')
+    fontStyle = textItem.fontStyle.trim();
+    if (textItem.fontVariant && typeof textItem.fontVariant === 'string')
+    fontVariant = textItem.fontVariant.trim();
+    if (textItem.fontWeight && (typeof textItem.fontWeight === 'string' || typeof textItem.fontWeight === 'number'))
+    fontWeight = textItem.fontWeight.trim();
+    if (textItem.fontFamily && typeof textItem.fontFamily === 'string')
+    fontFamily = textItem.fontFamily.trim();
+    return fontStyle + ' ' +
+    fontVariant + ' ' +
+    fontWeight + ' ' +
+    fontSize + 'px' + ' ' +
+    fontFamily;
+  }
+}
+
+function drawTexts(Context, texts) {// 绘制文本
+  _app2.default.log('准备绘制文本方法, texts:' + JSON.stringify(texts));
+  if (texts && _app2.default.isArray(texts)) {
+    _app2.default.log('准备绘制文本方法, 是数组');
+    if (texts.length > 0) {
+      for (var i = 0; i < texts.length; i++) {
+        drawTextFn(Context, texts[i]);
+      }
+    }
+  } else {
+    _app2.default.log('准备绘制文本方法, 不是数组');
+    drawTextFn(Context, texts);
+  }
+}
+
+function drawTextFn(Context, textItem) {
+  _app2.default.log('进入绘制文本方法, textItem:' + JSON.stringify(textItem));
+  if (textItem && _app2.default.isObject(textItem) && textItem.text) {
+    Context.font = setFont(textItem);
+    Context.setFillStyle(textItem.color);
+    Context.setGlobalAlpha(textItem.alpha);
+    Context.setTextAlign(textItem.textAlign);
+    Context.setTextBaseline(textItem.textBaseline);
+    Context.fillText(textItem.text, textItem.dx, textItem.dy);
+    if (textItem.lineThrough && _app2.default.isObject(textItem.lineThrough)) {
+      _app2.default.log('有删除线');
+      var lineThrough = textItem.lineThrough;
+      lineThrough.alpha = lineThrough.alpha !== undefined ? lineThrough.alpha : textItem.alpha;
+      lineThrough.style = lineThrough.style || textItem.color;
+      lineThrough.width = lineThrough.width !== undefined ? lineThrough.width : textItem.size / 10;
+      lineThrough.cap = lineThrough.cap !== undefined ? lineThrough.cap : 'butt';
+      _app2.default.log('删除线对象:' + JSON.stringify(lineThrough));
+      Context.setGlobalAlpha(lineThrough.alpha);
+      Context.setStrokeStyle(lineThrough.style);
+      Context.setLineWidth(lineThrough.width);
+      Context.setLineCap(lineThrough.cap);
+      var mx, my;
+      switch (textItem.textAlign) {
+        case 'left':
+          mx = textItem.dx;
+          break;
+        case 'center':
+          mx = textItem.dx - textItem.textLength / 2;
+          break;
+        default:
+          mx = textItem.dx - textItem.textLength;
+          break;}
+
+      switch (textItem.textBaseline) {
+        case 'top':
+          my = textItem.dy + textItem.size * .5;
+          break;
+        case 'middle':
+          my = textItem.dy;
+          break;
+        default:
+          my = textItem.dy - textItem.size * .5;
+          break;}
+
+      Context.beginPath();
+      Context.moveTo(mx, my);
+      Context.lineTo(mx + textItem.textLength, my);
+      Context.stroke();
+      Context.closePath();
+      _app2.default.log('删除线完毕');
+    }
+    Context.setGlobalAlpha(1);
+    Context.font = '10px sans-serif';
+  }
+}
+// export 
+function drawImage(Context, images) {// 绘制图片
+  _app2.default.log('判断图片数据类型:' + JSON.stringify(images));
+  if (images && _app2.default.isArray(images)) {
+    if (images.length > 0) {
+      for (var i = 0; i < images.length; i++) {
+        readyDrawImageFn(Context, images[i]);
+      }
+    }
+  } else {
+    readyDrawImageFn(Context, images);
+  }
+
+}
+
+function readyDrawImageFn(Context, img) {
+  _app2.default.log('判断绘制图片形状, img:' + JSON.stringify(img));
+  if (img.url) {
+    if (img.circleSet) {
+      drawCircleImage(Context, img);
+    } else if (img.roundRectSet) {
+      drawRoundRectImage(Context, img);
+    } else {
+      drawImageFn(Context, img);
+    }
+  }
+}
+
+function drawImageFn(Context, img) {
+  _app2.default.log('进入绘制默认图片方法, img:' + JSON.stringify(img));
+  if (img.url) {
+    var hasAlpha = !_app2.default.isUndef(img.alpha);
+    img.alpha = Number(!_app2.default.isUndef(img.alpha) ? img.alpha : 1);
+    Context.setGlobalAlpha(img.alpha);
+    _app2.default.log('绘制默认图片方法, 有url');
+    if (img.dWidth && img.dHeight && img.sx && img.sy && img.sWidth && img.sHeight) {
+      _app2.default.log('绘制默认图片方法, 绘制第一种方案');
+      Context.drawImage(img.url,
+      Number(img.sx) || false, Number(img.sy) || false,
+      Number(img.sWidth) || false, Number(img.sHeight) || false,
+      Number(img.dx || 0), Number(img.dy || 0),
+      Number(img.dWidth) || false, Number(img.dHeight) || false);
+    } else if (img.dWidth && img.dHeight) {
+      _app2.default.log('绘制默认图片方法, 绘制第二种方案');
+      Context.drawImage(img.url, Number(img.dx || 0), Number(img.dy || 0),
+      Number(img.dWidth) || false, Number(img.dHeight) || false);
+    } else {
+      _app2.default.log('绘制默认图片方法, 绘制第三种方案');
+      Context.drawImage(img.url, Number(img.dx || 0), Number(img.dy || 0));
+    }
+    if (hasAlpha) {
+      Context.setGlobalAlpha(1);
+    }
+  }
+  _app2.default.log('绘制默认图片方法, 绘制完毕');
+}
+
+function drawCircleImage(Context, obj) {
+  _app2.default.log('进入绘制圆形图片方法, obj:' + JSON.stringify(obj));var
+
+  dx =
+
+
+
+
+
+  obj.dx,dy = obj.dy,dWidth = obj.dWidth,dHeight = obj.dHeight,circleSet = obj.circleSet,imageInfo = obj.imageInfo;
+  var x, y, r;
+  if (typeof circleSet === 'object') {
+    x = circleSet.x;
+    y = circleSet.y;
+    r = circleSet.r;
+  }
+  if (!r) {
+    var d;
+    d = dWidth > dHeight ? dHeight : dWidth;
+    r = d / 2;
+  }
+
+  x = x ? dx + x : (dx || 0) + r;
+  y = y ? dy + y : (dy || 0) + r;
+  Context.save();
+  Context.beginPath();
+  Context.arc(x, y, r, 0, 2 * Math.PI, false);
+  Context.closePath();
+  Context.setGlobalAlpha(0);
+  Context.fillStyle = '#FFFFFF';
+  Context.fill();
+  Context.setGlobalAlpha(1);
+  Context.clip();
+  drawImageFn(Context, obj);
+  _app2.default.log('默认图片绘制完毕');
+  Context.restore();
+}
+
+function drawRoundRectImage(Context, obj) {// 绘制矩形
+  _app2.default.log('进入绘制矩形图片方法, obj:' + JSON.stringify(obj));
+  Context.save();var
+
+  dx =
+
+
+
+
+
+  obj.dx,dy = obj.dy,dWidth = obj.dWidth,dHeight = obj.dHeight,roundRectSet = obj.roundRectSet,imageInfo = obj.imageInfo;
+  var r;
+  if (typeof roundRectSet === 'object') {
+    r = roundRectSet.r;
+  }
+  r = r || dWidth * .1;
+
+  if (dWidth < 2 * r) {
+    r = dWidth / 2;
+  }
+  if (dHeight < 2 * r) {
+    r = dHeight / 2;
+  }
+  Context.beginPath();
+  Context.moveTo(dx + r, dy);
+  Context.arcTo(dx + dWidth, dy, dx + dWidth, dy + dHeight, r);
+  Context.arcTo(dx + dWidth, dy + dHeight, dx, dy + dHeight, r);
+  Context.arcTo(dx, dy + dHeight, dx, dy, r);
+  Context.arcTo(dx, dy, dx + dWidth, dy, r);
+  Context.closePath();
+  Context.setGlobalAlpha(0);
+  Context.fillStyle = '#FFFFFF';
+  Context.fill();
+  Context.setGlobalAlpha(1);
+  Context.clip();
+  drawImageFn(Context, obj);
+  Context.restore();
+  _app2.default.log('进入绘制矩形图片方法, 绘制完毕');
+}
+
+// export 
+function drawQrCode(Context, qrCodeObj) {//生成二维码方法， 参考了 诗小柒 的二维码生成器代码
+  _app2.default.log('进入绘制二维码方法');
+  _app2.default.showLoading('正在生成二维码');
+  var qrcodeAlgObjCache = [];
+  var options = {
+    text: String(qrCodeObj.text || '') || '', // 生成内容
+    size: Number(qrCodeObj.size || 0) || 200, // 二维码大小
+    background: String(qrCodeObj.background || '') || '#ffffff', // 背景色
+    foreground: String(qrCodeObj.foreground || '') || '#000000', // 前景色
+    pdground: String(qrCodeObj.pdground || '') || '#000000', // 定位角点颜色
+    correctLevel: Number(qrCodeObj.correctLevel || 0) || 3, // 容错级别
+    image: String(qrCodeObj.image || '') || '', // 二维码图标
+    imageSize: Number(qrCodeObj.imageSize || 0) || 40, // 二维码图标大小
+    dx: Number(qrCodeObj.dx || 0) || 0, // x轴距离
+    dy: Number(qrCodeObj.dy || 0) || 0 // y轴距离
+  };
+  var qrCodeAlg = null;
+  var d = 0;
+  for (var i = 0, l = qrcodeAlgObjCache.length; i < l; i++) {
+    d = i;
+    if (qrcodeAlgObjCache[i].text == options.text && qrcodeAlgObjCache[i].text.correctLevel == options.correctLevel) {
+      qrCodeAlg = qrcodeAlgObjCache[i].obj;
+      break;
+    }
+  }
+  if (d == l) {
+    qrCodeAlg = new _QRCodeAlg.default(options.text, options.correctLevel);
+    qrcodeAlgObjCache.push({
+      text: options.text,
+      correctLevel: options.correctLevel,
+      obj: qrCodeAlg });
+
+  }
+  var getForeGround = function getForeGround(config) {
+    var options = config.options;
+    if (options.pdground && (
+    config.row > 1 && config.row < 5 && config.col > 1 && config.col < 5 ||
+    config.row > config.count - 6 && config.row < config.count - 2 && config.col > 1 && config.col < 5 ||
+    config.row > 1 && config.row < 5 && config.col > config.count - 6 && config.col < config.count - 2))
+    {
+      return options.pdground;
+    }
+    return options.foreground;
+  };
+  var count = qrCodeAlg.getModuleCount();
+  var ratioSize = options.size;
+  var ratioImgSize = options.imageSize;
+  //计算每个点的长宽
+  var tileW = (ratioSize / count).toPrecision(4);
+  var tileH = (ratioSize / count).toPrecision(4);
+  //绘制
+  for (var row = 0; row < count; row++) {
+    for (var col = 0; col < count; col++) {
+      var w = Math.ceil((col + 1) * tileW) - Math.floor(col * tileW);
+      var h = Math.ceil((row + 1) * tileW) - Math.floor(row * tileW);
+      var foreground = getForeGround({
+        row: row,
+        col: col,
+        count: count,
+        options: options });
+
+      Context.setFillStyle(qrCodeAlg.modules[row][col] ? foreground : options.background);
+      Context.fillRect(options.dx + Math.round(col * tileW), options.dy + Math.round(row * tileH), w, h);
+    }
+  }
+  if (options.image) {
+
+
+
+
+    // 画圆角矩形
+    var drawRoundedRect = function drawRoundedRect(ctxi, x, y, width, height, r, lineWidth, fill, stroke) {
+      ctxi.setLineWidth(lineWidth);
+      ctxi.setFillStyle(options.background);
+      ctxi.setStrokeStyle(options.background);
+      ctxi.beginPath(); // draw top and top right corner 
+      ctxi.moveTo(x + r, y);
+      ctxi.arcTo(x + width, y, x + width, y + r, r); // draw right side and bottom right corner 
+      ctxi.arcTo(x + width, y + height, x + width - r, y + height, r); // draw bottom and bottom left corner 
+      ctxi.arcTo(x, y + height, x, y + height - r, r); // draw left and top left corner 
+      ctxi.arcTo(x, y, x + r, y, r);
+      ctxi.closePath();
+      if (fill) {
+        ctxi.fill();
+      }
+      if (stroke) {
+        ctxi.stroke();
+      }
+    };var x = options.dx + Number(((ratioSize - ratioImgSize) / 2).toFixed(2));var y = options.dy + Number(((ratioSize - ratioImgSize) / 2).toFixed(2));drawRoundedRect(Context, x, y, ratioImgSize, ratioImgSize, 2, 6, true, true);Context.drawImage(options.image, x, y, ratioImgSize, ratioImgSize);
+  }
+  _app2.default.log('进入绘制二维码方法完毕');
+  _app2.default.hideLoading();
+}
+
+
+function getShreUserPosterBackground(objs) {//检查背景图是否存在于本地， 若存在直接返回， 否则调用getShreUserPosterBackgroundFc方法
+  var
+  backgroundImage =
+
+  objs.backgroundImage,type = objs.type;
+  return new Promise( /*#__PURE__*/function () {var _ref5 = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee5(resolve, reject) {var savedFilePath;return _regenerator.default.wrap(function _callee5$(_context5) {while (1) {switch (_context5.prev = _context5.next) {case 0:_context5.prev = 0;
+
+              _app2.default.showLoading('正在获取海报背景图');_context5.next = 4;return (
+                getShreUserPosterBackgroundFc(objs));case 4:savedFilePath = _context5.sent;
+              _app2.default.hideLoading();
+              resolve(savedFilePath);_context5.next = 15;break;case 9:_context5.prev = 9;_context5.t0 = _context5["catch"](0);
+
+              _app2.default.hideLoading();
+              _app2.default.showToast('获取分享用户背景图失败:' + JSON.stringify(_context5.t0));
+              _app2.default.log(JSON.stringify(_context5.t0));
+              reject(_context5.t0);case 15:case "end":return _context5.stop();}}}, _callee5, null, [[0, 9]]);}));return function (_x9, _x10) {return _ref5.apply(this, arguments);};}());
+
+
+}
+
+function getPosterStorage(type) {
+  return _app2.default.getStorageSync(getStorageKey(type));
+}
+
+function removePosterStorage(type) {
+  var ShreUserPosterBackgroundKey = getStorageKey(type);
+  var pbg = _app2.default.getStorageSync(ShreUserPosterBackgroundKey);
+  if (pbg && pbg.path) {
+    _app2.default.removeStorageSync(ShreUserPosterBackgroundKey);
+  }
+}
+
+function setPosterStorage(type, data) {
+  _app2.default.setStorage(getStorageKey(type), data);
+}
+
+function getStorageKey(type) {
+  return ShreUserPosterBackgroundKey + (type || 'default');
+}
+
+function getShreUserPosterBackgroundFc(objs, upimage) {//下载并保存背景图方法
+  var
+  backgroundImage =
+
+  objs.backgroundImage,type = objs.type;
+  _app2.default.log('获取分享背景图, 尝试清空本地数据');
+  return new Promise( /*#__PURE__*/function () {var _ref6 = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee6(resolve, reject) {var image, savedFilePath, imageObj, returnObj;return _regenerator.default.wrap(function _callee6$(_context6) {while (1) {switch (_context6.prev = _context6.next) {case 0:_context6.prev = 0;
+
+              _app2.default.showLoading('正在下载海报背景图');
+              _app2.default.log('没有从后端获取的背景图片路径, 尝试从后端获取背景图片路径');if (!
+              backgroundImage) {_context6.next = 7;break;}_context6.t0 = backgroundImage;_context6.next = 10;break;case 7:_context6.next = 9;return _app2.default.getPosterUrl(objs);case 9:_context6.t0 = _context6.sent;case 10:image = _context6.t0;_context6.next = 13;return (
+                base64ToPathFn(image));case 13:image = _context6.sent;
+              _app2.default.log('尝试下载并保存背景图:' + image);_context6.next = 17;return (
+                _app2.default.downLoadAndSaveFile_PromiseFc(image));case 17:savedFilePath = _context6.sent;if (!
+              savedFilePath) {_context6.next = 32;break;}
+              _app2.default.log('下载并保存背景图成功:' + savedFilePath);_context6.next = 22;return (
+                _app2.default.getImageInfo_PromiseFc(savedFilePath));case 22:imageObj = _context6.sent;
+              _app2.default.log('获取图片信息成功');
+              returnObj = {
+                path: savedFilePath,
+                width: imageObj.width,
+                height: imageObj.height,
+                name: _app2.default.fileNameInPath(image) };
+
+              _app2.default.log('拼接背景图信息对象成功:' + JSON.stringify(returnObj));
+
+
+              setPosterStorage(type, _objectSpread({}, returnObj));
+
+
+
+              _app2.default.hideLoading();
+              _app2.default.log('返回背景图信息对象');
+              resolve(_objectSpread({}, returnObj));_context6.next = 34;break;case 32:
+
+
+              _app2.default.hideLoading();
+              reject('not find savedFilePath');case 34:_context6.next = 39;break;case 36:_context6.prev = 36;_context6.t1 = _context6["catch"](0);
+
+
+              //TODO handle the exception
+              reject(_context6.t1);case 39:case "end":return _context6.stop();}}}, _callee6, null, [[0, 36]]);}));return function (_x11, _x12) {return _ref6.apply(this, arguments);};}());
+
+
+}
+
+
+module.exports = {
+  getSharePoster: getSharePoster,
+  setText: setText,
+  setImage: setImage,
+  drawText: drawText,
+  drawImage: drawImage,
+  drawQrCode: drawQrCode,
+  drawFillRect: drawFillRect,
+  drawStrokeRect: drawStrokeRect,
+  drawRoundStrokeRect: drawRoundStrokeRect,
+  drawRoundFillRect: drawRoundFillRect };
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+
+/***/ }),
+
+/***/ 58:
+/*!*******************************************************************************************************************!*\
+  !*** C:/Users/yu13/Documents/HBuilderProjects/uni-shenqian/js_sdk/QuShe-SharerPoster/QS-SharePoster/QRCodeAlg.js ***!
+  \*******************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = QRCodeAlg; /**
+                                                                                                            * 获取单个字符的utf8编码
+                                                                                                            * unicode BMP平面约65535个字符
+                                                                                                            * @param {num} code
+                                                                                                            * return {array}
+                                                                                                            */
+function unicodeFormat8(code) {
+  // 1 byte
+  var c0, c1, c2;
+  if (code < 128) {
+    return [code];
+    // 2 bytes
+  } else if (code < 2048) {
+    c0 = 192 + (code >> 6);
+    c1 = 128 + (code & 63);
+    return [c0, c1];
+    // 3 bytes
+  } else {
+    c0 = 224 + (code >> 12);
+    c1 = 128 + (code >> 6 & 63);
+    c2 = 128 + (code & 63);
+    return [c0, c1, c2];
+  }
+}
+/**
+   * 获取字符串的utf8编码字节串
+   * @param {string} string
+   * @return {array}
+   */
+function getUTF8Bytes(string) {
+  var utf8codes = [];
+  for (var i = 0; i < string.length; i++) {
+    var code = string.charCodeAt(i);
+    var utf8 = unicodeFormat8(code);
+    for (var j = 0; j < utf8.length; j++) {
+      utf8codes.push(utf8[j]);
+    }
+  }
+  return utf8codes;
+}
+/**
+   * 二维码算法实现
+   * @param {string} data              要编码的信息字符串
+   * @param {num} errorCorrectLevel 纠错等级
+   */
+function QRCodeAlg(data, errorCorrectLevel) {
+  this.typeNumber = -1; //版本
+  this.errorCorrectLevel = errorCorrectLevel;
+  this.modules = null; //二维矩阵，存放最终结果
+  this.moduleCount = 0; //矩阵大小
+  this.dataCache = null; //数据缓存
+  this.rsBlocks = null; //版本数据信息
+  this.totalDataCount = -1; //可使用的数据量
+  this.data = data;
+  this.utf8bytes = getUTF8Bytes(data);
+  this.make();
+}
+QRCodeAlg.prototype = {
+  constructor: QRCodeAlg,
+  /**
+                           * 获取二维码矩阵大小
+                           * @return {num} 矩阵大小
+                           */
+  getModuleCount: function getModuleCount() {
+    return this.moduleCount;
+  },
+  /**
+      * 编码
+      */
+  make: function make() {
+    this.getRightType();
+    this.dataCache = this.createData();
+    this.createQrcode();
+  },
+  /**
+      * 设置二位矩阵功能图形
+      * @param  {bool} test 表示是否在寻找最好掩膜阶段
+      * @param  {num} maskPattern 掩膜的版本
+      */
+  makeImpl: function makeImpl(maskPattern) {
+    this.moduleCount = this.typeNumber * 4 + 17;
+    this.modules = new Array(this.moduleCount);
+    for (var row = 0; row < this.moduleCount; row++) {
+      this.modules[row] = new Array(this.moduleCount);
+    }
+    this.setupPositionProbePattern(0, 0);
+    this.setupPositionProbePattern(this.moduleCount - 7, 0);
+    this.setupPositionProbePattern(0, this.moduleCount - 7);
+    this.setupPositionAdjustPattern();
+    this.setupTimingPattern();
+    this.setupTypeInfo(true, maskPattern);
+    if (this.typeNumber >= 7) {
+      this.setupTypeNumber(true);
+    }
+    this.mapData(this.dataCache, maskPattern);
+  },
+  /**
+      * 设置二维码的位置探测图形
+      * @param  {num} row 探测图形的中心横坐标
+      * @param  {num} col 探测图形的中心纵坐标
+      */
+  setupPositionProbePattern: function setupPositionProbePattern(row, col) {
+    for (var r = -1; r <= 7; r++) {
+      if (row + r <= -1 || this.moduleCount <= row + r) continue;
+      for (var c = -1; c <= 7; c++) {
+        if (col + c <= -1 || this.moduleCount <= col + c) continue;
+        if (0 <= r && r <= 6 && (c == 0 || c == 6) || 0 <= c && c <= 6 && (r == 0 || r == 6) || 2 <= r && r <= 4 && 2 <= c && c <= 4) {
+          this.modules[row + r][col + c] = true;
+        } else {
+          this.modules[row + r][col + c] = false;
+        }
+      }
+    }
+  },
+  /**
+      * 创建二维码
+      * @return {[type]} [description]
+      */
+  createQrcode: function createQrcode() {
+    var minLostPoint = 0;
+    var pattern = 0;
+    var bestModules = null;
+    for (var i = 0; i < 8; i++) {
+      this.makeImpl(i);
+      var lostPoint = QRUtil.getLostPoint(this);
+      if (i == 0 || minLostPoint > lostPoint) {
+        minLostPoint = lostPoint;
+        pattern = i;
+        bestModules = this.modules;
+      }
+    }
+    this.modules = bestModules;
+    this.setupTypeInfo(false, pattern);
+    if (this.typeNumber >= 7) {
+      this.setupTypeNumber(false);
+    }
+  },
+  /**
+      * 设置定位图形
+      * @return {[type]} [description]
+      */
+  setupTimingPattern: function setupTimingPattern() {
+    for (var r = 8; r < this.moduleCount - 8; r++) {
+      if (this.modules[r][6] != null) {
+        continue;
+      }
+      this.modules[r][6] = r % 2 == 0;
+      if (this.modules[6][r] != null) {
+        continue;
+      }
+      this.modules[6][r] = r % 2 == 0;
+    }
+  },
+  /**
+      * 设置矫正图形
+      * @return {[type]} [description]
+      */
+  setupPositionAdjustPattern: function setupPositionAdjustPattern() {
+    var pos = QRUtil.getPatternPosition(this.typeNumber);
+    for (var i = 0; i < pos.length; i++) {
+      for (var j = 0; j < pos.length; j++) {
+        var row = pos[i];
+        var col = pos[j];
+        if (this.modules[row][col] != null) {
+          continue;
+        }
+        for (var r = -2; r <= 2; r++) {
+          for (var c = -2; c <= 2; c++) {
+            if (r == -2 || r == 2 || c == -2 || c == 2 || r == 0 && c == 0) {
+              this.modules[row + r][col + c] = true;
+            } else {
+              this.modules[row + r][col + c] = false;
+            }
+          }
+        }
+      }
+    }
+  },
+  /**
+      * 设置版本信息（7以上版本才有）
+      * @param  {bool} test 是否处于判断最佳掩膜阶段
+      * @return {[type]}      [description]
+      */
+  setupTypeNumber: function setupTypeNumber(test) {
+    var bits = QRUtil.getBCHTypeNumber(this.typeNumber);
+    for (var i = 0; i < 18; i++) {
+      var mod = !test && (bits >> i & 1) == 1;
+      this.modules[Math.floor(i / 3)][i % 3 + this.moduleCount - 8 - 3] = mod;
+      this.modules[i % 3 + this.moduleCount - 8 - 3][Math.floor(i / 3)] = mod;
+    }
+  },
+  /**
+      * 设置格式信息（纠错等级和掩膜版本）
+      * @param  {bool} test
+      * @param  {num} maskPattern 掩膜版本
+      * @return {}
+      */
+  setupTypeInfo: function setupTypeInfo(test, maskPattern) {
+    var data = QRErrorCorrectLevel[this.errorCorrectLevel] << 3 | maskPattern;
+    var bits = QRUtil.getBCHTypeInfo(data);
+    // vertical
+    for (var i = 0; i < 15; i++) {
+      var mod = !test && (bits >> i & 1) == 1;
+      if (i < 6) {
+        this.modules[i][8] = mod;
+      } else if (i < 8) {
+        this.modules[i + 1][8] = mod;
+      } else {
+        this.modules[this.moduleCount - 15 + i][8] = mod;
+      }
+      // horizontal
+      var mod = !test && (bits >> i & 1) == 1;
+      if (i < 8) {
+        this.modules[8][this.moduleCount - i - 1] = mod;
+      } else if (i < 9) {
+        this.modules[8][15 - i - 1 + 1] = mod;
+      } else {
+        this.modules[8][15 - i - 1] = mod;
+      }
+    }
+    // fixed module
+    this.modules[this.moduleCount - 8][8] = !test;
+  },
+  /**
+      * 数据编码
+      * @return {[type]} [description]
+      */
+  createData: function createData() {
+    var buffer = new QRBitBuffer();
+    var lengthBits = this.typeNumber > 9 ? 16 : 8;
+    buffer.put(4, 4); //添加模式
+    buffer.put(this.utf8bytes.length, lengthBits);
+    for (var i = 0, l = this.utf8bytes.length; i < l; i++) {
+      buffer.put(this.utf8bytes[i], 8);
+    }
+    if (buffer.length + 4 <= this.totalDataCount * 8) {
+      buffer.put(0, 4);
+    }
+    // padding
+    while (buffer.length % 8 != 0) {
+      buffer.putBit(false);
+    }
+    // padding
+    while (true) {
+      if (buffer.length >= this.totalDataCount * 8) {
+        break;
+      }
+      buffer.put(QRCodeAlg.PAD0, 8);
+      if (buffer.length >= this.totalDataCount * 8) {
+        break;
+      }
+      buffer.put(QRCodeAlg.PAD1, 8);
+    }
+    return this.createBytes(buffer);
+  },
+  /**
+      * 纠错码编码
+      * @param  {buffer} buffer 数据编码
+      * @return {[type]}
+      */
+  createBytes: function createBytes(buffer) {
+    var offset = 0;
+    var maxDcCount = 0;
+    var maxEcCount = 0;
+    var length = this.rsBlock.length / 3;
+    var rsBlocks = new Array();
+    for (var i = 0; i < length; i++) {
+      var count = this.rsBlock[i * 3 + 0];
+      var totalCount = this.rsBlock[i * 3 + 1];
+      var dataCount = this.rsBlock[i * 3 + 2];
+      for (var j = 0; j < count; j++) {
+        rsBlocks.push([dataCount, totalCount]);
+      }
+    }
+    var dcdata = new Array(rsBlocks.length);
+    var ecdata = new Array(rsBlocks.length);
+    for (var r = 0; r < rsBlocks.length; r++) {
+      var dcCount = rsBlocks[r][0];
+      var ecCount = rsBlocks[r][1] - dcCount;
+      maxDcCount = Math.max(maxDcCount, dcCount);
+      maxEcCount = Math.max(maxEcCount, ecCount);
+      dcdata[r] = new Array(dcCount);
+      for (var i = 0; i < dcdata[r].length; i++) {
+        dcdata[r][i] = 0xff & buffer.buffer[i + offset];
+      }
+      offset += dcCount;
+      var rsPoly = QRUtil.getErrorCorrectPolynomial(ecCount);
+      var rawPoly = new QRPolynomial(dcdata[r], rsPoly.getLength() - 1);
+      var modPoly = rawPoly.mod(rsPoly);
+      ecdata[r] = new Array(rsPoly.getLength() - 1);
+      for (var i = 0; i < ecdata[r].length; i++) {
+        var modIndex = i + modPoly.getLength() - ecdata[r].length;
+        ecdata[r][i] = modIndex >= 0 ? modPoly.get(modIndex) : 0;
+      }
+    }
+    var data = new Array(this.totalDataCount);
+    var index = 0;
+    for (var i = 0; i < maxDcCount; i++) {
+      for (var r = 0; r < rsBlocks.length; r++) {
+        if (i < dcdata[r].length) {
+          data[index++] = dcdata[r][i];
+        }
+      }
+    }
+    for (var i = 0; i < maxEcCount; i++) {
+      for (var r = 0; r < rsBlocks.length; r++) {
+        if (i < ecdata[r].length) {
+          data[index++] = ecdata[r][i];
+        }
+      }
+    }
+    return data;
+
+  },
+  /**
+      * 布置模块，构建最终信息
+      * @param  {} data
+      * @param  {} maskPattern
+      * @return {}
+      */
+  mapData: function mapData(data, maskPattern) {
+    var inc = -1;
+    var row = this.moduleCount - 1;
+    var bitIndex = 7;
+    var byteIndex = 0;
+    for (var col = this.moduleCount - 1; col > 0; col -= 2) {
+      if (col == 6) col--;
+      while (true) {
+        for (var c = 0; c < 2; c++) {
+          if (this.modules[row][col - c] == null) {
+            var dark = false;
+            if (byteIndex < data.length) {
+              dark = (data[byteIndex] >>> bitIndex & 1) == 1;
+            }
+            var mask = QRUtil.getMask(maskPattern, row, col - c);
+            if (mask) {
+              dark = !dark;
+            }
+            this.modules[row][col - c] = dark;
+            bitIndex--;
+            if (bitIndex == -1) {
+              byteIndex++;
+              bitIndex = 7;
+            }
+          }
+        }
+        row += inc;
+        if (row < 0 || this.moduleCount <= row) {
+          row -= inc;
+          inc = -inc;
+          break;
+        }
+      }
+    }
+  } };
+
+/**
+        * 填充字段
+        */
+QRCodeAlg.PAD0 = 0xEC;
+QRCodeAlg.PAD1 = 0x11;
+//---------------------------------------------------------------------
+// 纠错等级对应的编码
+//---------------------------------------------------------------------
+var QRErrorCorrectLevel = [1, 0, 3, 2];
+//---------------------------------------------------------------------
+// 掩膜版本
+//---------------------------------------------------------------------
+var QRMaskPattern = {
+  PATTERN000: 0,
+  PATTERN001: 1,
+  PATTERN010: 2,
+  PATTERN011: 3,
+  PATTERN100: 4,
+  PATTERN101: 5,
+  PATTERN110: 6,
+  PATTERN111: 7 };
+
+//---------------------------------------------------------------------
+// 工具类
+//---------------------------------------------------------------------
+var QRUtil = {
+  /*
+               每个版本矫正图形的位置
+                */
+  PATTERN_POSITION_TABLE: [
+  [],
+  [6, 18],
+  [6, 22],
+  [6, 26],
+  [6, 30],
+  [6, 34],
+  [6, 22, 38],
+  [6, 24, 42],
+  [6, 26, 46],
+  [6, 28, 50],
+  [6, 30, 54],
+  [6, 32, 58],
+  [6, 34, 62],
+  [6, 26, 46, 66],
+  [6, 26, 48, 70],
+  [6, 26, 50, 74],
+  [6, 30, 54, 78],
+  [6, 30, 56, 82],
+  [6, 30, 58, 86],
+  [6, 34, 62, 90],
+  [6, 28, 50, 72, 94],
+  [6, 26, 50, 74, 98],
+  [6, 30, 54, 78, 102],
+  [6, 28, 54, 80, 106],
+  [6, 32, 58, 84, 110],
+  [6, 30, 58, 86, 114],
+  [6, 34, 62, 90, 118],
+  [6, 26, 50, 74, 98, 122],
+  [6, 30, 54, 78, 102, 126],
+  [6, 26, 52, 78, 104, 130],
+  [6, 30, 56, 82, 108, 134],
+  [6, 34, 60, 86, 112, 138],
+  [6, 30, 58, 86, 114, 142],
+  [6, 34, 62, 90, 118, 146],
+  [6, 30, 54, 78, 102, 126, 150],
+  [6, 24, 50, 76, 102, 128, 154],
+  [6, 28, 54, 80, 106, 132, 158],
+  [6, 32, 58, 84, 110, 136, 162],
+  [6, 26, 54, 82, 110, 138, 166],
+  [6, 30, 58, 86, 114, 142, 170]],
+
+  G15: 1 << 10 | 1 << 8 | 1 << 5 | 1 << 4 | 1 << 2 | 1 << 1 | 1 << 0,
+  G18: 1 << 12 | 1 << 11 | 1 << 10 | 1 << 9 | 1 << 8 | 1 << 5 | 1 << 2 | 1 << 0,
+  G15_MASK: 1 << 14 | 1 << 12 | 1 << 10 | 1 << 4 | 1 << 1,
+  /*
+                                                           BCH编码格式信息
+                                                            */
+  getBCHTypeInfo: function getBCHTypeInfo(data) {
+    var d = data << 10;
+    while (QRUtil.getBCHDigit(d) - QRUtil.getBCHDigit(QRUtil.G15) >= 0) {
+      d ^= QRUtil.G15 << QRUtil.getBCHDigit(d) - QRUtil.getBCHDigit(QRUtil.G15);
+    }
+    return (data << 10 | d) ^ QRUtil.G15_MASK;
+  },
+  /*
+     BCH编码版本信息
+      */
+  getBCHTypeNumber: function getBCHTypeNumber(data) {
+    var d = data << 12;
+    while (QRUtil.getBCHDigit(d) - QRUtil.getBCHDigit(QRUtil.G18) >= 0) {
+      d ^= QRUtil.G18 << QRUtil.getBCHDigit(d) - QRUtil.getBCHDigit(QRUtil.G18);
+    }
+    return data << 12 | d;
+  },
+  /*
+     获取BCH位信息
+      */
+  getBCHDigit: function getBCHDigit(data) {
+    var digit = 0;
+    while (data != 0) {
+      digit++;
+      data >>>= 1;
+    }
+    return digit;
+  },
+  /*
+     获取版本对应的矫正图形位置
+      */
+  getPatternPosition: function getPatternPosition(typeNumber) {
+    return QRUtil.PATTERN_POSITION_TABLE[typeNumber - 1];
+  },
+  /*
+     掩膜算法
+      */
+  getMask: function getMask(maskPattern, i, j) {
+    switch (maskPattern) {
+      case QRMaskPattern.PATTERN000:
+        return (i + j) % 2 == 0;
+      case QRMaskPattern.PATTERN001:
+        return i % 2 == 0;
+      case QRMaskPattern.PATTERN010:
+        return j % 3 == 0;
+      case QRMaskPattern.PATTERN011:
+        return (i + j) % 3 == 0;
+      case QRMaskPattern.PATTERN100:
+        return (Math.floor(i / 2) + Math.floor(j / 3)) % 2 == 0;
+      case QRMaskPattern.PATTERN101:
+        return i * j % 2 + i * j % 3 == 0;
+      case QRMaskPattern.PATTERN110:
+        return (i * j % 2 + i * j % 3) % 2 == 0;
+      case QRMaskPattern.PATTERN111:
+        return (i * j % 3 + (i + j) % 2) % 2 == 0;
+      default:
+        throw new Error("bad maskPattern:" + maskPattern);}
+
+  },
+  /*
+     获取RS的纠错多项式
+      */
+  getErrorCorrectPolynomial: function getErrorCorrectPolynomial(errorCorrectLength) {
+    var a = new QRPolynomial([1], 0);
+    for (var i = 0; i < errorCorrectLength; i++) {
+      a = a.multiply(new QRPolynomial([1, QRMath.gexp(i)], 0));
+    }
+    return a;
+  },
+  /*
+     获取评价
+      */
+  getLostPoint: function getLostPoint(qrCode) {
+    var moduleCount = qrCode.getModuleCount(),
+    lostPoint = 0,
+    darkCount = 0;
+    for (var row = 0; row < moduleCount; row++) {
+      var sameCount = 0;
+      var head = qrCode.modules[row][0];
+      for (var col = 0; col < moduleCount; col++) {
+        var current = qrCode.modules[row][col];
+        //level 3 评价
+        if (col < moduleCount - 6) {
+          if (current && !qrCode.modules[row][col + 1] && qrCode.modules[row][col + 2] && qrCode.modules[row][col + 3] && qrCode.modules[row][col + 4] && !qrCode.modules[row][col + 5] && qrCode.modules[row][col + 6]) {
+            if (col < moduleCount - 10) {
+              if (qrCode.modules[row][col + 7] && qrCode.modules[row][col + 8] && qrCode.modules[row][col + 9] && qrCode.modules[row][col + 10]) {
+                lostPoint += 40;
+              }
+            } else if (col > 3) {
+              if (qrCode.modules[row][col - 1] && qrCode.modules[row][col - 2] && qrCode.modules[row][col - 3] && qrCode.modules[row][col - 4]) {
+                lostPoint += 40;
+              }
+            }
+          }
+        }
+        //level 2 评价
+        if (row < moduleCount - 1 && col < moduleCount - 1) {
+          var count = 0;
+          if (current) count++;
+          if (qrCode.modules[row + 1][col]) count++;
+          if (qrCode.modules[row][col + 1]) count++;
+          if (qrCode.modules[row + 1][col + 1]) count++;
+          if (count == 0 || count == 4) {
+            lostPoint += 3;
+          }
+        }
+        //level 1 评价
+        if (head ^ current) {
+          sameCount++;
+        } else {
+          head = current;
+          if (sameCount >= 5) {
+            lostPoint += 3 + sameCount - 5;
+          }
+          sameCount = 1;
+        }
+        //level 4 评价
+        if (current) {
+          darkCount++;
+        }
+      }
+    }
+    for (var col = 0; col < moduleCount; col++) {
+      var sameCount = 0;
+      var head = qrCode.modules[0][col];
+      for (var row = 0; row < moduleCount; row++) {
+        var current = qrCode.modules[row][col];
+        //level 3 评价
+        if (row < moduleCount - 6) {
+          if (current && !qrCode.modules[row + 1][col] && qrCode.modules[row + 2][col] && qrCode.modules[row + 3][col] && qrCode.modules[row + 4][col] && !qrCode.modules[row + 5][col] && qrCode.modules[row + 6][col]) {
+            if (row < moduleCount - 10) {
+              if (qrCode.modules[row + 7][col] && qrCode.modules[row + 8][col] && qrCode.modules[row + 9][col] && qrCode.modules[row + 10][col]) {
+                lostPoint += 40;
+              }
+            } else if (row > 3) {
+              if (qrCode.modules[row - 1][col] && qrCode.modules[row - 2][col] && qrCode.modules[row - 3][col] && qrCode.modules[row - 4][col]) {
+                lostPoint += 40;
+              }
+            }
+          }
+        }
+        //level 1 评价
+        if (head ^ current) {
+          sameCount++;
+        } else {
+          head = current;
+          if (sameCount >= 5) {
+            lostPoint += 3 + sameCount - 5;
+          }
+          sameCount = 1;
+        }
+      }
+    }
+    // LEVEL4
+    var ratio = Math.abs(100 * darkCount / moduleCount / moduleCount - 50) / 5;
+    lostPoint += ratio * 10;
+    return lostPoint;
+  } };
+
+
+//---------------------------------------------------------------------
+// QRMath使用的数学工具
+//---------------------------------------------------------------------
+var QRMath = {
+  /*
+               将n转化为a^m
+                */
+  glog: function glog(n) {
+    if (n < 1) {
+      throw new Error("glog(" + n + ")");
+    }
+    return QRMath.LOG_TABLE[n];
+  },
+  /*
+     将a^m转化为n
+      */
+  gexp: function gexp(n) {
+    while (n < 0) {
+      n += 255;
+    }
+    while (n >= 256) {
+      n -= 255;
+    }
+    return QRMath.EXP_TABLE[n];
+  },
+  EXP_TABLE: new Array(256),
+  LOG_TABLE: new Array(256) };
+
+
+for (var i = 0; i < 8; i++) {
+  QRMath.EXP_TABLE[i] = 1 << i;
+}
+for (var i = 8; i < 256; i++) {
+  QRMath.EXP_TABLE[i] = QRMath.EXP_TABLE[i - 4] ^ QRMath.EXP_TABLE[i - 5] ^ QRMath.EXP_TABLE[i - 6] ^ QRMath.EXP_TABLE[i - 8];
+}
+for (var i = 0; i < 255; i++) {
+  QRMath.LOG_TABLE[QRMath.EXP_TABLE[i]] = i;
+}
+//---------------------------------------------------------------------
+// QRPolynomial 多项式
+//---------------------------------------------------------------------
+/**
+ * 多项式类
+ * @param {Array} num   系数
+ * @param {num} shift a^shift
+ */
+function QRPolynomial(num, shift) {
+  if (num.length == undefined) {
+    throw new Error(num.length + "/" + shift);
+  }
+  var offset = 0;
+  while (offset < num.length && num[offset] == 0) {
+    offset++;
+  }
+  this.num = new Array(num.length - offset + shift);
+  for (var i = 0; i < num.length - offset; i++) {
+    this.num[i] = num[i + offset];
+  }
+}
+QRPolynomial.prototype = {
+  get: function get(index) {
+    return this.num[index];
+  },
+  getLength: function getLength() {
+    return this.num.length;
+  },
+  /**
+      * 多项式乘法
+      * @param  {QRPolynomial} e 被乘多项式
+      * @return {[type]}   [description]
+      */
+  multiply: function multiply(e) {
+    var num = new Array(this.getLength() + e.getLength() - 1);
+    for (var i = 0; i < this.getLength(); i++) {
+      for (var j = 0; j < e.getLength(); j++) {
+        num[i + j] ^= QRMath.gexp(QRMath.glog(this.get(i)) + QRMath.glog(e.get(j)));
+      }
+    }
+    return new QRPolynomial(num, 0);
+  },
+  /**
+      * 多项式模运算
+      * @param  {QRPolynomial} e 模多项式
+      * @return {}
+      */
+  mod: function mod(e) {
+    var tl = this.getLength(),
+    el = e.getLength();
+    if (tl - el < 0) {
+      return this;
+    }
+    var num = new Array(tl);
+    for (var i = 0; i < tl; i++) {
+      num[i] = this.get(i);
+    }
+    while (num.length >= el) {
+      var ratio = QRMath.glog(num[0]) - QRMath.glog(e.get(0));
+
+      for (var i = 0; i < e.getLength(); i++) {
+        num[i] ^= QRMath.gexp(QRMath.glog(e.get(i)) + ratio);
+      }
+      while (num[0] == 0) {
+        num.shift();
+      }
+    }
+    return new QRPolynomial(num, 0);
+  } };
+
+
+//---------------------------------------------------------------------
+// RS_BLOCK_TABLE
+//---------------------------------------------------------------------
+/*
+二维码各个版本信息[块数, 每块中的数据块数, 每块中的信息块数]
+ */
+var RS_BLOCK_TABLE = [
+// L
+// M
+// Q
+// H
+// 1
+[1, 26, 19],
+[1, 26, 16],
+[1, 26, 13],
+[1, 26, 9],
+
+// 2
+[1, 44, 34],
+[1, 44, 28],
+[1, 44, 22],
+[1, 44, 16],
+
+// 3
+[1, 70, 55],
+[1, 70, 44],
+[2, 35, 17],
+[2, 35, 13],
+
+// 4
+[1, 100, 80],
+[2, 50, 32],
+[2, 50, 24],
+[4, 25, 9],
+
+// 5
+[1, 134, 108],
+[2, 67, 43],
+[2, 33, 15, 2, 34, 16],
+[2, 33, 11, 2, 34, 12],
+
+// 6
+[2, 86, 68],
+[4, 43, 27],
+[4, 43, 19],
+[4, 43, 15],
+
+// 7
+[2, 98, 78],
+[4, 49, 31],
+[2, 32, 14, 4, 33, 15],
+[4, 39, 13, 1, 40, 14],
+
+// 8
+[2, 121, 97],
+[2, 60, 38, 2, 61, 39],
+[4, 40, 18, 2, 41, 19],
+[4, 40, 14, 2, 41, 15],
+
+// 9
+[2, 146, 116],
+[3, 58, 36, 2, 59, 37],
+[4, 36, 16, 4, 37, 17],
+[4, 36, 12, 4, 37, 13],
+
+// 10
+[2, 86, 68, 2, 87, 69],
+[4, 69, 43, 1, 70, 44],
+[6, 43, 19, 2, 44, 20],
+[6, 43, 15, 2, 44, 16],
+
+// 11
+[4, 101, 81],
+[1, 80, 50, 4, 81, 51],
+[4, 50, 22, 4, 51, 23],
+[3, 36, 12, 8, 37, 13],
+
+// 12
+[2, 116, 92, 2, 117, 93],
+[6, 58, 36, 2, 59, 37],
+[4, 46, 20, 6, 47, 21],
+[7, 42, 14, 4, 43, 15],
+
+// 13
+[4, 133, 107],
+[8, 59, 37, 1, 60, 38],
+[8, 44, 20, 4, 45, 21],
+[12, 33, 11, 4, 34, 12],
+
+// 14
+[3, 145, 115, 1, 146, 116],
+[4, 64, 40, 5, 65, 41],
+[11, 36, 16, 5, 37, 17],
+[11, 36, 12, 5, 37, 13],
+
+// 15
+[5, 109, 87, 1, 110, 88],
+[5, 65, 41, 5, 66, 42],
+[5, 54, 24, 7, 55, 25],
+[11, 36, 12],
+
+// 16
+[5, 122, 98, 1, 123, 99],
+[7, 73, 45, 3, 74, 46],
+[15, 43, 19, 2, 44, 20],
+[3, 45, 15, 13, 46, 16],
+
+// 17
+[1, 135, 107, 5, 136, 108],
+[10, 74, 46, 1, 75, 47],
+[1, 50, 22, 15, 51, 23],
+[2, 42, 14, 17, 43, 15],
+
+// 18
+[5, 150, 120, 1, 151, 121],
+[9, 69, 43, 4, 70, 44],
+[17, 50, 22, 1, 51, 23],
+[2, 42, 14, 19, 43, 15],
+
+// 19
+[3, 141, 113, 4, 142, 114],
+[3, 70, 44, 11, 71, 45],
+[17, 47, 21, 4, 48, 22],
+[9, 39, 13, 16, 40, 14],
+
+// 20
+[3, 135, 107, 5, 136, 108],
+[3, 67, 41, 13, 68, 42],
+[15, 54, 24, 5, 55, 25],
+[15, 43, 15, 10, 44, 16],
+
+// 21
+[4, 144, 116, 4, 145, 117],
+[17, 68, 42],
+[17, 50, 22, 6, 51, 23],
+[19, 46, 16, 6, 47, 17],
+
+// 22
+[2, 139, 111, 7, 140, 112],
+[17, 74, 46],
+[7, 54, 24, 16, 55, 25],
+[34, 37, 13],
+
+// 23
+[4, 151, 121, 5, 152, 122],
+[4, 75, 47, 14, 76, 48],
+[11, 54, 24, 14, 55, 25],
+[16, 45, 15, 14, 46, 16],
+
+// 24
+[6, 147, 117, 4, 148, 118],
+[6, 73, 45, 14, 74, 46],
+[11, 54, 24, 16, 55, 25],
+[30, 46, 16, 2, 47, 17],
+
+// 25
+[8, 132, 106, 4, 133, 107],
+[8, 75, 47, 13, 76, 48],
+[7, 54, 24, 22, 55, 25],
+[22, 45, 15, 13, 46, 16],
+
+// 26
+[10, 142, 114, 2, 143, 115],
+[19, 74, 46, 4, 75, 47],
+[28, 50, 22, 6, 51, 23],
+[33, 46, 16, 4, 47, 17],
+
+// 27
+[8, 152, 122, 4, 153, 123],
+[22, 73, 45, 3, 74, 46],
+[8, 53, 23, 26, 54, 24],
+[12, 45, 15, 28, 46, 16],
+
+// 28
+[3, 147, 117, 10, 148, 118],
+[3, 73, 45, 23, 74, 46],
+[4, 54, 24, 31, 55, 25],
+[11, 45, 15, 31, 46, 16],
+
+// 29
+[7, 146, 116, 7, 147, 117],
+[21, 73, 45, 7, 74, 46],
+[1, 53, 23, 37, 54, 24],
+[19, 45, 15, 26, 46, 16],
+
+// 30
+[5, 145, 115, 10, 146, 116],
+[19, 75, 47, 10, 76, 48],
+[15, 54, 24, 25, 55, 25],
+[23, 45, 15, 25, 46, 16],
+
+// 31
+[13, 145, 115, 3, 146, 116],
+[2, 74, 46, 29, 75, 47],
+[42, 54, 24, 1, 55, 25],
+[23, 45, 15, 28, 46, 16],
+
+// 32
+[17, 145, 115],
+[10, 74, 46, 23, 75, 47],
+[10, 54, 24, 35, 55, 25],
+[19, 45, 15, 35, 46, 16],
+
+// 33
+[17, 145, 115, 1, 146, 116],
+[14, 74, 46, 21, 75, 47],
+[29, 54, 24, 19, 55, 25],
+[11, 45, 15, 46, 46, 16],
+
+// 34
+[13, 145, 115, 6, 146, 116],
+[14, 74, 46, 23, 75, 47],
+[44, 54, 24, 7, 55, 25],
+[59, 46, 16, 1, 47, 17],
+
+// 35
+[12, 151, 121, 7, 152, 122],
+[12, 75, 47, 26, 76, 48],
+[39, 54, 24, 14, 55, 25],
+[22, 45, 15, 41, 46, 16],
+
+// 36
+[6, 151, 121, 14, 152, 122],
+[6, 75, 47, 34, 76, 48],
+[46, 54, 24, 10, 55, 25],
+[2, 45, 15, 64, 46, 16],
+
+// 37
+[17, 152, 122, 4, 153, 123],
+[29, 74, 46, 14, 75, 47],
+[49, 54, 24, 10, 55, 25],
+[24, 45, 15, 46, 46, 16],
+
+// 38
+[4, 152, 122, 18, 153, 123],
+[13, 74, 46, 32, 75, 47],
+[48, 54, 24, 14, 55, 25],
+[42, 45, 15, 32, 46, 16],
+
+// 39
+[20, 147, 117, 4, 148, 118],
+[40, 75, 47, 7, 76, 48],
+[43, 54, 24, 22, 55, 25],
+[10, 45, 15, 67, 46, 16],
+
+// 40
+[19, 148, 118, 6, 149, 119],
+[18, 75, 47, 31, 76, 48],
+[34, 54, 24, 34, 55, 25],
+[20, 45, 15, 61, 46, 16]];
+
+
+/**
+                            * 根据数据获取对应版本
+                            * @return {[type]} [description]
+                            */
+QRCodeAlg.prototype.getRightType = function () {
+  for (var typeNumber = 1; typeNumber < 41; typeNumber++) {
+    var rsBlock = RS_BLOCK_TABLE[(typeNumber - 1) * 4 + this.errorCorrectLevel];
+    if (rsBlock == undefined) {
+      throw new Error("bad rs block @ typeNumber:" + typeNumber + "/errorCorrectLevel:" + this.errorCorrectLevel);
+    }
+    var length = rsBlock.length / 3;
+    var totalDataCount = 0;
+    for (var i = 0; i < length; i++) {
+      var count = rsBlock[i * 3 + 0];
+      var dataCount = rsBlock[i * 3 + 2];
+      totalDataCount += dataCount * count;
+    }
+    var lengthBytes = typeNumber > 9 ? 2 : 1;
+    if (this.utf8bytes.length + lengthBytes < totalDataCount || typeNumber == 40) {
+      this.typeNumber = typeNumber;
+      this.rsBlock = rsBlock;
+      this.totalDataCount = totalDataCount;
+      break;
+    }
+  }
+};
+
+//---------------------------------------------------------------------
+// QRBitBuffer
+//---------------------------------------------------------------------
+function QRBitBuffer() {
+  this.buffer = new Array();
+  this.length = 0;
+}
+QRBitBuffer.prototype = {
+  get: function get(index) {
+    var bufIndex = Math.floor(index / 8);
+    return this.buffer[bufIndex] >>> 7 - index % 8 & 1;
+  },
+  put: function put(num, length) {
+    for (var i = 0; i < length; i++) {
+      this.putBit(num >>> length - i - 1 & 1);
+    }
+  },
+  putBit: function putBit(bit) {
+    var bufIndex = Math.floor(this.length / 8);
+    if (this.buffer.length <= bufIndex) {
+      this.buffer.push(0);
+    }
+    if (bit) {
+      this.buffer[bufIndex] |= 0x80 >>> this.length % 8;
+    }
+    this.length++;
+  } };
+
+/***/ }),
+
+/***/ 59:
+/*!*********************************************************************************************************************!*\
+  !*** C:/Users/yu13/Documents/HBuilderProjects/uni-shenqian/js_sdk/QuShe-SharerPoster/QS-SharePoster/image-tools.js ***!
+  \*********************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.pathToBase64 = pathToBase64;exports.base64ToPath = base64ToPath;function getLocalFilePath(path) {
+  if (path.indexOf('_www') === 0 || path.indexOf('_doc') === 0 || path.indexOf('_documents') === 0 || path.indexOf('_downloads') === 0) {
+    return path;
+  }
+  if (path.indexOf('file://') === 0) {
+    return path;
+  }
+  if (path.indexOf('/storage/emulated/0/') === 0) {
+    return path;
+  }
+  if (path.indexOf('/') === 0) {
+    var localFilePath = plus.io.convertAbsoluteFileSystem(path);
+    if (localFilePath !== path) {
+      return localFilePath;
+    } else {
+      path = path.substr(1);
+    }
+  }
+  return '_www/' + path;
+}
+
+function pathToBase64(path) {
+  return new Promise(function (resolve, reject) {
+    if (typeof window === 'object' && 'document' in window) {
+      if (typeof FileReader === 'function') {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', path, true);
+        xhr.responseType = 'blob';
+        xhr.onload = function () {
+          if (this.status === 200) {
+            var fileReader = new FileReader();
+            fileReader.onload = function (e) {
+              resolve(e.target.result);
+            };
+            fileReader.onerror = reject;
+            fileReader.readAsDataURL(this.response);
+          }
+        };
+        xhr.onerror = reject;
+        xhr.send();
+        return;
+      }
+      var canvas = document.createElement('canvas');
+      var c2x = canvas.getContext('2d');
+      var img = new Image();
+      img.onload = function () {
+        canvas.width = img.width;
+        canvas.height = img.height;
+        c2x.drawImage(img, 0, 0);
+        resolve(canvas.toDataURL());
+        canvas.height = canvas.width = 0;
+      };
+      img.onerror = reject;
+      img.src = path;
+      return;
+    }
+    if (typeof plus === 'object') {
+      plus.io.resolveLocalFileSystemURL(getLocalFilePath(path), function (entry) {
+        entry.file(function (file) {
+          var fileReader = new plus.io.FileReader();
+          fileReader.onload = function (data) {
+            resolve(data.target.result);
+          };
+          fileReader.onerror = function (error) {
+            reject(error);
+          };
+          fileReader.readAsDataURL(file);
+        }, function (error) {
+          reject(error);
+        });
+      }, function (error) {
+        reject(error);
+      });
+      return;
+    }
+    if (typeof wx === 'object' && wx.canIUse('getFileSystemManager')) {
+      wx.getFileSystemManager().readFile({
+        filePath: path,
+        encoding: 'base64',
+        success: function success(res) {
+          resolve('data:image/png;base64,' + res.data);
+        },
+        fail: function fail(error) {
+          reject(error);
+        } });
+
+      return;
+    }
+    reject(new Error('not support'));
+  });
+}
+
+function base64ToPath(base64) {
+  return new Promise(function (resolve, reject) {
+    if (typeof window === 'object' && 'document' in window) {
+      base64 = base64.split(',');
+      var type = base64[0].match(/:(.*?);/)[1];
+      var str = atob(base64[1]);
+      var n = str.length;
+      var array = new Uint8Array(n);
+      while (n--) {
+        array[n] = str.charCodeAt(n);
+      }
+      return resolve((window.URL || window.webkitURL).createObjectURL(new Blob([array], { type: type })));
+    }
+    var extName = base64.match(/data\:\S+\/(\S+);/);
+    if (extName) {
+      extName = extName[1];
+    } else {
+      reject(new Error('base64 error'));
+    }
+    var fileName = Date.now() + '.' + extName;
+    if (typeof plus === 'object') {
+      var bitmap = new plus.nativeObj.Bitmap('bitmap' + Date.now());
+      bitmap.loadBase64Data(base64, function () {
+        var filePath = '_doc/uniapp_temp/' + fileName;
+        bitmap.save(filePath, {}, function () {
+          bitmap.clear();
+          resolve(filePath);
+        }, function (error) {
+          bitmap.clear();
+          reject(error);
+        });
+      }, function (error) {
+        bitmap.clear();
+        reject(error);
+      });
+      return;
+    }
+    if (typeof wx === 'object' && wx.canIUse('getFileSystemManager')) {
+      var filePath = wx.env.USER_DATA_PATH + '/' + fileName;
+      wx.getFileSystemManager().writeFile({
+        filePath: filePath,
+        data: base64.replace(/^data:\S+\/\S+;base64,/, ''),
+        encoding: 'base64',
+        success: function success() {
+          resolve(filePath);
+        },
+        fail: function fail(error) {
+          reject(error);
+        } });
+
+      return;
+    }
+    reject(new Error('not support'));
+  });
+}
 
 /***/ })
 

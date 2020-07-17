@@ -11,23 +11,111 @@
 				</view>
 			</scroll-view>
 		</view>
-		<!-- 主体内容 首页 -->
-		<view class="content"v-if="currentIndex === 0">
-			
-		</view>
-		<!-- 主体内容非首页 -->
-		<view class="content-sec" v-else>
-			<!-- banner区域 -->
-			<view class="banner" v-if="category[currentIndex].banner.length">
-				<view v-for="item in category[currentIndex].banner" :key="item.son_name" class="banner-item">
-					<image :src="item.imgurl" mode="aspectFill"></image>
-					<text>{{item.son_name}}</text>
+		<view class="content-wrap">
+			<!-- 主体内容 首页 -->
+			<view class="content"v-if="currentIndex === 0">
+				<!-- 首页轮播数据 -->
+				<swiper :indicator-dots="true" :autoplay="true" :interval="3000" :duration="1000" class="main-swiper" indicator-active-color="#dd0b1c">
+					<swiper-item v-for="item in swiperList" :key="item.id">
+						<navigator :url="item.url">
+							<image :src="item.image_url" ></image>
+						</navigator>
+					</swiper-item>
+				</swiper>
+				<!-- 首页导航 -->
+				<view class="main-list">
+					<view class="main-list-item" v-for="(item, index) in mainList" :key="item.id">
+						<image :src="item.image_url" mode="aspectFill"></image>
+						<view class="main-list-item-text">{{item.title}}</view>
+					</view>
+				</view>
+				<!-- 首页会员 -->
+				<view class="main-vip">
+					<image src="https://www.gomyorder.cn/go.png" mode="aspectFill"></image>
+				</view>
+				<!-- 首页模块 -->
+				<view class="main-block" v-if="mainList2.length">
+					<view class="block-top">
+						<view class="block-1">
+							<view class="block-1-title">{{mainList2[0].titleList[0]}}<text>{{mainList2[0].titleList[1]}}</text></view>
+							<view class="block-1-desc">{{mainList2[0].titleList[2]}}</view>
+							<image :src="mainList2[0].image_url" mode="widthFix"></image>
+						</view>
+						<view class="block-top-right">
+							<view class="block-2">
+								<view >
+									<view class="block-title">{{mainList2[1].titleList[0]}}</view>
+									<view class="block-desc">{{mainList2[1].titleList[2]}}</view>
+								</view>
+								<image :src="mainList2[1].image_url" mode="widthFix"></image>
+							</view>
+							<view class="block-3">
+								<view >
+									<view class="block-title">{{mainList2[5].titleList[0]}}</view>
+									<view class="block-desc">{{mainList2[5].titleList[1]}}</view>
+								</view>
+								<image :src="mainList2[5].image_url" mode="widthFix"></image>
+							</view>
+						</view>
+					</view>
+					<view class="block-bottom">
+						<view class="block-4">
+							<view >
+								<view class="block-title">{{mainList2[2].titleList[0]}}</view>
+								<view class="block-desc">{{mainList2[2].titleList[1]}}</view>
+							</view>
+							<image :src="mainList2[2].image_url" mode="widthFix"></image>
+						</view>
+						<view class="block-5">
+							<view >
+								<view class="block-title">{{mainList2[3].titleList[0]}}</view>
+								<view class="block-desc">{{mainList2[3].titleList[1]}}</view>
+							</view>
+							<image :src="mainList2[3].image_url" mode="widthFix"></image>
+						</view>
+						<view class="block-6">
+							<view >
+								<view class="block-title">{{mainList2[4].titleList[0]}}</view>
+								<view class="block-desc">{{mainList2[4].titleList[1]}}</view>
+							</view>
+							<image :src="mainList2[4].image_url" mode="widthFix"></image>
+						</view>
+					</view>
+				</view>
+				<!-- 精选好物 -->
+				<view class="main-title">
+					<text>精选好物</text>
+				</view>
+				<view  v-if="choiceList.length">
+					<block v-for="(item, index) in choiceList" :key="index">
+						<goods-index :goodsInfo="item"></goods-index>
+					</block>
+				</view>
+				<!-- 首页推荐 -->
+				<view class="main-title">
+					<text>为你推荐</text>
+				</view>
+				<view class="main-recommend" v-if="category[0].orderList.length">
+					<block v-for="(item, index) in category[0].orderList" :key="index">
+						<goods-index :goodsInfo="item"></goods-index>
+					</block>
 				</view>
 			</view>
-			<!-- 内容区域 -->
-			<view class="content-sec-wrap">
-				<goods-item :goodsInfo="item" class="content-sec-item" v-for="(item, index) in category[currentIndex].orderList" :key="item.itemid + index"></goods-item>	
+			<!-- 主体内容非首页 -->
+			<view class="content-sec" v-else>
+				<!-- banner区域 -->
+				<view class="banner" v-if="category[currentIndex].banner.length">
+					<view v-for="item in category[currentIndex].banner" :key="item.son_name" class="banner-item">
+						<image :src="item.imgurl" mode="widthFix"></image>
+						<text>{{item.son_name}}</text>
+					</view>
+				</view>
+				<!-- 内容区域 -->
+				<view class="content-sec-wrap">
+					<goods-item :goodsInfo="item" class="content-sec-item" v-for="(item, index) in category[currentIndex].orderList" :key="item.itemid + index"></goods-item>	
+				</view>
 			</view>
+			
 		</view>
 		<!-- 回到顶部 -->
 		<back-top @backtop="handleBackTop" :active="isBackTop"></back-top>
@@ -680,8 +768,12 @@ export default {
 					banner: []
 				}
 			],
-			currentIndex: 2,
-			isBackTop: false
+			currentIndex: 0,
+			isBackTop: false,
+			swiperList: [],
+			mainList: [],
+			mainList2: [],
+			choiceList: []
 		};
 	},
 	components:{
@@ -689,14 +781,45 @@ export default {
 	},
 	onLoad() {
 		this.getOrderList(this.currentIndex)
+		// 首页数据
+		this.getSwiperData()
+		this.getMainList()
+		this.getMainList2()
+		this.getChoiceList()
 	},
 	onPageScroll(e) {
 		this.isBackTop = e.scrollTop > 500;
 	},
 	onReachBottom() {
-		this.getOrderList(this.currentIndex)
+			this.getOrderList(this.currentIndex)
 	},
 	methods: {
+		// 首页数据
+		getSwiperData() {
+			this.$request("/tao/banner/user/list").then(res => {
+				this.swiperList = res.data.data
+			})
+		},
+		// https://www.gomyorder.cn/tao/activity/state/1
+		getMainList() {
+			this.$request("/tao/activity/state/1").then(res => {
+				this.mainList = res.data.data
+			})
+		},
+		getMainList2() {
+			this.$request("/tao/activity/state/2").then(res => {
+				this.mainList2 = res.data.data
+				this.mainList2.forEach(item => {
+					item.titleList = item.title.split("-")
+				})
+			})
+		},
+		getChoiceList() {
+			let url = '/api/get_trill_data/apikey/maxd/min_id/0/back/10/cat_id/0'
+			this.$request(url).then(res => {
+				this.choiceList = res.data.data
+			})
+		},
 		// 回到顶部
 		handleBackTop() {
 			uni.pageScrollTo({
@@ -710,7 +833,7 @@ export default {
 			this.scrollLeft = index * 48
 			this.getOrderList(index)
 		},
-		// 请求非首页数据
+		// 请求商品数据
 		getOrderList(index) {
 			let url = `/api/column/apikey/maxd/type/9/back/10/min_id/${this.category[index].page}/sort/9/cid/${this.category[index].positon}`
 			this.$request(url).then(res => {
@@ -724,7 +847,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+	page {
+		background-color: #f7f7f7;
+	}
 .header-wrap {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 99;
 	/* #ifdef H5 */
 	background-image: linear-gradient(120deg, $color-sec1, $color-main);
 	/* #endif */
@@ -739,6 +870,15 @@ export default {
 		width: 100vw;
 	}
 }
+.content-wrap {
+	/* #ifdef H5 */
+	margin-top: 180rpx;
+	/* #endif */
+	/* #ifndef H5 */
+	margin-top: 90rpx;
+	/* #endif */
+}
+
 .header-category {
 	white-space: nowrap;
 	// line-height: 90rpx;
@@ -783,6 +923,139 @@ export default {
 	// border: 1px solid #007AFF;
 	.content-sec-item {
 		width: 50%;
+	}
+}
+
+// 主页
+.main-swiper {
+	padding: 10rpx;
+	background-color: #fff;
+	swiper-item {
+		border-radius: 30rpx;
+	}
+	image {
+		height: 280rpx;
+	}
+}
+.main-list {
+	background-color: #fff;
+	display: flex;
+	padding: 20rpx 30rpx 0;
+	flex-wrap: wrap;
+	.main-list-item {
+		// border: 1px solid #007AFF;
+		width: 20%;
+		margin-bottom: 15rpx;
+		image {
+			width: 100rpx;
+			height: 100rpx;
+			margin: 0 auto;
+		}
+		.main-list-item-text {
+			text-align: center;
+			padding-top: 10rpx;
+		}
+	}
+}
+.main-vip {
+	background-color: #fff;
+	image {
+		margin: 0 auto;
+		width: 90vw;
+		height: 180rpx;
+	}
+}
+.main-block {
+	image {
+		width: 130rpx;
+	}
+	.block-title {
+		font-size: 32rpx;
+		color: #000;
+		font-weight: 600;
+		line-height: 52rpx;
+	}
+	.block-desc {
+		font-size: 24rpx;
+		color: #666;
+		line-height: 42rpx;
+	}
+	.block-top {
+		display: flex;
+		justify-content: space-between;
+		align-items: stretch;
+		.block-1 {
+			flex: 1;
+			background-color: #fff;
+			padding: 15rpx;
+			margin: 10rpx 5rpx 10rpx 10rpx;
+			border-radius: 10rpx;
+			.block-1-title {
+				color: #f15c6d;
+				font-size: 32rpx;
+				font-weight: 600;
+				padding: 20rpx 0;
+				text {
+					color: #fff;
+					background-color: #f15c6d;
+					font-size: 30rpx;
+					padding: 4rpx 6rpx;
+					margin-left: 10rpx;
+					border-radius: 8rpx;
+				}
+			}
+			.block-1-desc {
+				color: #8b91a2;
+			}
+			image {
+				width: 160rpx;
+				margin: 20rpx auto 0;
+			}
+		}
+		.block-top-right {
+			background-color: #f7f7f7;
+			flex: 1;
+			margin: 10rpx 10rpx 10rpx 5rpx;
+			.block-2 {
+				margin-bottom: 10rpx;
+				.block-desc {
+					color: #ff8e4f;
+				}
+			}
+			.block-3 {
+				.block-desc {
+					color: #3cb8ff;
+				}
+			}
+			.block-2, .block-3 {
+				padding: 20rpx 0 20rpx 20rpx;
+				background-color: #fff;
+				display: flex;
+				justify-content: space-between;
+				border-radius: 10rpx;
+			}
+		}
+	}
+	.block-bottom { 
+		display: flex;
+		justify-content: space-evenly;
+		.block-4, .block-5, .block-6 {
+			background-color: #fff;
+			width: 235rpx;
+			padding: 20rpx;
+			image {
+				margin: 0 auto;
+			}
+		}
+	}
+}
+.main-title {
+	color: #f15b6c;
+	font-size: 36rpx;
+	text-align: center;
+	padding: 20rpx 0;
+	&::before, &::after{
+		content: " — ";
 	}
 }
 </style>
