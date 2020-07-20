@@ -1,12 +1,12 @@
 // 请求根地址
+// #ifdef H5
+const ROOTPATH= "/api";
+// #endif
+// #ifndef H5
 const ROOTPATH= "https://www.gomyorder.cn";
-// const ROOTPATH= "/api";
-const ROOTPATH1= "https://www.gomyorder.cn/tao";
+// #endif
+
 
 export default  {
 	APIHOST: ROOTPATH,
-	APIHOST1: ROOTPATH1,
-	ROOTPATH: ROOTPATH,
 }
-
-// const ROOTPATH= "https://www.gomyorder.cn/api/selected_item/apikey/maxd/min_id/";

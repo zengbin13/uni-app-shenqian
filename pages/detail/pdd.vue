@@ -57,7 +57,7 @@
 			</view>
 		</view>
 		<!-- 优惠券 -->
-		<view class="coupon-wrap bar">
+		<view class="coupon-wrap bar" @click="goLogin">
 			<view class="coupon">
 				<view class="coupon-left" v-if="goods.couponmoney && goods.start_time">
 					<view class="coupon-number">{{ goods.couponmoney }}元优惠券</view>
@@ -90,8 +90,8 @@
 				</view>
 			</view>
 			<view class="pay-right">
-				<view class="pay-cashback">返现 ￥{{ cashBack }}</view>
-				<view class="pay-coupon">领￥{{ goods.couponmoney }} 券购买</view>
+				<view class="pay-cashback" @click="goLogin">返现 ￥{{ cashBack }}</view>
+				<view class="pay-coupon" @click="goLogin">领￥{{ goods.couponmoney }} 券购买</view>
 			</view>
 		</view>
 		<!-- backtop -->
@@ -186,6 +186,19 @@ export default {
 		simpleModel
 	},
 	methods: {
+		goLogin() {
+			let token = this.$queue.getStorageData('token');
+			if(!token) {
+				uni.navigateTo({
+					url:"../login/login"
+				})
+			} else {
+				uni.showToast({
+					icon:"none",
+					title:"功能暂未完成"
+				})
+			}
+		},
 		// 添加浏览记录
 		addBrowseHistory() {
 			let pddBrowseList = this.$queue.getStorageData('pddBrowseList') || [];
