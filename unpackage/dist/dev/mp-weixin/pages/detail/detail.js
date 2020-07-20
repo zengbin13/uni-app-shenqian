@@ -366,6 +366,20 @@ var _QSSharePoster = __webpack_require__(/*! @/js_sdk/QuShe-SharerPoster/QS-Shar
     simpleModel: simpleModel },
 
   methods: {
+    // 
+    goLogin: function goLogin() {
+      var token = this.$queue.getStorageData('token');
+      if (!token) {
+        uni.navigateTo({
+          url: "../login/login" });
+
+      } else {
+        uni.showToast({
+          icon: "none",
+          title: "功能暂未完成" });
+
+      }
+    },
     // 添加浏览记录
     addBrowseHistory: function addBrowseHistory() {var _this = this;
       var taobaoBrowseList = this.$queue.getStorageData('taobaoBrowseList') || [];

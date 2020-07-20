@@ -76,5 +76,6 @@
     "cell": "/components/cell/cell",
     "search-bar": "/components/search-bar/search-bar",
     "back": "/components/back/back"
-  }
+  },
+  "sitemapLocation": "sitemap54.json"
 }

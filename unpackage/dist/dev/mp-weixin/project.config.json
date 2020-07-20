@@ -10,6 +10,8 @@
 	"libVersion": "",
 	"appid": "wx6b54ccbf7e401af5",
 	"projectname": "uni-shenqian",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,
