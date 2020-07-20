@@ -13,7 +13,7 @@ export function request(url, data= {}, method="GET") {
 			timeout: 5000,
 			header: {
 				'content-type': 'application/json',
-				'token': uni.getStorageSync('token')
+				// 'token': uni.getStorageSync('token')
 			},
 			fail(err) {
 				uni.showToast({
