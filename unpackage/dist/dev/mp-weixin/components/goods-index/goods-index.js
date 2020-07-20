@@ -149,9 +149,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 var _default2 =
 {
-  created: function created() {
-    console.log(this.goodsInfo.itempic);
-  },
   data: function data() {
     return {};
 

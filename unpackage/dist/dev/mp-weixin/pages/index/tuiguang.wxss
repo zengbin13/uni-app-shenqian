@@ -26,7 +26,7 @@
 /* 文章场景相关 */
 .fixed.data-v-5c289dfa {
   position: fixed;
-  top: 88rpx;
+  top: 0;
   left: 0;
   right: 0;
   background-color: #fff;

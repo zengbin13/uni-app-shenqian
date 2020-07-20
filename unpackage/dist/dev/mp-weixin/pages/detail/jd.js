@@ -393,7 +393,6 @@ var _QSSharePoster = __webpack_require__(/*! @/js_sdk/QuShe-SharerPoster/QS-Shar
       var url = "/tao/jd/goods/".concat(this.id);
       this.$request(url).then(function (res) {
         var resData = res.data.data.list[0];
-        console.log(resData);
         // 轮播图数据
         _this3.swiperList = resData.imageInfo.imageList.map(function (item) {return item.url;});
         // 数据修正
@@ -474,21 +473,17 @@ var _QSSharePoster = __webpack_require__(/*! @/js_sdk/QuShe-SharerPoster/QS-Shar
       // 收藏数据
       if (token) {
         var jdCollect = this.$queue.getStorageData('jdCollect') || [];
-        console.log(jdCollect);
         // 判断是否存在收藏
         var index = jdCollect.findIndex(function (item) {return item.itemid == _this5.id;});
-        console.log(index);
         if (index === -1) {
           // 不存在收藏
           jdCollect.push(this.goodsItem);
-          console.log('不存在收藏添加', jdCollect);
           this.isActiveCollect = true;
           this.collectName = '已收藏';
           this.$queue.setStorageData('jdCollect', jdCollect);
         } else {
           // 存在收藏_删除该项
           jdCollect.splice(index, 1);
-          console.log('存在收藏删除', jdCollect);
           this.isActiveCollect = false;
           this.collectName = '收藏';
           this.$queue.setStorageData('jdCollect', jdCollect);

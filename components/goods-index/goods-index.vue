@@ -33,9 +33,6 @@
 
 <script>
 	export default {
-		created() {
-			console.log(this.goodsInfo.itempic);
-		},
 		data() {
 			return {
 				

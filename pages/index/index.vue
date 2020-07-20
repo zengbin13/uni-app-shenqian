@@ -840,7 +840,6 @@ export default {
 		getOrderList(index) {
 			let url = `/api/column/apikey/maxd/type/9/back/10/min_id/${this.category[index].page}/sort/9/cid/${this.category[index].positon}`
 			this.$request(url).then(res => {
-				console.log(res.data.data);
 				this.category[index].page += 1
 				this.category[index].orderList = [...this.category[index].orderList, ...res.data.data]
 			})

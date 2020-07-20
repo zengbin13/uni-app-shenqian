@@ -239,7 +239,6 @@ export default {
 			let url = `/tao/jd/goods/${this.id}`;
 			this.$request(url).then(res => {
 				let resData = res.data.data.list[0];
-				console.log(resData);
 				// 轮播图数据
 				this.swiperList = resData.imageInfo.imageList.map(item => item.url)
 				// 数据修正
@@ -320,21 +319,17 @@ export default {
 			// 收藏数据
 			if (token) {
 				let jdCollect = this.$queue.getStorageData('jdCollect') || [];
-				console.log(jdCollect);
 				// 判断是否存在收藏
 				let index = jdCollect.findIndex(item => item.itemid == this.id);
-				console.log(index);
 				if (index === -1) {
 					// 不存在收藏
 					jdCollect.push(this.goodsItem);
-					console.log('不存在收藏添加',jdCollect);
 					this.isActiveCollect = true;
 					this.collectName = '已收藏';
 					this.$queue.setStorageData('jdCollect', jdCollect);
 				} else {
 					// 存在收藏_删除该项
 					jdCollect.splice(index, 1);
-					console.log('存在收藏删除',jdCollect);
 					this.isActiveCollect = false;
 					this.collectName = '收藏';
 					this.$queue.setStorageData('jdCollect', jdCollect);

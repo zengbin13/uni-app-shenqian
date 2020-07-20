@@ -77,7 +77,7 @@ export default {
 	onLoad(e) {
 		this.cid = e.cid;
 		uni.setNavigationBarTitle({
-			title:`推荐${this.category[this.cid]}`
+			title:`推荐${this.category[this.cid] || ''}`
 		})
 		this.grade = this.$queue.getStorageData('grade') || 0.7;
 		// // 请求数据
@@ -110,7 +110,6 @@ export default {
 				});
 				// 保存数据
 				this.tabList[this.currentTab].data = [...this.tabList[this.currentTab].data, ...resList];
-				console.log(this.tabList[this.currentTab].data);
 			});
 		},
 		toggleTabList(index) {
@@ -126,7 +125,12 @@ export default {
 <style lang="scss" scoped>
 .fixed {
 	position: fixed;
+	/* #ifdef H5 */
 	top: 88rpx;
+	/* #endif */
+	/* #ifndef H5 */
+	top: 0;
+	/* #endif */
 	left: 0;
 	right: 0;
 	background-color: #fff;

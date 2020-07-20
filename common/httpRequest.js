@@ -11,10 +11,6 @@ export function request(url, data= {}, method="GET") {
 			data,
 			method,
 			timeout: 5000,
-			header: {
-				// 'content-type': 'application/json',
-				// 'token': uni.getStorageSync('token')
-			},
 			fail(err) {
 				uni.showToast({
 					title:"网络请求失败",

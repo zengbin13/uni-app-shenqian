@@ -238,7 +238,6 @@ __webpack_require__.r(__webpack_exports__);
       this.$request(url).then(function (res) {
         _this2.min_id_goods = res.data.min_id;
         if (res.data.code === 1) {
-          console.log(res);
           var goodsData = res.data.data.map(function (item) {
             item.copy_text = item.copy_text.
             replace(/&lt;/g, '<').

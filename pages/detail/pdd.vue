@@ -322,21 +322,18 @@ export default {
 			// 收藏数据
 			if (token) {
 				let pddCollect = this.$queue.getStorageData('pddCollect') || [];
-				console.log(pddCollect);
 				// 判断是否存在收藏
 				let index = pddCollect.findIndex(item => item.itemid == this.id);
-				console.log(index);
+				
 				if (index === -1) {
 					// 不存在收藏
 					pddCollect.push(this.goodsItem);
-					console.log('不存在收藏添加',pddCollect);
 					this.isActiveCollect = true;
 					this.collectName = '已收藏';
 					this.$queue.setStorageData('pddCollect', pddCollect);
 				} else {
 					// 存在收藏_删除该项
 					pddCollect.splice(index, 1);
-					console.log('存在收藏删除',pddCollect);
 					this.isActiveCollect = false;
 					this.collectName = '收藏';
 					this.$queue.setStorageData('pddCollect', pddCollect);

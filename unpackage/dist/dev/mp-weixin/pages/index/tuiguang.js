@@ -216,7 +216,7 @@ var _default =
   onLoad: function onLoad(e) {
     this.cid = e.cid;
     uni.setNavigationBarTitle({
-      title: "\u63A8\u8350".concat(this.category[this.cid]) });
+      title: "\u63A8\u8350".concat(this.category[this.cid] || '') });
 
     this.grade = this.$queue.getStorageData('grade') || 0.7;
     // // 请求数据
@@ -249,7 +249,6 @@ var _default =
         });
         // 保存数据
         _this.tabList[_this.currentTab].data = [].concat(_toConsumableArray(_this.tabList[_this.currentTab].data), _toConsumableArray(resList));
-        console.log(_this.tabList[_this.currentTab].data);
       });
     },
     toggleTabList: function toggleTabList(index) {

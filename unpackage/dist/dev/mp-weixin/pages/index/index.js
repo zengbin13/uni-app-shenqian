@@ -991,7 +991,6 @@ __webpack_require__.r(__webpack_exports__);
     getOrderList: function getOrderList(index) {var _this5 = this;
       var url = "/api/column/apikey/maxd/type/9/back/10/min_id/".concat(this.category[index].page, "/sort/9/cid/").concat(this.category[index].positon);
       this.$request(url).then(function (res) {
-        console.log(res.data.data);
         _this5.category[index].page += 1;
         _this5.category[index].orderList = [].concat(_toConsumableArray(_this5.category[index].orderList), _toConsumableArray(res.data.data));
       });

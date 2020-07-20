@@ -102,7 +102,6 @@ export default {
 			this.$request(url).then(res => {
 				this.min_id_goods = res.data.min_id;
 				if (res.data.code === 1) {
-					console.log(res);
 					let goodsData = res.data.data.map(item => {
 						item.copy_text = item.copy_text
 							.replace(/&lt;/g, '<')

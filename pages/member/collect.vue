@@ -66,11 +66,9 @@
 				}
 				if(this.currentTab === 1) {
 					return this.pddCollect
-					console.log(this.pddCollect);
 				}
 				if(this.currentTab === 2) {
 					return this.jdCollect
-					console.log(this.jdCollect);
 				}
 			}
 		},
