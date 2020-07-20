@@ -1,7 +1,7 @@
 <template>
 	<view class="goods" @click="handleClick">
 		<view class="img">
-			<image :src="goodsInfo.itempic" mode="widthFix"></image>
+			<image :src="goodsInfo.itempic" mode="aspectFill"></image>
 		</view>
 		<view class="info">
 			<view class="title">
@@ -33,6 +33,9 @@
 
 <script>
 	export default {
+		created() {
+			console.log(this.goodsInfo.itempic);
+		},
 		data() {
 			return {
 				
@@ -87,8 +90,10 @@
 	overflow: hidden;
 }
 .img {
-	width: 270rpx;
-	height: 270rpx;
+	image {
+		width: 270rpx;
+		height: 270rpx;
+	}
 	border-radius: 30rpx;
 	overflow: hidden;
 }

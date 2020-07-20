@@ -20,7 +20,13 @@
     "pages/member/footprint",
     "pages/member/footprint2",
     "pages/member/collect",
-    "pages/member/publisher"
+    "pages/member/publisher",
+    "pages/index/tuiguang",
+    "pages/index/list",
+    "pages/pdd/index",
+    "pages/jd/jds",
+    "pages/hot/index",
+    "pages/index/mian"
   ],
   "subPackages": [],
   "window": {

@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "新人免单",
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTextStyle": "black",
+  "usingComponents": {
+    "goods-index": "/components/goods-index/goods-index",
+    "back-top": "/components/back-top/back-top"
+  }
+}

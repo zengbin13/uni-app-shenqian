@@ -13,7 +13,7 @@
 		</view>
 		<view class="content-wrap">
 			<!-- 主体内容 首页 -->
-			<view class="content"v-if="currentIndex === 0">
+			<view class="content" v-if="currentIndex === 0">
 				<!-- 首页轮播数据 -->
 				<swiper :indicator-dots="true" :autoplay="true" :interval="3000" :duration="1000" class="main-swiper" indicator-active-color="#dd0b1c">
 					<swiper-item v-for="item in swiperList" :key="item.id">
@@ -24,82 +24,85 @@
 				</swiper>
 				<!-- 首页导航 -->
 				<view class="main-list">
-					<view class="main-list-item" v-for="(item, index) in mainList" :key="item.id">
+					<navigator class="main-list-item" v-for="(item, index) in mainList" :key="item.id" :url="item.url" hover-class="none">
 						<image :src="item.image_url" mode="aspectFill"></image>
 						<view class="main-list-item-text">{{item.title}}</view>
-					</view>
+					</navigator>
 				</view>
 				<!-- 首页会员 -->
-				<view class="main-vip">
+				<navigator class="main-vip" v-if="mainList.length" url="/pages/member/publisher">
 					<image src="https://www.gomyorder.cn/go.png" mode="aspectFill"></image>
-				</view>
+				</navigator>
 				<!-- 首页模块 -->
 				<view class="main-block" v-if="mainList2.length">
 					<view class="block-top">
-						<view class="block-1">
+						<navigator class="block-1" url="/pages/index/list?title=爆款美食&type=12">
 							<view class="block-1-title">{{mainList2[0].titleList[0]}}<text>{{mainList2[0].titleList[1]}}</text></view>
 							<view class="block-1-desc">{{mainList2[0].titleList[2]}}</view>
-							<image :src="mainList2[0].image_url" mode="widthFix"></image>
-						</view>
+							<image :src="mainList2[0].image_url" mode="aspectFill"></image>
+						</navigator>
 						<view class="block-top-right">
-							<view class="block-2">
+							<navigator class="block-2" url="/pages/index/list?title=每日上新&type=1">
 								<view >
 									<view class="block-title">{{mainList2[1].titleList[0]}}</view>
 									<view class="block-desc">{{mainList2[1].titleList[2]}}</view>
 								</view>
-								<image :src="mainList2[1].image_url" mode="widthFix"></image>
-							</view>
-							<view class="block-3">
-								<view >
+								<image :src="mainList2[1].image_url" mode="aspectFill"></image>
+							</navigator>
+							<navigator class="block-3" url="/pages/index/tuiguang?cid=1">
+								<view>
 									<view class="block-title">{{mainList2[5].titleList[0]}}</view>
 									<view class="block-desc">{{mainList2[5].titleList[1]}}</view>
 								</view>
-								<image :src="mainList2[5].image_url" mode="widthFix"></image>
-							</view>
+								<image :src="mainList2[5].image_url" mode="aspectFill"></image>
+							</navigator>
 						</view>
 					</view>
 					<view class="block-bottom">
-						<view class="block-4">
+						<navigator class="block-4" url="/pages/index/tuiguang?cid=4">
 							<view >
 								<view class="block-title">{{mainList2[2].titleList[0]}}</view>
 								<view class="block-desc">{{mainList2[2].titleList[1]}}</view>
 							</view>
-							<image :src="mainList2[2].image_url" mode="widthFix"></image>
-						</view>
-						<view class="block-5">
+							<image :src="mainList2[2].image_url" mode="aspectFill"></image>
+						</navigator>
+						<navigator class="block-5" url="/pages/index/tuiguang?cid=5">
 							<view >
 								<view class="block-title">{{mainList2[3].titleList[0]}}</view>
 								<view class="block-desc">{{mainList2[3].titleList[1]}}</view>
 							</view>
-							<image :src="mainList2[3].image_url" mode="widthFix"></image>
-						</view>
-						<view class="block-6">
+							<image :src="mainList2[3].image_url" mode="aspectFill"></image>
+						</navigator>
+						<navigator class="block-6" url="/pages/index/tuiguang?cid=6">
 							<view >
 								<view class="block-title">{{mainList2[4].titleList[0]}}</view>
 								<view class="block-desc">{{mainList2[4].titleList[1]}}</view>
 							</view>
-							<image :src="mainList2[4].image_url" mode="widthFix"></image>
-						</view>
+							<image :src="mainList2[4].image_url" mode="aspectFill"></image>
+						</navigator>
 					</view>
 				</view>
-				<!-- 精选好物 -->
-				<view class="main-title">
-					<text>精选好物</text>
+				<view v-if="category[0].orderList.length">
+					<!-- 精选好物 -->
+					<view class="main-title">
+						<text>精选好物</text>
+					</view>
+					<view  v-if="choiceList.length">
+						<block v-for="(item, index) in choiceList" :key="index">
+							<goods-index :goodsInfo="item"></goods-index>
+						</block>
+					</view>
+					<!-- 首页推荐 -->
+					<view class="main-title">
+						<text>为你推荐</text>
+					</view>
+					<view class="main-recommend" v-if="category[0].orderList.length">
+						<block v-for="(item, index) in category[0].orderList" :key="index">
+							<goods-index :goodsInfo="item"></goods-index>
+						</block>
+					</view>
 				</view>
-				<view  v-if="choiceList.length">
-					<block v-for="(item, index) in choiceList" :key="index">
-						<goods-index :goodsInfo="item"></goods-index>
-					</block>
-				</view>
-				<!-- 首页推荐 -->
-				<view class="main-title">
-					<text>为你推荐</text>
-				</view>
-				<view class="main-recommend" v-if="category[0].orderList.length">
-					<block v-for="(item, index) in category[0].orderList" :key="index">
-						<goods-index :goodsInfo="item"></goods-index>
-					</block>
-				</view>
+				
 			</view>
 			<!-- 主体内容非首页 -->
 			<view class="content-sec" v-else>
@@ -967,7 +970,8 @@ export default {
 }
 .main-block {
 	image {
-		width: 130rpx;
+		width: 120rpx;
+		height: 120rpx;
 	}
 	.block-title {
 		font-size: 32rpx;
@@ -1040,6 +1044,10 @@ export default {
 		display: flex;
 		justify-content: space-evenly;
 		.block-4, .block-5, .block-6 {
+			image {
+				width: 160rpx;
+				height: 110rpx;
+			}
 			background-color: #fff;
 			width: 235rpx;
 			padding: 20rpx;

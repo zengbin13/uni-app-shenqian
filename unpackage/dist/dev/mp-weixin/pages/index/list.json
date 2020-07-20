@@ -1,0 +1,8 @@
+{
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTextStyle": "black",
+  "usingComponents": {
+    "goods-item-plus": "/components/goods-item-plus/goods-item-plus",
+    "back-top": "/components/back-top/back-top"
+  }
+}

@@ -1,5 +1,5 @@
 <template>
-	<view class="goods-detail" v-if="goods">
+	<view class="goods-detail" v-if="goodsItem.img">
 		<!-- 轮播图区域 -->
 		<view class="swiper-wrap">
 			<swiper :indicator-dots="true" :autoplay="true" :interval="3000" :duration="1000" circular indicator-active-color="rgb(252, 63, 120)">

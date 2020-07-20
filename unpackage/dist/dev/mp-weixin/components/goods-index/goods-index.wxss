@@ -38,10 +38,12 @@
   overflow: hidden;
 }
 .img {
-  width: 270rpx;
-  height: 270rpx;
   border-radius: 30rpx;
   overflow: hidden;
+}
+.img image {
+  width: 270rpx;
+  height: 270rpx;
 }
 .info {
   -webkit-box-flex: 1;

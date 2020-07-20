@@ -132,7 +132,8 @@ page.data-v-57280228 {
   height: 180rpx;
 }
 .main-block image.data-v-57280228 {
-  width: 130rpx;
+  width: 120rpx;
+  height: 120rpx;
 }
 .main-block .block-title.data-v-57280228 {
   font-size: 32rpx;
@@ -225,6 +226,10 @@ page.data-v-57280228 {
   background-color: #fff;
   width: 235rpx;
   padding: 20rpx;
+}
+.main-block .block-bottom .block-4 image.data-v-57280228, .main-block .block-bottom .block-5 image.data-v-57280228, .main-block .block-bottom .block-6 image.data-v-57280228 {
+  width: 160rpx;
+  height: 110rpx;
 }
 .main-block .block-bottom .block-4 image.data-v-57280228, .main-block .block-bottom .block-5 image.data-v-57280228, .main-block .block-bottom .block-6 image.data-v-57280228 {
   margin: 0 auto;
