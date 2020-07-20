@@ -87,7 +87,9 @@
             }
         },
         "router" : {
-            "mode" : "history"
-        }
+            "mode" : "history",
+            "base" : "/h5/"
+        },
+        "title" : "省钱兄"
     }
 }

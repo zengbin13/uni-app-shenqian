@@ -31,7 +31,6 @@
 					<view>▼</view>
 					<view style="font-size: 14px;color: #FF6600;">进入淘宝/京东/拼多多购物车选择任意商品点击进入详情</view>
 					<view>▼</view>
-					<!-- #ifdef H5 -->
 					<view style="font-size: 14px;color: #FF6600;">长按复制商品标题</view>
 					<view>▼</view>
 					<view style="font-size: 14px;color: #FF6600;">发送至省钱兄公众号</view>
