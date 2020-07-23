@@ -1707,7 +1707,7 @@ function normalizeComponent (
 /* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.request = request;var _config = _interopRequireDefault(__webpack_require__(/*! ./config.js */ 12));
 var _cache = _interopRequireDefault(__webpack_require__(/*! ./cache.js */ 13));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
-function request(url) {var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};var method = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "GET";
+function request(url) {var _this = this;var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};var method = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "GET";
   uni.showLoading({
     title: "加载中" });
 
@@ -1715,6 +1715,9 @@ function request(url) {var data = arguments.length > 1 && arguments[1] !== undef
     uni.request({
       url: "".concat(_config.default.APIHOST).concat(url),
       data: data,
+      header: {
+        token: _this.$queue.getStorageData("token") },
+
       method: method,
       timeout: 5000,
       fail: function fail(err) {
@@ -7962,7 +7965,357 @@ module.exports = g;
 
 /***/ }),
 
-/***/ 337:
+/***/ 303:
+/*!******************************************************************************************************!*\
+  !*** C:/Users/yu13/Documents/HBuilderProjects/uni-shenqian/components/QS-tabs-wxs-list/js/config.js ***!
+  \******************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var levels = { //机型等级
+  higher: 'higher',
+  medium: 'medium',
+  lower: 'lower' };
+
+var models = [//已配置机型
+{
+  model: 'Mi 10',
+  level: levels.higher }];
+
+
+
+function getModel(model) {//返回对应机型数据
+  return models.find(function (item) {return item.model === model;}) || {};
+}
+
+function checkContentMode(Sys) {//安卓平台下 判断 是否开启swiper模式; 建议: 性能好的手机 return swiper；性能不太好的 return vShow
+  try {
+    var contentMode = 'vShow';
+    var obj = getModel(Sys.model);
+    switch (obj.level) {
+      case levels.higher:
+        contentMode = 'swiper';
+        break;
+      default:
+        contentMode = 'vShow';
+        break;}
+
+    return contentMode;
+  } catch (e) {
+    //TODO handle the exception
+    return 'vShow';
+  }
+}
+
+function checkvShowDuration(Sys) {//安卓平台下 vShow模式 判断 默认的下拉刷新动画时长; 建议: 性能很好的手机 return 0；性能不太好的 return 300
+  try {
+    var dur;
+    var obj = getModel(Sys.model);
+    switch (obj.level) {
+      case levels.higher:
+        dur = 0;
+        break;
+      default:
+        dur = 300;
+        break;}
+
+    return dur;
+  } catch (e) {
+    //TODO handle the exception
+    return 300;
+  }
+}
+
+function log(t) {
+  // return console.log(t);
+}
+
+module.exports = {
+  log: log,
+  checkContentMode: checkContentMode,
+  checkvShowDuration: checkvShowDuration };
+
+/***/ }),
+
+/***/ 304:
+/*!***********************************************************************************************************!*\
+  !*** C:/Users/yu13/Documents/HBuilderProjects/uni-shenqian/components/QS-tabs-wxs-list/js/publicProps.js ***!
+  \***********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var publicProps = {
+  tabsPosition: { //tabs位置 top: 上, bottom: 下
+    type: String,
+    default: 'top' },
+
+  minWidth: { //tab最小宽度
+    type: String,
+    default: '250rpx' },
+
+  space: { //tab间距, 左右padding值
+    type: String,
+    default: '10px' },
+
+  tabHeight: { //tabs高度
+    type: String,
+    default: '44px' },
+
+  height: { //组件总高度, 需外部计算并传入
+    type: [Number, String],
+    default: 500 },
+
+  lineWidth: { //线条宽度，若小于1则当做百分比计算
+    type: [Number, String],
+    default: .7 },
+
+  lineHieght: { //线条高度
+    type: String,
+    default: '2px' },
+
+  lineColor: { //线条颜色
+    type: String,
+    default: '#f1505c' },
+
+  lineMarginBottom: { //线条距离底部距离
+    type: [Number, String],
+    default: 0 },
+
+  defCurrent: { //默认当前项
+    type: [Number, String],
+    default: 0 },
+
+  autoCenter: { //scrollview自动居中
+    type: [Boolean, String],
+    default: true },
+
+  tapTabRefresh: { //点击当前项tab触发组件内部init函数
+    type: [Boolean, String],
+    default: true },
+
+  fontSize: { //tab默认字体大小
+    type: String,
+    default: '28rpx' },
+
+  activeFontSize: { //当前项字体大小
+    type: String,
+    default: '32rpx' },
+
+  swiperBackgroundColor: { //swiper背景颜色
+    type: String,
+    default: '#f8f8f8' },
+
+  tabsBackgroundColor: { //tabs背景颜色
+    type: String,
+    default: '#fff' },
+
+  tabsFontColor: { //tabs默认字体颜色
+    type: String,
+    default: '#999' },
+
+  activeFontColor: { //tabs当前项字体颜色
+    type: String,
+    default: '#000' },
+
+  activeBold: { //当前项字体加粗
+    type: [Boolean, String],
+    default: true },
+
+  initFnName: { //初始调用函数名称(组件内部)
+    type: String,
+    default: 'init' },
+
+  type: { //用于区分展示不同列表模板的标识
+    type: String,
+    default: 'default' },
+
+  zIndex: { //z-index属性值
+    type: [String, Number],
+    default: 99 },
+
+  tabsSticky: { //tabs是否sticky定位(粘贴组件顶部)
+    type: [Boolean, String],
+    default: false },
+
+  hasRefresh: {
+    type: [Boolean, String],
+    default: false },
+
+  refreshImage: { //刷新动画图片
+    type: String,
+    default: '' },
+
+  refreshDistance: { //刷新距离
+    type: [Number, String],
+    default: 90 },
+
+  beforRefreshText: { //刷新前文字
+    type: String,
+    default: '下拉刷新' },
+
+  releaseRefreshText: { //释放刷新文字
+    type: String,
+    default: '松开刷新' },
+
+  isRefreshingText: { //刷新中文字
+    type: String,
+    default: '刷新中...' },
+
+  successRefreshText: { //刷新成功
+    type: String,
+    default: '刷新成功' },
+
+  failRefreshText: { //刷新失败
+    type: String,
+    default: '刷新失败' },
+
+  completeRefreshText: { //刷新完成文字
+    type: String,
+    default: '刷新完毕' },
+
+  refreshTextColor: { //刷新文字的颜色
+    type: String,
+    default: '#666' },
+
+  refreshTextFontSize: { //刷新文字的大小
+    type: String,
+    default: '25rpx' },
+
+  restrictSlider: { //限制用户只能滑动一块
+    type: [Boolean, String],
+    default: true },
+
+  contentMode: { //content展示模式, default、swiper、vShow, 若传default, 则会根据config.js中的checkContentMode返回相应模式, 安卓平台下传default或swiper都会经过checkContentMode的检测
+    type: String,
+    default: 'default' },
+
+  customData: { //自定义数据，最终传至列表vue中
+    type: [Object, String, Number, Array, Boolean],
+    default: function _default() {return {};} } };
+
+
+
+module.exports = publicProps;
+
+/***/ }),
+
+/***/ 358:
+/*!**************************************************************************************************************************!*\
+  !*** C:/Users/yu13/Documents/HBuilderProjects/uni-shenqian/components/QS-tabs-wxs-list/mixins/QS-tabs-wxs-list-mixin.js ***!
+  \**************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function QSTabsWxsListMixin() {
+  return {
+    props: {
+      tab: {
+        type: [Object, String],
+        default: function _default() {
+          return {};
+        } },
+
+      index: { // 保证性能勿删
+        type: [String, Number],
+        default: '' },
+
+      current: { // 保证性能勿删
+        type: [String, Number],
+        default: '' },
+
+      type: {
+        type: String,
+        default: '' },
+
+      show: {
+        type: [Boolean, String],
+        default: false },
+
+      readyRefresh: {
+        type: [Boolean, String],
+        default: false },
+
+      refreshDistance: {
+        type: Number,
+        default: 0 },
+
+      customData: {
+        type: [Object, String, Number, Array, Boolean],
+        default: function _default() {return {};} } },
+
+
+    data: function data() {
+      return {
+        scrollTop: 0, // 保证性能勿删
+        oldScrollTop: 0, // 保证性能勿删
+        setScrollTopcount: 0, // 保证性能勿删
+        scrollToTopEnd: true };
+
+    },
+    watch: {
+      // 保证性能勿删
+      show: function show(newValue, oldValue) {
+        if (newValue === true) {
+          this.toOldScrollTop();
+        } else {
+          this.scrollToTopEnd = false;
+        }
+      } },
+
+    computed: {
+      // 保证性能勿删
+      getShow: function getShow() {
+        return String(this.show) === 'true';
+      },
+      getFixedClass: function getFixedClass() {
+
+
+
+
+        return '';
+
+      } },
+
+    methods: {
+      scrollFn: function scrollFn(_ref) {var scrollTop = _ref.detail.scrollTop; // 保证性能勿删
+        if (scrollTop !== 0) {
+          this.oldScrollTop = scrollTop;
+        }
+        this.scrollHandle(scrollTop);
+      },
+      scrollHandle: function scrollHandle(scrollTop) {
+        this.$emit('scrollFn', { index: this.index, scrollTop: scrollTop });
+        var ref = this.$refs.component;
+        if (!ref) return;
+        var fn = ref.parentScroll;
+        if (fn && typeof fn === 'function') fn(scrollTop);
+      },
+      toOldScrollTop: function toOldScrollTop() {// 保证性能勿删
+        var _this = this;
+        _this.$nextTick(function () {
+          setTimeout(function () {
+            _this.scrollTop = _this.setScrollTopcount++ % 2 === 0 ? _this.oldScrollTop + 0.00001 : _this.oldScrollTop -
+            0.00001;
+            if (_this.setScrollTopcount >= 3000) _this.setScrollTopcount = 0;
+
+            _this.$nextTick(function () {
+              setTimeout(function () {
+                if (!_this.scrollToTopEnd) _this.scrollToTopEnd = true;
+              }, 0);
+            });
+          }, 0);
+        });
+      } } };
+
+
+}
+
+module.exports = {
+  QSTabsWxsListMixin: QSTabsWxsListMixin };
+
+/***/ }),
+
+/***/ 366:
 /*!**************************************************************************************************!*\
   !*** C:/Users/yu13/Documents/HBuilderProjects/uni-shenqian/components/uni-ui/uni-icons/icons.js ***!
   \**************************************************************************************************/
@@ -8101,6 +8454,338 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
   "cloud-download-filled": "\uE8E9",
   "headphones": "\uE8BF",
   "shop": "\uE609" };exports.default = _default;
+
+/***/ }),
+
+/***/ 374:
+/*!**********************************************************************************************************!*\
+  !*** C:/Users/yu13/Documents/HBuilderProjects/uni-shenqian/components/QS-tabs-wxs-list/js/pageDemand.js ***!
+  \**********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var _config = _interopRequireDefault(__webpack_require__(/*! ./config.js */ 303));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
+var statusObj = {
+  getMore: {
+    text: '获取更多',
+    code: 1 },
+
+  noMore: {
+    text: '没有更多了',
+    code: 2 },
+
+  loading: {
+    text: '数据加载中',
+    code: 3 },
+
+  noData: {
+    text: '暂无数据',
+    code: 4 },
+
+  errFail: {
+    text: '数据错误',
+    code: 5 },
+
+  errCatch: {
+    text: '加载数据失败, 点击重试',
+    code: 6 } };
+
+
+function doPageDemand(obj) {//分页加载获取数据方法, 页面使用call绑定this使用
+  _config.default.log('进入getAndSetPageData方法');
+  var _this = this;var
+
+  getDataFn =
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  obj.getDataFn,success = obj.success,successEnd = obj.successEnd,fail = obj.fail,sendDataName = obj.sendDataName,pageNumName = obj.pageNumName,pageSizeName = obj.pageSizeName,checkLastPageMode = obj.checkLastPageMode,newDatafields = obj.newDatafields,dataLastPageName = obj.dataLastPageName,sizeName = obj.sizeName,setName = obj.setName,statusTextName = obj.statusTextName,lastPageName = obj.lastPageName,waitingName = obj.waitingName,refresh = obj.refresh,force = obj.force,doEvent = obj.doEvent,noDataText = obj.noDataText,refreshClear = obj.refreshClear;
+  waitingName = waitingName || 'getting';
+  statusTextName = statusTextName || 'statusText';
+  if (_this[waitingName] && !force) return; //节流
+  if (doEvent) {//判断列表状态
+    if (_this[statusTextName].code !== undefined) {
+      switch (_this[statusTextName].code) {
+        case 1:
+          break;
+        case 6:
+          break;
+        default:
+          return;
+          break;}
+
+    }
+  }
+
+  //初始化默认值
+  sendDataName = sendDataName || 'sendData';
+  setName = setName || 'list';
+  newDatafields = newDatafields || 'list';
+  dataLastPageName = dataLastPageName || 'lastPage';
+  lastPageName = lastPageName || dataLastPageName;
+  pageNumName = pageNumName || 'pageNum';
+  pageSizeName = pageSizeName || 'pageSize';
+  sizeName = sizeName || 'size';
+  checkLastPageMode = checkLastPageMode || 'lastPage';
+
+  if (refresh) {//刷新, 重置为第一页
+    _this[sendDataName][pageNumName] = 1;
+    _this[lastPageName] = undefined; //重置最后一页状态
+
+    if (refreshClear) {//刷新是否清空数据
+      _this[setName] = [];
+    }
+  }
+
+  //浅拷贝携带数据对象
+  var sendData = _objectSpread({}, _this[sendDataName]);
+
+  _config.default.log('sendData: ' + JSON.stringify(sendData));
+  _config.default.log('_this[lastPageName]:' + _this[lastPageName]);
+  // 当前最后一页
+  var lastPage = _this[lastPageName];
+  _config.default.log('lastPage:' + lastPage);
+  // 获取携带数据中的页数
+  var sendDataPageNum = Number(sendData[pageNumName]);
+  // 判断是否为最后一页
+  if (typeof lastPage === 'number' && lastPage >= 0) {
+    _config.default.log('sendData[pageNumName]:' + sendDataPageNum);
+    if (sendDataPageNum > lastPage) {
+      _this[statusTextName] = getStatus('noMore');
+      return;
+    }
+  }
+  var status; //声明 列表状态变量
+  // 改变状态为 访问接口中
+  _this[statusTextName] = getStatus('loading');
+  // 等待标识
+  _this[waitingName] = true;
+  _config.default.log('准备访问接口:' + JSON.stringify(sendData));
+  // 访问接口
+  getDataFn(_objectSpread({}, sendData)).
+  then(function (res) {
+    if (success && typeof success == 'function') success(res);
+    _config.default.log('page.js获取数据成功:' + JSON.stringify(res));
+    // 获取列表数据
+    var newList = getField(res, newDatafields);
+    // 判断是否存在并判断长度
+    var bl = newList && newList.length > 0;
+    // 判断是否是第一页
+    if (sendDataPageNum === 1) {
+      // 第一页
+      if (bl) {
+        // 存在数据, 直接赋值
+        _this[setName] = newList;
+        _config.default.log('pageJS: 赋值了: setName:' + setName + ' ,newDatafields:' + newDatafields + ' ,data:' + JSON.stringify(newList));
+      } else {
+        // 不存在设置为空数组
+        _this[setName] = [];
+      }
+    } else {
+      // 不是第一页
+      if (bl) {
+        // 存在数据, 使用concat新增数据
+        _this[setName] = _this[setName].concat(newList);
+      }
+    }
+    // 获取数据中的最后一页
+    var dataLastPageNum = getField(res, dataLastPageName);
+    if (dataLastPageNum !== undefined) {
+      dataLastPageNum = Number(dataLastPageNum);
+      // 获取数据中的条数
+      var sizeNum = Number(getField(res, sizeName));
+      // 获取最后一页
+      var lastPageNum;
+      switch (checkLastPageMode) {
+        case 'size':
+          lastPageNum = Math.ceil(sizeNum / Number(sendData[pageSizeName]));
+          break;
+        case 'page':
+          lastPageNum = dataLastPageNum;
+          break;
+        default:
+          if (res[sizeName] !== undefined) {
+            lastPageNum = Math.ceil(sizeNum / Number(sendData[pageSizeName]));
+          } else {
+            lastPageNum = dataLastPageNum;
+          }
+          break;}
+
+      _config.default.log('lastPageNum:' + lastPageNum);
+      // 赋值最后一页
+      _this[lastPageName] = lastPageNum;
+      _config.default.log('_this[lastPageName]:' + _this[lastPageName]);
+
+      // 判断最后一页与是否存在数据, 赋值相应状态
+      if (sendDataPageNum <= 1 && lastPageNum <= 1 && !bl) {//第一页并无数据
+        _config.default.log('noDataText:' + noDataText);
+        status = getStatus('noData', noDataText || '');
+        _config.default.log('没有数据,status:' + JSON.stringify(status));
+      } else if (sendDataPageNum < lastPageNum) {//可获取更多
+        _config.default.log('可获取更多');
+        status = getStatus('getMore');
+      } else {//没有更多了
+        _config.default.log('没有更多了');
+        status = getStatus('noMore');
+      }
+    } else {
+      status = getStatus('errFail');
+    }
+    // 页面携带数据页数加1
+    ++_this[sendDataName][pageNumName];
+    // 赋值状态
+    _this[statusTextName] = status;
+    // 重置等待标识
+    _this[waitingName] = false;
+    if (successEnd && typeof successEnd == 'function') successEnd(res);
+  }).catch(function (err) {
+    _config.default.log('pageJS异常:' + JSON.stringify(err));
+    // 获取数据异常,可点击重新加载
+    _this[statusTextName] = _objectSpread({}, statusObj.errCatch);
+
+    // 重置等待标识
+    _this[waitingName] = false;
+    if (fail && typeof fail === 'function') fail(err);
+  });
+}
+
+function getStatus(type, text) {
+  var obj = _objectSpread({}, statusObj[type]);
+  obj.text = text || obj.text || '';
+  return obj;
+}
+
+function getField(data, fields, pattern) {//递归获取指定字段数据
+  if (!fields) return data;
+  var arr = fields.split('.');
+  var key = arr.shift();
+  var value = data[key];
+
+  if (value == null) {
+    return value;
+  } else if (arr.length == 0) {
+    if (!pattern) return value;
+    var type = Object.prototype.toString.call(value).replace('[object ', '').replace(']', '');
+    if (pattern === true) {
+      return type;
+    } else if (!pattern) {
+      return value;
+    } else {
+      return type == pattern;
+    }
+  }
+
+  var result = getField(value, arr.join('.'), pattern);
+  return result;
+}
+
+module.exports = {
+  doPageDemand: doPageDemand };
+
+/***/ }),
+
+/***/ 396:
+/*!**************************************************************************************************!*\
+  !*** C:/Users/yu13/Documents/HBuilderProjects/uni-shenqian/components/QS-Masonry/js/QS-Utils.js ***!
+  \**************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+var _baseUtil = __webpack_require__(/*! ./baseUtil.js */ 397);
+
+
+
+
+
+
+
+
+
+
+
+module.exports = {
+  isNumber: _baseUtil.isNumber,
+  isArray: _baseUtil.isArray,
+  isArrayHasLen: _baseUtil.isArrayHasLen,
+  isFn: _baseUtil.isFn,
+  isObject: _baseUtil.isObject,
+  isPromise: _baseUtil.isPromise,
+  isUndef: _baseUtil.isUndef,
+  isNull: _baseUtil.isNull,
+  isString: _baseUtil.isString };
+
+/***/ }),
+
+/***/ 397:
+/*!**************************************************************************************************!*\
+  !*** C:/Users/yu13/Documents/HBuilderProjects/uni-shenqian/components/QS-Masonry/js/baseUtil.js ***!
+  \**************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var isNumber = function isNumber(arg) {
+  return typeof arg === 'number';
+};
+var isArray = function isArray(arg) {
+  return Object.prototype.toString.call(arg) === '[object Array]';
+};
+var isArrayHasLen = function isArrayHasLen(arr) {
+  return isArray(arr) && arr.length > 0;
+};
+var isFn = function isFn(fn) {
+  return fn && typeof fn === "function";
+};
+var isObject = function isObject(arg) {
+  return Object.prototype.toString.call(arg) === '[object Object]';
+};
+var isPromise = function isPromise(obj) {
+  return !!obj && (typeof obj === 'object' || typeof obj === 'function') && typeof obj.then === 'function';
+};
+var isUndef = function isUndef(arg) {
+  return arg === undefined;
+};
+var isNull = function isNull(arg) {
+  return arg === null;
+};
+var isString = function isString(arg) {
+  return typeof arg === 'string';
+};
+
+
+module.exports = {
+  isNumber: isNumber,
+  isArray: isArray,
+  isArrayHasLen: isArrayHasLen,
+  isFn: isFn,
+  isObject: isObject,
+  isPromise: isPromise,
+  isUndef: isUndef,
+  isNull: isNull,
+  isString: isString };
 
 /***/ }),
 

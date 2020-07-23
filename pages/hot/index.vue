@@ -87,7 +87,6 @@ export default {
 		getGoodsList() {
 			let url = `/api/sales_list/apikey/maxd/sale_type/${this.tabList[this.currentTab].sort}/back/10/min_id/${this.page}/cid/0`;
 			this.$request(url).then(res => {
-				console.log(res);
 				let resList = res.data.data;
 				// 改变请求参数
 				this.page = res.data.min_id;
@@ -113,7 +112,7 @@ export default {
 .fixed {
 	position: fixed;
 	/* #ifdef H5 */
-	top: 88rpx;
+	top: 80rpx;
 	/* #endif */
 	/* #ifndef H5 */
 	top: 0;

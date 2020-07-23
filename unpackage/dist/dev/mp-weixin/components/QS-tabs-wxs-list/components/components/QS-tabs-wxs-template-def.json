@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "q-s-masonry": "/components/QS-Masonry/QS-Masonry"
+  }
+}

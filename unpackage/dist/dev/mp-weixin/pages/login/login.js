@@ -197,7 +197,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
-var _this;var wInput = function wInput() {__webpack_require__.e(/*! require.ensure | components/watch-login/watch-input */ "components/watch-login/watch-input").then((function () {return resolve(__webpack_require__(/*! ../../components/watch-login/watch-input.vue */ 318));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var wButton = function wButton() {__webpack_require__.e(/*! require.ensure | components/watch-login/watch-button */ "components/watch-login/watch-button").then((function () {return resolve(__webpack_require__(/*! ../../components/watch-login/watch-button.vue */ 325));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};
+var _this;var wInput = function wInput() {__webpack_require__.e(/*! require.ensure | components/watch-login/watch-input */ "components/watch-login/watch-input").then((function () {return resolve(__webpack_require__(/*! ../../components/watch-login/watch-input.vue */ 339));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var wButton = function wButton() {__webpack_require__.e(/*! require.ensure | components/watch-login/watch-button */ "components/watch-login/watch-button").then((function () {return resolve(__webpack_require__(/*! ../../components/watch-login/watch-button.vue */ 346));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};
 
 //button
 var _default = {
@@ -315,6 +315,7 @@ var _default = {
         var userId = res.data.data.userId;
         var mobile = _this3.phoneData;
         _this3.$queue.setStorageData("token", token);
+        _this3.$queue.setStorageData("nickName", mobile);
         _this3.$queue.setStorageData("userId", userId);
         _this3.$queue.setStorageData("mobile", mobile);
         // this.$queue.setStorageData("loginStatus", true)

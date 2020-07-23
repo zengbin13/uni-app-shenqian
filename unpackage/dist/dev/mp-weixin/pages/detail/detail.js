@@ -94,13 +94,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components = {
   goodsItemPlus: function() {
-    return __webpack_require__.e(/*! import() | components/goods-item-plus/goods-item-plus */ "components/goods-item-plus/goods-item-plus").then(__webpack_require__.bind(null, /*! @/components/goods-item-plus/goods-item-plus.vue */ 255))
+    return __webpack_require__.e(/*! import() | components/goods-item-plus/goods-item-plus */ "components/goods-item-plus/goods-item-plus").then(__webpack_require__.bind(null, /*! @/components/goods-item-plus/goods-item-plus.vue */ 263))
   },
   backTop: function() {
-    return __webpack_require__.e(/*! import() | components/back-top/back-top */ "components/back-top/back-top").then(__webpack_require__.bind(null, /*! @/components/back-top/back-top.vue */ 262))
+    return __webpack_require__.e(/*! import() | components/back-top/back-top */ "components/back-top/back-top").then(__webpack_require__.bind(null, /*! @/components/back-top/back-top.vue */ 270))
   },
   simpleModel: function() {
-    return __webpack_require__.e(/*! import() | components/simple-model/simple-model */ "components/simple-model/simple-model").then(__webpack_require__.bind(null, /*! @/components/simple-model/simple-model.vue */ 304))
+    return __webpack_require__.e(/*! import() | components/simple-model/simple-model */ "components/simple-model/simple-model").then(__webpack_require__.bind(null, /*! @/components/simple-model/simple-model.vue */ 325))
   }
 }
 var render = function() {
@@ -326,7 +326,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var _app2 = _interopRequireDefault(__webpack_require__(/*! @/js_sdk/QuShe-SharerPoster/QS-SharePoster/app.js */ 64));
-var _QSSharePoster = __webpack_require__(/*! @/js_sdk/QuShe-SharerPoster/QS-SharePoster/QS-SharePoster.js */ 65);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var simpleModel = function simpleModel() {__webpack_require__.e(/*! require.ensure | components/simple-model/simple-model */ "components/simple-model/simple-model").then((function () {return resolve(__webpack_require__(/*! @/components/simple-model/simple-model.vue */ 304));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+var _QSSharePoster = __webpack_require__(/*! @/js_sdk/QuShe-SharerPoster/QS-SharePoster/QS-SharePoster.js */ 65);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var simpleModel = function simpleModel() {__webpack_require__.e(/*! require.ensure | components/simple-model/simple-model */ "components/simple-model/simple-model").then((function () {return resolve(__webpack_require__(/*! @/components/simple-model/simple-model.vue */ 325));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 {
   data: function data() {

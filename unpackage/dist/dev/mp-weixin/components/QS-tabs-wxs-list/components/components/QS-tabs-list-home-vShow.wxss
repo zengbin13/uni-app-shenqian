@@ -1,0 +1,32 @@
+view.data-v-20283619,
+scroll-view.data-v-20283619,
+swiper.data-v-20283619,
+swiper-item.data-v-20283619,
+cover-view.data-v-20283619,
+cover-image.data-v-20283619,
+icon.data-v-20283619,
+text.data-v-20283619,
+rich-text.data-v-20283619,
+progress.data-v-20283619,
+button.data-v-20283619,
+checkbox.data-v-20283619,
+form.data-v-20283619,
+input.data-v-20283619,
+label.data-v-20283619,
+radio.data-v-20283619,
+slider.data-v-20283619,
+switch.data-v-20283619,
+textarea.data-v-20283619,
+navigator.data-v-20283619,
+audio.data-v-20283619,
+camera.data-v-20283619,
+image.data-v-20283619,
+video.data-v-20283619,
+picker-view.data-v-20283619,
+picker-view-column.data-v-20283619 {
+	box-sizing: border-box;
+}
+.btn.data-v-20283619 {
+	margin-top: 20px;
+}
+

@@ -108,10 +108,10 @@
 			<view class="content-sec" v-else>
 				<!-- banner区域 -->
 				<view class="banner" v-if="category[currentIndex].banner.length">
-					<view v-for="item in category[currentIndex].banner" :key="item.son_name" class="banner-item">
+					<navigator v-for="item in category[currentIndex].banner" :key="item.son_name" class="banner-item" :url="`/pages/search/search-content?keyword=${item.son_name}`">
 						<image :src="item.imgurl" mode="widthFix"></image>
 						<text>{{item.son_name}}</text>
-					</view>
+					</navigator>
 				</view>
 				<!-- 内容区域 -->
 				<view class="content-sec-wrap">
@@ -127,6 +127,7 @@
 
 <script>
 import goodsItem from "@/components/goods-item/goods-item.vue"
+import QSTabsWxsList from "@/components/QS-tabs-wxs-list/QS-tabs-wxs-list.vue"
 export default {
 	data() {
 		return {
@@ -781,6 +782,7 @@ export default {
 	},
 	components:{
 		goodsItem,
+		QSTabsWxsList
 	},
 	onLoad() {
 		this.getOrderList(this.currentIndex)
@@ -833,6 +835,9 @@ export default {
 		// 点击tablist
 		selectTab(index) {
 			this.currentIndex = index
+			uni.pageScrollTo({
+				scrollTop:0
+			})
 			this.scrollLeft = index * 48
 			this.getOrderList(index)
 		},

@@ -132,6 +132,12 @@
 				}
 		},
 		{
+				"path" : "pages/public/login",
+				"style" : {
+					"navigationBarTitleText": "登录"
+				}
+		},
+		{
 				"path" : "pages/login/register",
 				"style" : {
 					"navigationBarTitleText": "注册",

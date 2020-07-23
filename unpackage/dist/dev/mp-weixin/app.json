@@ -13,6 +13,7 @@
     "pages/member/privacy-agreement",
     "pages/member/feedback",
     "pages/login/login",
+    "pages/public/login",
     "pages/login/register",
     "pages/login/forget",
     "pages/search/search",
@@ -77,5 +78,5 @@
     "search-bar": "/components/search-bar/search-bar",
     "back": "/components/back/back"
   },
-  "sitemapLocation": "sitemap9.json"
+  "sitemapLocation": "sitemap60.json"
 }

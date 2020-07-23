@@ -9,6 +9,9 @@ export function request(url, data= {}, method="GET") {
 		uni.request({
 			url: `${config.APIHOST}${url}`,
 			data,
+			header: {
+				token: this.$queue.getStorageData("token")
+			},
 			method,
 			timeout: 5000,
 			fail(err) {

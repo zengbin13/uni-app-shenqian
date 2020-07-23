@@ -4,6 +4,7 @@
   "usingComponents": {
     "goods-index": "/components/goods-index/goods-index",
     "goods-item": "/components/goods-item/goods-item",
-    "back-top": "/components/back-top/back-top"
+    "back-top": "/components/back-top/back-top",
+    "q-s-tabs-wxs-list": "/components/QS-tabs-wxs-list/QS-tabs-wxs-list"
   }
 }

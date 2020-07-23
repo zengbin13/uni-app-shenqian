@@ -105,13 +105,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components = {
   goodsIndex: function() {
-    return __webpack_require__.e(/*! import() | components/goods-index/goods-index */ "components/goods-index/goods-index").then(__webpack_require__.bind(null, /*! @/components/goods-index/goods-index.vue */ 248))
+    return __webpack_require__.e(/*! import() | components/goods-index/goods-index */ "components/goods-index/goods-index").then(__webpack_require__.bind(null, /*! @/components/goods-index/goods-index.vue */ 256))
   },
   goodsItem: function() {
-    return __webpack_require__.e(/*! import() | components/goods-item/goods-item */ "components/goods-item/goods-item").then(__webpack_require__.bind(null, /*! @/components/goods-item/goods-item.vue */ 241))
+    return __webpack_require__.e(/*! import() | components/goods-item/goods-item */ "components/goods-item/goods-item").then(__webpack_require__.bind(null, /*! @/components/goods-item/goods-item.vue */ 249))
   },
   backTop: function() {
-    return __webpack_require__.e(/*! import() | components/back-top/back-top */ "components/back-top/back-top").then(__webpack_require__.bind(null, /*! @/components/back-top/back-top.vue */ 262))
+    return __webpack_require__.e(/*! import() | components/back-top/back-top */ "components/back-top/back-top").then(__webpack_require__.bind(null, /*! @/components/back-top/back-top.vue */ 270))
   }
 }
 var render = function() {
@@ -149,7 +149,8 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;function _toConsumableArray(arr) {return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();}function _nonIterableSpread() {throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");}function _unsupportedIterableToArray(o, minLen) {if (!o) return;if (typeof o === "string") return _arrayLikeToArray(o, minLen);var n = Object.prototype.toString.call(o).slice(8, -1);if (n === "Object" && o.constructor) n = o.constructor.name;if (n === "Map" || n === "Set") return Array.from(n);if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);}function _iterableToArray(iter) {if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter);}function _arrayWithoutHoles(arr) {if (Array.isArray(arr)) return _arrayLikeToArray(arr);}function _arrayLikeToArray(arr, len) {if (len == null || len > arr.length) len = arr.length;for (var i = 0, arr2 = new Array(len); i < len; i++) {arr2[i] = arr[i];}return arr2;}var goodsItem = function goodsItem() {__webpack_require__.e(/*! require.ensure | components/goods-item/goods-item */ "components/goods-item/goods-item").then((function () {return resolve(__webpack_require__(/*! @/components/goods-item/goods-item.vue */ 241));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;function _toConsumableArray(arr) {return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();}function _nonIterableSpread() {throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");}function _unsupportedIterableToArray(o, minLen) {if (!o) return;if (typeof o === "string") return _arrayLikeToArray(o, minLen);var n = Object.prototype.toString.call(o).slice(8, -1);if (n === "Object" && o.constructor) n = o.constructor.name;if (n === "Map" || n === "Set") return Array.from(n);if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);}function _iterableToArray(iter) {if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter);}function _arrayWithoutHoles(arr) {if (Array.isArray(arr)) return _arrayLikeToArray(arr);}function _arrayLikeToArray(arr, len) {if (len == null || len > arr.length) len = arr.length;for (var i = 0, arr2 = new Array(len); i < len; i++) {arr2[i] = arr[i];}return arr2;}var goodsItem = function goodsItem() {__webpack_require__.e(/*! require.ensure | components/goods-item/goods-item */ "components/goods-item/goods-item").then((function () {return resolve(__webpack_require__(/*! @/components/goods-item/goods-item.vue */ 249));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var QSTabsWxsList = function QSTabsWxsList() {Promise.all(/*! require.ensure | components/QS-tabs-wxs-list/QS-tabs-wxs-list */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/QS-tabs-wxs-list/QS-tabs-wxs-list")]).then((function () {return resolve(__webpack_require__(/*! @/components/QS-tabs-wxs-list/QS-tabs-wxs-list.vue */ 298));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+
 
 
 
@@ -931,7 +932,8 @@ __webpack_require__.r(__webpack_exports__);
 
   },
   components: {
-    goodsItem: goodsItem },
+    goodsItem: goodsItem,
+    QSTabsWxsList: QSTabsWxsList },
 
   onLoad: function onLoad() {
     this.getOrderList(this.currentIndex);
@@ -984,6 +986,9 @@ __webpack_require__.r(__webpack_exports__);
     // 点击tablist
     selectTab: function selectTab(index) {
       this.currentIndex = index;
+      uni.pageScrollTo({
+        scrollTop: 0 });
+
       this.scrollLeft = index * 48;
       this.getOrderList(index);
     },

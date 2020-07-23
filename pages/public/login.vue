@@ -22,16 +22,21 @@
 		},
 		methods:{
 			login() {
-				console.log(22222);
 				uni.login({
 				  provider: 'weixin',
-				  success: function (loginRes) {
-				    console.log(loginRes);
+				  success: loginRes => {
 				    // 获取用户信息
 				    uni.getUserInfo({
 				      provider: 'weixin',
-				      success: function (infoRes) {
-				        console.log(infoRes);
+				      success: infoRes => {
+								let nickName = infoRes.userInfo.nickName
+								let avatarUrl = infoRes.userInfo.avatarUrl
+								this.$queue.setStorageData("nickName", nickName)
+								this.$queue.setStorageData("avatarUrl", avatarUrl)
+								this.$queue.setStorageData("userInfo", infoRes.userInfo)
+								uni.reLaunch({
+									url:"/pages/member/user"
+								})
 				      }
 				    });
 				  }

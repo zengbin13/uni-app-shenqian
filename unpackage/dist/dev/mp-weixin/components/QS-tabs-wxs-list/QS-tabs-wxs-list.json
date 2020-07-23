@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "q-s-tabs-list-template": "/components/QS-tabs-wxs-list/components/QS-tabs-wxs-list-template"
+  }
+}

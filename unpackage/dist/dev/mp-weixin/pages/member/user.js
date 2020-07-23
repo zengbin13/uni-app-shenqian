@@ -94,7 +94,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components = {
   cell: function() {
-    return __webpack_require__.e(/*! import() | components/cell/cell */ "components/cell/cell").then(__webpack_require__.bind(null, /*! @/components/cell/cell.vue */ 269))
+    return __webpack_require__.e(/*! import() | components/cell/cell */ "components/cell/cell").then(__webpack_require__.bind(null, /*! @/components/cell/cell.vue */ 277))
   }
 }
 var render = function() {
@@ -134,7 +134,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var cell = function cell() {__webpack_require__.e(/*! require.ensure | components/cell/cell */ "components/cell/cell").then((function () {return resolve(__webpack_require__(/*! ../../components/cell/cell.vue */ 269));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var cell = function cell() {__webpack_require__.e(/*! require.ensure | components/cell/cell */ "components/cell/cell").then((function () {return resolve(__webpack_require__(/*! ../../components/cell/cell.vue */ 277));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 
@@ -201,7 +201,8 @@ __webpack_require__.r(__webpack_exports__);
 
       userId: '',
       nickName: "游客",
-      message: "每个月25号结算【上月预估】金额，建议26号进行提现" };
+      message: "每个月25号结算【上月预估】金额，建议26号进行提现",
+      avatarUrl: "../../static/img/logo.png" };
 
   },
   onLoad: function onLoad() {
@@ -231,17 +232,30 @@ __webpack_require__.r(__webpack_exports__);
 
       }
     },
-    getUserInfo: function getUserInfo() {var _this = this;
-      this.userId = this.$queue.getStorageData("userId");
-      if (!this.userId) return;
-      this.$request("/tao/user/".concat(this.userId)).then(function (res) {
-        _this.nickName = res.data.data.nickName;
-      });
+    getUserInfo: function getUserInfo() {
+
+      this.avatarUrl = this.$queue.getStorageData("avatarUrl");
+      this.nickName = this.$queue.getStorageData("nickName");
+      var userInfo = this.$queue.getStorageData("userInfo");
+      if (!userInfo) {
+        uni.navigateTo({
+          url: "../public/login" });
+
+      }
+
+
+
+
+
+
+
+
+
     },
     login: function login() {
       var token = this.$queue.getStorageData("token");
       // 具有token
-      if (token) {
+      if (token && this.userId) {
         uni.showToast({
           title: "您已经登录，切换账户请先退出",
           icon: "none" });
@@ -250,12 +264,17 @@ __webpack_require__.r(__webpack_exports__);
       // 不具有token
       if (!token) {
         this.$queue.setStorageData("href", "/pages/member/user");
-        uni.navigateTo({
-          url: '/pages/login/login' });
 
-        // uni.navigateTo({
-        // 	url: '/pages/public/login'
-        // });
+
+        uni.navigateTo({
+          url: '/pages/public/login' });
+
+
+
+
+
+
+
       }
     },
     promote: function promote() {
@@ -299,14 +318,14 @@ __webpack_require__.r(__webpack_exports__);
 
       }
     },
-    signOut: function signOut() {var _this2 = this;
+    signOut: function signOut() {var _this = this;
       uni.showModal({
         title: '温馨提示',
         content: '是否退出当前账户',
         confirmColor: "#db0011",
         success: function success(res) {
           if (res.confirm) {
-            _this2.$queue.clearLogin();
+            _this.$queue.clearLogin();
             uni.reLaunch({
               url: "/pages/member/user" });
 

@@ -2,7 +2,7 @@
 	<view class="content-wrap">
 		<view class="color-bg">
 			<view class="login" @tap="login">
-				<image src="../../static/img/logo.png" mode="aspectFill"></image>
+				<image :src="avatarUrl" mode="aspectFill"></image>
 				<view class="username">{{nickName}}</view>
 			</view>
 			<view class="vip-application">
@@ -65,7 +65,8 @@
 				],
 				userId: '',
 				nickName: "游客",
-				message: "每个月25号结算【上月预估】金额，建议26号进行提现"
+				message: "每个月25号结算【上月预估】金额，建议26号进行提现",
+				avatarUrl: "../../static/img/logo.png"
 			}
 		},
 		onLoad() {
@@ -96,16 +97,29 @@
 				}
 			},
 			getUserInfo() {
+				// #ifdef MP-WEIXIN
+				this.avatarUrl = this.$queue.getStorageData("avatarUrl")
+				this.nickName = this.$queue.getStorageData("nickName")
+				let userInfo = this.$queue.getStorageData("userInfo")
+				if(!userInfo) {
+					uni.navigateTo({
+						url: "../public/login"
+					})
+				}
+				// #endif
+				
+				// #ifndef MP-WEIXIN
 				this.userId = this.$queue.getStorageData("userId")
 				if(!this.userId) return
 				this.$request(`/tao/user/${this.userId}`).then(res => {
 					this.nickName = res.data.data.nickName
 				})
+				// #endif
 			},
 			login() {
 				let token = this.$queue.getStorageData("token")
 				// 具有token
-				if(token) {
+				if(token && this.userId) {
 					uni.showToast({
 						title:"您已经登录，切换账户请先退出",
 						icon:"none"
@@ -114,12 +128,17 @@
 				// 不具有token
 				if(!token) {
 					this.$queue.setStorageData("href", "/pages/member/user")
+				
+				// #ifdef MP-WEIXIN
+				uni.navigateTo({
+					url: '/pages/public/login'
+				});
+				// #endif
+				// #ifndef MP-WEIXIN
 				uni.navigateTo({
 					url: '/pages/login/login'
 				});
-				// uni.navigateTo({
-				// 	url: '/pages/public/login'
-				// });
+				// #endif
 				}
 			},
 			promote() {

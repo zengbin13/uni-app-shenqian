@@ -183,6 +183,7 @@
 					let userId = res.data.data.userId
 					let mobile = this.phoneData
 					this.$queue.setStorageData("token", token)
+					this.$queue.setStorageData("nickName", mobile)
 					this.$queue.setStorageData("userId", userId)
 					this.$queue.setStorageData("mobile", mobile)
 					// this.$queue.setStorageData("loginStatus", true)
