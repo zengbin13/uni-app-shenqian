@@ -35,6 +35,7 @@
 export default {
 	data() {
 		return {
+			clientX: 0,
 			isBackTop: false,
 			grade: 0,
 			currentTab: 0,

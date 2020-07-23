@@ -11,7 +11,7 @@
 				</view>
 			</scroll-view>
 		</view>
-		<view class="content-wrap">
+		<view class="content-wrap" @touchstart="start" @touchend="end">
 			<!-- 主体内容 首页 -->
 			<view class="content" v-if="currentIndex === 0">
 				<!-- 首页轮播数据 -->
@@ -127,10 +127,10 @@
 
 <script>
 import goodsItem from "@/components/goods-item/goods-item.vue"
-import QSTabsWxsList from "@/components/QS-tabs-wxs-list/QS-tabs-wxs-list.vue"
 export default {
 	data() {
 		return {
+			clientX: 0,
 			scrollLeft: 0,
 			category: [
 				{
@@ -781,8 +781,7 @@ export default {
 		};
 	},
 	components:{
-		goodsItem,
-		QSTabsWxsList
+		goodsItem
 	},
 	onLoad() {
 		this.getOrderList(this.currentIndex)
@@ -799,13 +798,30 @@ export default {
 			this.getOrderList(this.currentIndex)
 	},
 	methods: {
+		start(e) {
+			this.clientX = e.changedTouches[0].clientX
+		},
+		end(e) {
+			let flag = e.changedTouches[0].clientX - this.clientX 
+			if(flag > 100) {
+				// 左滑动
+				if(this.currentIndex === 0) return
+				this.currentIndex -= 1
+				this.selectTab(this.currentIndex)
+			}
+			if(flag < -100) {
+				// 右滑动
+				if(this.currentIndex === this.category.length) return
+				this.currentIndex += 1
+				this.selectTab(this.currentIndex)
+			}
+		},
 		// 首页数据
 		getSwiperData() {
 			this.$request("/tao/banner/user/list").then(res => {
 				this.swiperList = res.data.data
 			})
 		},
-		// https://www.gomyorder.cn/tao/activity/state/1
 		getMainList() {
 			this.$request("/tao/activity/state/1").then(res => {
 				this.mainList = res.data.data
